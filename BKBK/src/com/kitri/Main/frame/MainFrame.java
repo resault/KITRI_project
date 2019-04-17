@@ -41,7 +41,7 @@
 //}
 
 //<html>잘생긴승훈이 멋졌어<br>그렇게 멋진녀석이...<br></html>
-package com.kitri.managerframe;
+package com.kitri.Main.frame;
 
 import javax.swing.border.*;
 import javax.swing.*;
@@ -51,18 +51,23 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
-import com.kitri.EditMember.EditMemberFrame;
-import com.kitri.JoinMember.JoinMemberFrame;
-import com.kitri.memberDto.MemberDao;
-import com.kitri.memberDto.MemberDto;
-import com.kitri.swing.box.FPanel;
 
-public class ManagerFrame extends JFrame implements Runnable {
+import com.kitri.Book.rent.RentalMain;
+import com.kitri.Food.FoodPanel;
+import com.kitri.Main.EditMember.EditMemberFrame;
+import com.kitri.Main.JoinMember.JoinMemberFrame;
+import com.kitri.Main.memberDto.MemberDao;
+import com.kitri.Main.memberDto.MemberDto;
+import com.kitri.Main.swing.box.FPanel;
+import com.kitri.Manager.main.MgmtMain;
+import com.kitri.Statistics.chart.StatisticsPanel;
+
+public class MainFrame extends JFrame implements Runnable {
 
 	ImageIcon icon;
 	BufferedReader in;
-	public ManagerController mc;
-	public ManagerFrameService mfs;
+	public MainController mc;
+	public MainFrameService mfs;
 	public JoinMemberFrame jmf;
 	public EditMemberFrame emf;
 	public FPanel[] fp = new FPanel[30];
@@ -109,18 +114,29 @@ public class ManagerFrame extends JFrame implements Runnable {
 	JButton buttonMiner;
 	JTextField tfPhoneNum;
 	private JPanel panelBookJtable;
-	private JPanel panelCard;
+	
+	
+//----------------------------------------------------------------------------------------------------------------------------------[h]각 서비스 패널 생성
+	public CardLayout serCard = new CardLayout();
+	public JPanel panelCard;
+	public FoodPanel foodPanel;
+	public RentalMain rentalMain;
+	public MgmtMain managerMain;
+	public StatisticsPanel statisticsPanel;
 
 	/**
 	 * Create the frame.
 	 */
 //	mfs.currentDate()
 //	
-	public ManagerFrame() {
-		mc = new ManagerController(this);
+	public MainFrame() {
+		mc = new MainController(this);
 		jmf = new JoinMemberFrame(this);
 		emf = new EditMemberFrame(this);
 		dao = new MemberDao(this);
+		foodPanel = new FoodPanel(this);
+		managerMain = new MgmtMain(this);
+		statisticsPanel = new StatisticsPanel(this);
 
 		// 화면 첫번째 줄의 날짜 및 시간 표시_Label
 		titleL = new JLabel("//북크북크// 1호점"); // 점포이름
@@ -153,8 +169,23 @@ public class ManagerFrame extends JFrame implements Runnable {
 		panelCard = new JPanel();
 		panelCard.setBounds(0, 36, 1494, 835);
 		contentPane.add(panelCard);
-		panelCard.setLayout(new CardLayout(0, 0));
-		panelCard.add(panel, "name_38216950480975");
+		panelCard.setLayout(serCard);
+		
+//----------------------------------------------------------------------------------------------------------------------------------[h]각 서비스 전환 패널 cardlayout
+		
+		//[h]Main Panel
+		panelCard.add(panel, "Main");
+		//[h]Food Panel
+		panelCard.add(foodPanel, "Food");
+		panelCard.add(managerMain, "Manager");
+		panelCard.add(statisticsPanel, "Statistics");
+		
+		serCard.show(panelCard, "Main");
+		
+		 rentalMain = new RentalMain(this);
+		
+//-----------------------------------------------------------------------------------------------------------------------------------//[h]		
+		
 		panel.setBackground(SystemColor.window);
 
 		panel.setLayout(null);
@@ -507,7 +538,7 @@ public class ManagerFrame extends JFrame implements Runnable {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManagerFrame frame = new ManagerFrame();
+					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
 					Thread t = new Thread(frame);
 					t.start();

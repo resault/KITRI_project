@@ -1,11 +1,12 @@
-package com.kitri.swing.box;
+package com.kitri.Main.swing.box;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
-import com.kitri.dto.Basket;
-import com.kitri.managerframe.ManagerController;
+import com.kitri.Main.dto.Basket;
+import com.kitri.Main.frame.MainController;
+
 import java.awt.SystemColor;
 import java.util.*;
 

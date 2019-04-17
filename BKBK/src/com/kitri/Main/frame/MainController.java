@@ -1,4 +1,4 @@
-package com.kitri.managerframe;
+package com.kitri.Main.frame;
 
 import java.awt.Color;
 import java.awt.event.*;
@@ -10,25 +10,24 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
-import com.kitri.dto.Basket;
-import com.kitri.swing.box.*;
-import com.kitri.voucher.VoucherDto;
+import com.kitri.Main.dto.Basket;
+import com.kitri.Main.swing.box.*;
+import com.kitri.Main.voucher.VoucherDto;
 
-import jdk.nashorn.internal.scripts.JO;
 
-public class ManagerController implements ActionListener, MouseListener {
+public class MainController implements ActionListener, MouseListener {
 
-	public ManagerFrame mf;
-	public ManagerFrameService mfs;
+	public MainFrame mf;
+	public MainFrameService mfs;
 	VoucherDto vou1 = new VoucherDto("1시간 이용권", 2500, 10);
 	VoucherDto vou2 = new VoucherDto("2시간 이용권", 5000, 20);
 	VoucherDto vou3 = new VoucherDto("3시간 이용권", 7500, 30);
 	VoucherDto overTime = new VoucherDto("시간추가", 500, 5);
 
-	public ManagerController(ManagerFrame managerFrame) {
+	public MainController(MainFrame managerFrame) {
 
 		this.mf = managerFrame;
-		mfs = new ManagerFrameService(this);
+		mfs = new MainFrameService(this);
 	}
 
 	@Override
@@ -40,14 +39,15 @@ public class ManagerController implements ActionListener, MouseListener {
 			memberLoginProcess();
 		} else if (str.equals("비회원")) {
 			guestLoginProcess();
-		} else if (str.equals("도서대출")) {
-			mfs.paymentComplete();
+		} else if (str.equals("도서대출")) {//---------------------------------------------------------------------------------[h]도서대출btn >>> rentalPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
+			mf.rentalMain.setVisible(true);
 		} else if (str.equals("회원등록")) {
 			joinMemberProcess();
 		} else if (str.equals("회원정보수정")) {
 			editMemberProcess();
 		} else if (str.equals("음식주문")) {
-
+			mf.serCard.show(mf.panelCard, "Food");//------------------------------------------------------------------------[h]음식주문btn >>> FoodPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
+			
 		} else if (str.equals("관리자")) {
 			managerProcess();
 		} else if (str.equals("결제")) {
@@ -107,7 +107,9 @@ public class ManagerController implements ActionListener, MouseListener {
 			a = mf.dao.managerSelect(str);
 			if (a > 0) {
 				// 관리자 페이지로 입장
-
+				mf.serCard.show(mf.panelCard, "Manager");
+				mf.tfManagerId.setText("");
+				mf.panelManager.setVisible(false);
 			} else {
 				JOptionPane.showMessageDialog(mf, "관리자 번호가 다릅니다. 확인해주세요.");
 			}
@@ -208,11 +210,11 @@ public class ManagerController implements ActionListener, MouseListener {
 			if (f.startTime.isEmpty()) {
 				f.startTime = oldTime.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 			}
-			if (!ManagerFrame.ID.isEmpty() && mf.fp[i].mid.isEmpty()) {
-				if (mf.vt.indexOf(ManagerFrame.ID) == -1) {
+			if (!MainFrame.ID.isEmpty() && mf.fp[i].mid.isEmpty()) {
+				if (mf.vt.indexOf(MainFrame.ID) == -1) {
 					f.b = true;
-					mf.vt.add(ManagerFrame.ID);
-					f.mid = ManagerFrame.ID;
+					mf.vt.add(MainFrame.ID);
+					f.mid = MainFrame.ID;
 					f.setBackground(new Color(51, 153, 255));
 					f.labelName.setText(mf.labelLogInName.getText());
 					f.labelPrice.setText("0");

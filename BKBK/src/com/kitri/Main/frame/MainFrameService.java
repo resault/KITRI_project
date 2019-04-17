@@ -1,4 +1,4 @@
-package com.kitri.managerframe;
+package com.kitri.Main.frame;
 
 import java.awt.*;
 import java.sql.SQLException;
@@ -8,17 +8,16 @@ import java.util.List;
 
 import javax.swing.*;
 
-import com.kitri.dto.Basket;
-import com.kitri.memberDto.MemberDto;
-import com.kitri.swing.box.FPanel;
-import com.kitri.voucher.VoucherDto;
-import com.sun.corba.se.spi.ior.iiop.MaxStreamFormatVersionComponent;
+import com.kitri.Main.dto.Basket;
+import com.kitri.Main.memberDto.MemberDto;
+import com.kitri.Main.swing.box.FPanel;
+import com.kitri.Main.voucher.VoucherDto;
 
-public class ManagerFrameService {
+public class MainFrameService {
 
-	ManagerController mc;
+	MainController mc;
 
-	public ManagerFrameService(ManagerController mc) {
+	public MainFrameService(MainController mc) {
 		this.mc = mc;
 	}
 
@@ -35,7 +34,7 @@ public class ManagerFrameService {
 		f.labelTime.setText("");
 		f.labelPrice.setText("");
 		f.setBackground(new Color(245, 245, 245));
-		mc.mf.vt.remove(ManagerFrame.ID);
+		mc.mf.vt.remove(MainFrame.ID);
 		logout();
 	}
 
@@ -65,7 +64,7 @@ public class ManagerFrameService {
 		MemberDto dto = mc.mf.dao.selectMemberId(str);
 		if (dto != null) {
 
-			ManagerFrame.ID = dto.getMember_ID();
+			MainFrame.ID = dto.getMember_ID();
 			mc.mf.labelLogInName.setText(dto.getName());
 			mc.mf.labelLogInBirth.setText(dto.getBirth());
 			mc.mf.labelCouponNum1.setText(String.valueOf((dto.getCou_Birth())));
@@ -83,7 +82,7 @@ public class ManagerFrameService {
 
 		MemberDto dto = mc.mf.dao.select(name, phoneNum);
 		if (dto != null) {
-			ManagerFrame.ID = dto.getMember_ID();
+			MainFrame.ID = dto.getMember_ID();
 			mc.mf.labelLogInName.setText(dto.getName());
 			mc.mf.labelLogInBirth.setText(dto.getBirth());
 			mc.mf.labelCouponNum1.setText(String.valueOf((dto.getCou_Birth())));
@@ -101,7 +100,7 @@ public class ManagerFrameService {
 
 		MemberDto dto = mc.mf.dao.guestSelect(str);
 		if (dto != null) {
-			ManagerFrame.ID = dto.getMember_ID();
+			MainFrame.ID = dto.getMember_ID();
 			mc.mf.labelLogInName.setText(dto.getName());
 			mc.mf.labelLogInBirth.setText(dto.getBirth());
 			mc.mf.labelCouponNum1.setText(String.valueOf((dto.getCou_Birth())));
@@ -120,7 +119,7 @@ public class ManagerFrameService {
 		mc.mf.labelLogInBirth.setText("");
 		mc.mf.labelCouponNum1.setText("");
 		mc.mf.labelCouponNum2.setText("");
-		ManagerFrame.ID = "";
+		MainFrame.ID = "";
 		mc.mf.tfPhoneNum.setText("");
 		mc.mf.fullPrice.setText("");
 		mc.mf.pay.setNumRows(0);
@@ -153,7 +152,7 @@ public class ManagerFrameService {
 		FPanel f = null;
 		int len = mc.mf.fp.length;
 		for (int i = 0; i < len; i++) {
-			if (mc.mf.fp[i].mid.equals(ManagerFrame.ID)) {
+			if (mc.mf.fp[i].mid.equals(MainFrame.ID)) {
 				f = mc.mf.fp[i];
 				break;
 			}
@@ -195,7 +194,7 @@ public class ManagerFrameService {
 		}
 		f.labelPrice.setText(String.valueOf(total));
 		mc.mf.fullPrice.setText(String.valueOf(total));
-		mc.mf.dao.rentBook(ManagerFrame.ID);
+		mc.mf.dao.rentBook(MainFrame.ID);
 		overTime();
 
 	}
@@ -227,7 +226,7 @@ public class ManagerFrameService {
 	public void addVoucher(VoucherDto vd) {
 		mc.mf.pay.setNumRows(0);
 		FPanel f = findFp();
-		if (ManagerFrame.ID==null) {
+		if (MainFrame.ID==null) {
 			JOptionPane.showMessageDialog(mc.mf, "로그인 먼저 해주세요");
 		} else {
 			int len2 = f.voucherDtoBasket.size();
@@ -275,7 +274,7 @@ public class ManagerFrameService {
 //			}
 //		}
 //	}
-//}
+////}
 //	public void addBook(basket bd) {
 //		FPanel f = findFp();
 //		int len2 = f.bookDtoBasket.size();
