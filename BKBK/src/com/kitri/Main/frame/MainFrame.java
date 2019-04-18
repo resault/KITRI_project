@@ -130,6 +130,18 @@ public class MainFrame extends JFrame implements Runnable {
 //	mfs.currentDate()
 //	
 	public MainFrame() {
+		
+//-------------------------------------------------------------------------------------------------------[h]橇饭烙 酒捞能
+		
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		Dimension screenSize = kit.getScreenSize();
+		setLocation(screenSize.width/2, screenSize.height/2);
+		setTitle("合农合农");
+		Image img = kit.getImage(".\\src\\com\\kitri\\Manager\\image\\bkbk.jpg");
+		setIconImage(img);
+		
+//-------------------------------------------------------------------------------------------------------[h]
+		
 		mc = new MainController(this);
 		jmf = new JoinMemberFrame(this);
 		emf = new EditMemberFrame(this);

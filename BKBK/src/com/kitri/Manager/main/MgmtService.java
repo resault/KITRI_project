@@ -668,6 +668,26 @@ public class MgmtService {
 
 //----------------------------------------------------------------------------------------------------------------------------------MEMBER
 	
+	public void mTableD() {
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(JLabel.CENTER);
+		mP.memTM.memT.getColumn("No").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ID").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("이름").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("전화번호").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("주소").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("생년월일").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("천원할인쿠폰").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("마지막 이용일").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("대출현황").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("No").setPreferredWidth(20);
+		mP.memTM.memT.getColumn("ID").setPreferredWidth(20);
+		mP.memTM.memT.getColumn("이름").setPreferredWidth(30);
+		mP.memTM.memT.getColumn("전화번호").setPreferredWidth(50);
+		mP.memTM.memT.getColumn("주소").setPreferredWidth(200);
+		mP.memTM.memT.setRowHeight(30);
+	}
+	
 	public void memPage() {
 		mmc.mm.cards.show(mmc.mm.cardP, "회원관리P");
 		mP.findC.setSelectedItem(null);
@@ -679,6 +699,7 @@ public class MgmtService {
 		mP.memTM.list = MemDao.getInstance().serchM(null, null);
 		mP.findC.setSelectedItem(null);
 		mP.memTM.setDataVector(mP.memTM.list, mP.memTM.header);
+		mTableD();
 	}
 
 	public void serchM() {
@@ -705,6 +726,9 @@ public class MgmtService {
 	public void addM() {
 		mAdd.nameTF.setText(null);
 		mAdd.nameTF.setEnabled(true);
+		mAdd.birth1.setEnabled(true);
+		mAdd.birth2.setEnabled(true);
+		mAdd.birth3.setEnabled(true);
 		mAdd.ph1C.setSelectedItem(null);
 		mAdd.ph2TF.setText(null);
 		mAdd.ph3TF.setText(null);
@@ -719,17 +743,18 @@ public class MgmtService {
 
 	public void mdfM() {
 		int x = mP.memTM.memT.getSelectedRow();
-		String mName = null;
+		String id = null;
 		if(x > -1) {
-			mName = mP.memTM.memT.getValueAt(x, 1).toString();
+			id = mP.memTM.memT.getValueAt(x, 1).toString();
 		}
 		else {
 			JOptionPane.showMessageDialog(mP, "수정할 사람을 선택하세요.", "선택에러", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		memDto = MemDao.getInstance().findM(mName);
+		
+		memDto = MemDao.getInstance().findM(id);
 		mAdd.nameTF.setText(memDto.getName());
-		mAdd.nameTF.setEnabled(false);
+//		mAdd.nameTF.setEnabled(false);
 		mAdd.ph1C.setSelectedItem(memDto.getPhoneNum1());
 		mAdd.ph2TF.setText(memDto.getPhoneNum2());
 		mAdd.ph3TF.setText(memDto.getPhoneNum3());
@@ -739,6 +764,9 @@ public class MgmtService {
 		mAdd.birth1.setText(birth.nextToken());
 		mAdd.birth2.setText(birth.nextToken());
 		mAdd.birth3.setText(birth.nextToken());
+		mAdd.birth1.setEnabled(false);
+		mAdd.birth2.setEnabled(false);
+		mAdd.birth3.setEnabled(false);
 		mAdd.card.show(mAdd.cardP, "mdf");
 		mAdd.setVisible(true);
 	}
@@ -746,13 +774,11 @@ public class MgmtService {
 
 	public void delM() {
 		int x = mP.memTM.memT.getSelectedRow();
-		String mID = null;
-		String mName = null;
+		String name = null;
+		String id = null;
 		if(x > -1) {
-			StringTokenizer st = new StringTokenizer(mP.memTM.memT.getValueAt(x, 2).toString(), " - ");
-			mName = mP.memTM.memT.getValueAt(x, 1).toString();
-			st.nextToken();
-			mID = mName.concat(st.nextToken()).concat(st.nextToken());
+			id = mP.memTM.memT.getValueAt(x, 1).toString();
+			name = mP.memTM.memT.getValueAt(x, 2).toString();
 		}
 		else {
 			JOptionPane.showMessageDialog(mP, "삭제할 사람을 선택하세요.", "선택에러", JOptionPane.ERROR_MESSAGE);
@@ -760,8 +786,8 @@ public class MgmtService {
 		}
 		int result = JOptionPane.showConfirmDialog(fcA, "삭제하시겠습니까?", "삭제확인", JOptionPane.YES_NO_OPTION);
 		if(result == 0) {
-			MemDao.getInstance().delM(mID);
-			JOptionPane.showMessageDialog(mP, mName + ": 삭제 완료되었습니다.", "메뉴삭제완료", JOptionPane.INFORMATION_MESSAGE);
+			MemDao.getInstance().delM(id);
+			JOptionPane.showMessageDialog(mP, name + ": 삭제 완료되었습니다.", "메뉴삭제완료", JOptionPane.INFORMATION_MESSAGE);
 		}else if(result == 1) {
 			mP.memTM.memT.clearSelection();
 			return;
@@ -805,13 +831,17 @@ public class MgmtService {
 			return;
 		} 
 		memDto = new MemberDto();
+		if(btn.equals("수정")) {
+			memDto.setMemberId(mP.memTM.memT.getValueAt(mP.memTM.memT.getSelectedRow(), 1).toString());
+		}
+		else
+			memDto.setMemberId("0");
 		memDto.setName(name);
 		memDto.setPhoneNum1(mAdd.ph1C.getSelectedItem().toString());
 		memDto.setPhoneNum2(ph2);
 		memDto.setPhoneNum3(ph3);
 		memDto.setAddress(adr);
 		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-		memDto.setMemberId(memDto.getName() + memDto.getPhoneNum2() + memDto.getPhoneNum3()); 
 		try {
 			String birth = birth1 + "-" + birth2 + "-" + birth3;
 			memDto.setBirth(df.parse(birth));//String을 util.data로 변환해서 set

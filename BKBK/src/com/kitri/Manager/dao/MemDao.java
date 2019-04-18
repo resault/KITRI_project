@@ -43,16 +43,17 @@ public class MemDao {
 		try {
 			conn = DriverManager.getConnection(url, user, pw);
 			if(colName != null && str != null) {
-				sql = "select member_id, name, phone_num1 || ' - ' || phone_num2 || ' - ' || phone_num3, address, to_char(birth, 'yyyy/mm/dd'), cou_sale" + 
+				sql = "select member_id, name, phone_num1 || ' - ' || phone_num2 || ' - ' || phone_num3, address, to_char(birth, 'yyyy-mm-dd'), cou_sale" + 
 						" from member" + 
-						" where " + colName +" like ?" +
+						" where " + colName +" like ? and state = '1'" +
 						" order by name";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, ("%"+str+"%"));
 			}
 			else {
-				sql = "select member_id, name, phone_num1 || ' - ' || phone_num2 || ' - ' || phone_num3, address, to_char(birth, 'yyyy/mm/dd'), cou_sale" + 
-						" from member" + 
+				sql = "select member_id, name, phone_num1 || ' - ' || phone_num2 || ' - ' || phone_num3, address, to_char(birth, 'yyyy-mm-dd'), cou_sale" + 
+						" from member" +
+						" where state='1'" +
 						" order by name";
 				pstmt = conn.prepareStatement(sql);
 			}
@@ -62,13 +63,14 @@ public class MemDao {
 				Vector a = new Vector();
 				a.add(++i);
 				String id = rs.getString("member_id");
+				a.add(id);
 				a.add(rs.getString("name"));
 				a.add(rs.getString(3));
 				a.add(rs.getString("address"));
 				a.add(rs.getString(5));
 				a.add(rs.getInt("cou_sale"));
 
-				Date s1 = useHstr(id);
+				String s1 = useHstr(id);
 				if(s1 != null) {
 					a.add(s1);
 				} else {
@@ -100,12 +102,12 @@ public class MemDao {
 		return list;
 	}
 	
-	private Date useHstr(String id) { //마지막 이용일 가져오기
+	private String useHstr(String id) { //마지막 이용일 가져오기
 		conn = null;
 		pstmt = null;
-		Date a = null;
+		String a = null;
 		try {
-			sql = "select to_date(max(pay_date), 'yyyy/mm/dd') from use_hstr" +
+			sql = "select to_char(max(pay_date), 'yyyy-mm-dd') from use_hstr" +
 					" where member_id = ?";
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
@@ -113,7 +115,7 @@ public class MemDao {
 			ResultSet rrs = pstmt.executeQuery();
 			rrs.next();
 			if(rrs.getRow() != 0)
-				a = rrs.getDate(1);
+				a = rrs.getString(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -140,17 +142,17 @@ public class MemDao {
 		return s;
 	}
 	
-	public MemberDto findM(String mName) {
+	public MemberDto findM(String id) {
 		conn = null;
 		pstmt = null;
 		MemberDto m = new MemberDto();
 		try {
 			sql = "select member_id, name, phone_num1, phone_num2, phone_num3, address, to_char(birth, 'yyyy-mm-dd')" + 
 					" from member" + 
-					" where name = ?";
+					" where member_id = ?";
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mName);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			rs.next();
 			m.setMemberId(rs.getString("member_id"));
@@ -180,16 +182,14 @@ public class MemDao {
 		return m;
 	}
 	
-	public void delM(String mID) {
+	public void delM(String id) {
 		conn = null;
 		pstmt = null;
-//		delUH(mID);//이거 삭제해버리면 통계가....ㅋㅋㅋㅋㅋ
-//		delRH(mID);
-		sql = "delete member where member_id = ?";
+		sql = "update member set state = '0' where member_id = ?";
 		try {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mID);
+			pstmt.setString(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -215,22 +215,26 @@ public class MemDao {
 				" using dual" + 
 				" on (member_id = ?)" + 
 				" when matched then" + 
-				" update set address = ?" + 
+				" update set address = ?, phone_num1 = ?, phone_num2 = ?, phone_num3 = ?, name = ?, state = '1'" + 
 				" when not matched then" + 
-				" insert values (?, ?, ?, ?, ?, ?, ?, 0, 0, 0, '1')";
+				" insert values (MEMBER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, 0, 0, 0, '1')";
 		try {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, m.getMemberId());
 			pstmt.setString(2, m.getAddress());
-			pstmt.setString(3, m.getMemberId());
-			pstmt.setString(4, m.getName());//일치하는 이름 있는 경우 update
-			pstmt.setString(5, m.getPhoneNum1());
-			pstmt.setString(6, m.getPhoneNum2());
-			pstmt.setString(7, m.getPhoneNum3());
-			pstmt.setString(8, m.getAddress());
+//			pstmt.setString(3, m.getMemberId());
+			pstmt.setString(3, m.getPhoneNum1());
+			pstmt.setString(4, m.getPhoneNum2());
+			pstmt.setString(5, m.getPhoneNum3());
+			pstmt.setString(6, m.getName());
+			pstmt.setString(7, m.getName());//일치하는 이름 있는 경우 update
+			pstmt.setString(8, m.getPhoneNum1());
+			pstmt.setString(9, m.getPhoneNum2());
+			pstmt.setString(10, m.getPhoneNum3());
+			pstmt.setString(11, m.getAddress());
 			Format f = new SimpleDateFormat("yyyy-MM-dd");
-			pstmt.setDate(9, java.sql.Date.valueOf(f.format(m.getBirth())));// util.date인 m.getBirth()를 f형식의 String으로 바꾸고, sql.Date의 valueOf로 sql.Date로 변환
+			pstmt.setDate(12, java.sql.Date.valueOf(f.format(m.getBirth())));// util.date인 m.getBirth()를 f형식의 String으로 바꾸고, sql.Date의 valueOf로 sql.Date로 변환
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -248,56 +252,4 @@ public class MemDao {
 		}
 	}
 	
-//	private boolean findID
-	
-//	private void delRH(String mID) {
-//		conn = null;
-//		pstmt = null;
-//		sql = "delete rent_hstr where member_id = ?";
-//		try {
-//			conn = DriverManager.getConnection(url, user, pw);
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, mID);
-//			pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//				try {
-//					if(rs!=null)
-//						rs.close();
-//					if(pstmt!=null)
-//						pstmt.close();
-//					if(conn!=null)
-//						conn.close();
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//		}
-//	}
-	
-//	private void delUH(String mID) {
-//		conn = null;
-//		pstmt = null;
-//		sql = "delete use_hstr where member_id = ?";
-//		try {
-//			conn = DriverManager.getConnection(url, user, pw);
-//			pstmt = conn.prepareStatement(sql);
-//			pstmt.setString(1, mID);
-//			pstmt.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//				try {
-//					if(rs!=null)
-//						rs.close();
-//					if(pstmt!=null)
-//						pstmt.close();
-//					if(conn!=null)
-//						conn.close();
-//				} catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//		}		
-//	}
-		
 }
