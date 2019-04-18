@@ -2,9 +2,11 @@ package com.kitri.Book.rent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class RentalController implements ActionListener {
    
@@ -33,17 +35,13 @@ public class RentalController implements ActionListener {
             JOptionPane.showMessageDialog(null, "[알림] 해당 책은 교체요망 처리되었습니다.");
             
          } else if(ob == rm.move) {
-        	 
-        	 int selected = rm.book.getSelectedRow();
-        	 System.out.println(selected);
-        	 String thing;
-        	Vector<BookDTO> list = new Vector<BookDTO>();
-//        	list.get(0);
- //           String i = rows.addElement(list.get(0).getBookName());
-  //          rm.bookL.add(comp);
-  //      	 rm.bookL.add(rm, rm.book.getSelectedRow());
-        	 
-//--------------------------------------------------------------------------------------------------------------------------[h] 윤영이가 basket 이벤트 만들면 rentalMain        	 
-         }
+        	 rs.MoveToList();
+         } else if(ob == rm.cancle) {
+        	 String tmp = rm.bookL.getSelectedItem();
+        	 rm.bookL.remove(tmp);
+         } else if(ob == rm.basket) {
+        	 rs.makeBasket();
+        	 rm.setVisible(false);
+		}
    	}
 }

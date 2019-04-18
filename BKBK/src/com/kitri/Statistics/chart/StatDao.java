@@ -43,19 +43,20 @@ public class StatDao {
 					conn = getConnection();
 
 					// 쿼리문 세팅
-					String query = "select member_id, name, birth,\r\n" + 
+					String query = "select member_id, name, to_char(birth, 'yyyy-mm-dd'),\r\n" + 
 							"    case\r\n" + 
-							"        when birth < '79/01/01'\r\n" + 
-							"        then '40대'\r\n" + 
-							"        when birth < '89/01/01'\r\n" + 
+							"        when birth < '1979-01-01'\r\n" + 
+							"        then '40대이상'\r\n" + 
+							"        when birth < '1989-01-01'\r\n" + 
 							"        then '30대'\r\n" + 
-							"        when birth < '99/01/01'\r\n" + 
+							"        when birth < '1999-01-01'\r\n" + 
 							"        then '20대'\r\n" + 
-							"        when birth < '09/01/01'\r\n" + 
+							"        when birth < '2009-01-01'\r\n" + 
 							"        then '10대'\r\n" + 
 							"        else '어린이'\r\n" + 
 							"    end 연령구분\r\n" + 
 							"from member\r\n" + 
+							"where state = '1' " +
 							"order by birth asc";
 					ps = conn.prepareStatement(query);
 
@@ -112,7 +113,7 @@ public class StatDao {
 			String query = "select a.연령구분, count(*)                       \r\n" + 
 					"from (select member_id, name, birth,case\r\n" + 
 					"                                    when birth < '79/01/01'\r\n" + 
-					"                                        then '40대'\r\n" + 
+					"                                        then '40대 이상'\r\n" + 
 					"                                    when birth < '89/01/01'\r\n" + 
 					"                                        then '30대'\r\n" + 
 					"                                    when birth < '99/01/01'\r\n" + 
@@ -121,7 +122,8 @@ public class StatDao {
 					"							            then '10대'\r\n" + 
 					"							       else '어린이'\r\n" + 
 					"							            end 연령구분\r\n" + 
-					"							from member \r\n" + 
+					"							from member \r\n" +
+					"                           where state = '1' " +
 					"							order by birth asc) a\r\n" + 
 					"group by a.연령구분 ";
 			ps = conn.prepareStatement(query);

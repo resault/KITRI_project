@@ -4,12 +4,14 @@ package com.kitri.Statistics.chart;
 import javax.swing.JPanel;
 
 import com.kitri.Main.frame.MainFrame;
+import com.kitri.Manager.main.MgmtController;
 
 import javax.swing.JButton;
 
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -25,20 +27,20 @@ public class StatisticsPanel extends JPanel implements ActionListener{
 
 	CardLayout card = new CardLayout();
 	JPanel panel2 = new JPanel();
-	ChartMember c1 = new ChartMember();
+	public ChartMember c1 = new ChartMember();
 	ChartFood c2 = new ChartFood();
 	ChartBook c3 = new ChartBook();
 
 //---------------------------------------------------------------------------------------------------------------------[h]
 	
-	public MainFrame mainFrame;
+	public MgmtController mgmtController;
 	
 	/**
 	 * Create the panel.
 	 */
-	public StatisticsPanel(MainFrame mainFrame) {
+	public StatisticsPanel(MgmtController mgmtController) {
 		
-		this.mainFrame = mainFrame;
+		this.mgmtController = mgmtController;
 		
 //----------------------------------------------------------------------------------------------------------------------[h]
 		
@@ -48,22 +50,28 @@ public class StatisticsPanel extends JPanel implements ActionListener{
 		panel.setLayout(null);
 		
 		b1 = new JButton("\uD68C\uC6D0\uD1B5\uACC4");
-		b1.setFont(new Font("±¼¸²", Font.PLAIN, 20));
-		b1.setBounds(48, 102, 125, 40);
+		b1.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		b1.setBackground(SystemColor.activeCaption);
+		b1.setBounds(48, 53, 125, 50);
 		panel.add(b1);
 		
 		b2 = new JButton("\uC0C1\uD488\uD1B5\uACC4");
-		b2.setFont(new Font("±¼¸²", Font.PLAIN, 20));
-		b2.setBounds(48, 156, 125, 40);
+		b2.setBackground(SystemColor.activeCaption);
+		b2.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		b2.setBounds(48, 113, 125, 50);
 		panel.add(b2);
 		
 		b3 = new JButton("\uB3C4\uC11C\uD1B5\uACC4");
-		b3.setFont(new Font("±¼¸²", Font.PLAIN, 20));
-		b3.setBounds(48, 213, 125, 40);
+		b3.setBackground(SystemColor.activeCaption);
+		b3.setAutoscrolls(true);
+		b3.setInheritsPopupMenu(true);
+		b3.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		b3.setBounds(48, 173, 125, 50);
 		panel.add(b3);
 		
 		b4 = new JButton("°ü¸®ÀÚ È¨");
-		b4.setFont(new Font("±¼¸²", Font.PLAIN, 20));
+		b4.setBackground(SystemColor.activeCaption);
+		b4.setFont(new Font("±¼¸²", Font.BOLD, 17));
 		b4.setBounds(25, 700, 125, 40);
 		panel.add(b4);
 
@@ -105,7 +113,7 @@ public class StatisticsPanel extends JPanel implements ActionListener{
 			card.show(panel2, "Chart3");
 //---------------------------------------------------------------------------------------------------------------------------------------[h]			
 		}else if(ob == b4) {
-			mainFrame.serCard.show(mainFrame.panelCard, "Manager");
+			mgmtController.mm.mainFrame.serCard.show(mgmtController.mm.mainFrame.panelCard, "Manager");
 //---------------------------------------------------------------------------------------------------------------------------------------[h]			
 		}
 	

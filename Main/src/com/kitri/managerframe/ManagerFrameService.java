@@ -35,7 +35,7 @@ public class ManagerFrameService {
 		f.labelTime.setText("");
 		f.labelPrice.setText("");
 		f.setBackground(new Color(245, 245, 245));
-		mc.mf.vt.remove(ManagerFrame.ID);
+		mc.mf.vt.remove(MainFrame.ID);
 		logout();
 	}
 
@@ -65,7 +65,7 @@ public class ManagerFrameService {
 		MemberDto dto = mc.mf.dao.selectMemberId(str);
 		if (dto != null) {
 
-			ManagerFrame.ID = dto.getMember_ID();
+			MainFrame.ID = dto.getMember_ID();
 			mc.mf.labelLogInName.setText(dto.getName());
 			mc.mf.labelLogInBirth.setText(dto.getBirth());
 			mc.mf.labelCouponNum1.setText(String.valueOf((dto.getCou_Birth())));
@@ -83,7 +83,7 @@ public class ManagerFrameService {
 
 		MemberDto dto = mc.mf.dao.select(name, phoneNum);
 		if (dto != null) {
-			ManagerFrame.ID = dto.getMember_ID();
+			MainFrame.ID = dto.getMember_ID();
 			mc.mf.labelLogInName.setText(dto.getName());
 			mc.mf.labelLogInBirth.setText(dto.getBirth());
 			mc.mf.labelCouponNum1.setText(String.valueOf((dto.getCou_Birth())));
@@ -101,7 +101,7 @@ public class ManagerFrameService {
 
 		MemberDto dto = mc.mf.dao.guestSelect(str);
 		if (dto != null) {
-			ManagerFrame.ID = dto.getMember_ID();
+			MainFrame.ID = dto.getMember_ID();
 			mc.mf.labelLogInName.setText(dto.getName());
 			mc.mf.labelLogInBirth.setText(dto.getBirth());
 			mc.mf.labelCouponNum1.setText(String.valueOf((dto.getCou_Birth())));
@@ -120,7 +120,7 @@ public class ManagerFrameService {
 		mc.mf.labelLogInBirth.setText("");
 		mc.mf.labelCouponNum1.setText("");
 		mc.mf.labelCouponNum2.setText("");
-		ManagerFrame.ID = "";
+		MainFrame.ID = "";
 		mc.mf.tfPhoneNum.setText("");
 		mc.mf.fullPrice.setText("");
 		mc.mf.pay.setNumRows(0);
@@ -153,7 +153,7 @@ public class ManagerFrameService {
 		FPanel f = null;
 		int len = mc.mf.fp.length;
 		for (int i = 0; i < len; i++) {
-			if (mc.mf.fp[i].mid.equals(ManagerFrame.ID)) {
+			if (mc.mf.fp[i].mid.equals(MainFrame.ID)) {
 				f = mc.mf.fp[i];
 				break;
 			}
@@ -195,7 +195,7 @@ public class ManagerFrameService {
 		}
 		f.labelPrice.setText(String.valueOf(total));
 		mc.mf.fullPrice.setText(String.valueOf(total));
-		mc.mf.dao.rentBook(ManagerFrame.ID);
+		mc.mf.dao.rentBook(MainFrame.ID);
 		overTime();
 
 	}
@@ -227,7 +227,7 @@ public class ManagerFrameService {
 	public void addVoucher(VoucherDto vd) {
 		mc.mf.pay.setNumRows(0);
 		FPanel f = findFp();
-		if (ManagerFrame.ID==null) {
+		if (MainFrame.ID==null) {
 			JOptionPane.showMessageDialog(mc.mf, "로그인 먼저 해주세요");
 		} else {
 			int len2 = f.voucherDtoBasket.size();

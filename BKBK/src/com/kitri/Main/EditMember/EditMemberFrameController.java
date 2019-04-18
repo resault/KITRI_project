@@ -19,6 +19,7 @@ public class EditMemberFrameController implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Object ob = e.getSource();
 		String str = e.getActionCommand();
 		if (str.equals("회원정보수정")) {
 				int a = emf.mf.dao.editMember(emf);
@@ -46,6 +47,37 @@ public class EditMemberFrameController implements ActionListener {
 			emf.emfc.emfs.clear();
 			emf.setVisible(false);
 				
+		} else if (ob == emf.tfName) {
+			if (emf.mf.mc.mfs.isNumber(emf.tfName.getText())==false) {
+				emf.tfEAdd.requestFocus();
+			} else {
+				JOptionPane.showMessageDialog(emf,"이름엔 숫자 입력이 되지 않습니다.");
+				emf.tfName.setText("");
+			}
+		} else if (ob == emf.tfEAdd) {
+				emf.tfEP1.requestFocus();
+		} else if (ob == emf.tfEP1) {
+			if (emf.mf.mc.mfs.isNumber(emf.tfEP1.getText())==true) {
+				emf.tfEP2.requestFocus();
+			} else {
+				JOptionPane.showMessageDialog(emf,"전화번호는 숫자만 입력가능합니다.");
+				emf.tfEP1.setText("");
+			}
+		} else if (ob == emf.tfEP2) {
+			if (emf.mf.mc.mfs.isNumber(emf.tfEP2.getText())==true) {
+				emf.tfEP3.requestFocus();
+			} else {
+				JOptionPane.showMessageDialog(emf,"전화번호는 숫자만 입력가능합니다.");
+				emf.tfEP2.setText("");
+			}
+		} else if (ob == emf.tfEP3) {
+			if (emf.mf.mc.mfs.isNumber(emf.tfEP3.getText())==true) {
+				emf.buttonEM.requestFocus();
+			} else {
+				JOptionPane.showMessageDialog(emf,"전화번호는 숫자만 입력가능합니다.");
+				emf.tfEP3.setText("");
+				
+			}
 		}
 		
 	}

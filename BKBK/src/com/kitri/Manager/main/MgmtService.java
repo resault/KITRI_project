@@ -794,8 +794,8 @@ public class MgmtService {
 		}
 		
 		String birth1 = mAdd.birth1.getText().trim();
-		String birth2 = mAdd.birth1.getText().trim();
-		String birth3 = mAdd.birth1.getText().trim();
+		String birth2 = mAdd.birth2.getText().trim();
+		String birth3 = mAdd.birth3.getText().trim();
 		if(birth1.equals("") || birth2.equals("") || birth3.equals("")) {
 			JOptionPane.showMessageDialog(mAdd, "생년월일을 입력하세요.", "필수입력항목에러", JOptionPane.ERROR_MESSAGE);
 			return;

@@ -18,14 +18,14 @@ import jdk.nashorn.internal.scripts.JO;
 
 public class ManagerController implements ActionListener, MouseListener {
 
-	public ManagerFrame mf;
+	public MainFrame mf;
 	public ManagerFrameService mfs;
 	VoucherDto vou1 = new VoucherDto("1시간 이용권", 2500, 10);
 	VoucherDto vou2 = new VoucherDto("2시간 이용권", 5000, 20);
 	VoucherDto vou3 = new VoucherDto("3시간 이용권", 7500, 30);
 	VoucherDto overTime = new VoucherDto("시간추가", 500, 5);
 
-	public ManagerController(ManagerFrame managerFrame) {
+	public ManagerController(MainFrame managerFrame) {
 
 		this.mf = managerFrame;
 		mfs = new ManagerFrameService(this);
@@ -208,11 +208,11 @@ public class ManagerController implements ActionListener, MouseListener {
 			if (f.startTime.isEmpty()) {
 				f.startTime = oldTime.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss"));
 			}
-			if (!ManagerFrame.ID.isEmpty() && mf.fp[i].mid.isEmpty()) {
-				if (mf.vt.indexOf(ManagerFrame.ID) == -1) {
+			if (!MainFrame.ID.isEmpty() && mf.fp[i].mid.isEmpty()) {
+				if (mf.vt.indexOf(MainFrame.ID) == -1) {
 					f.b = true;
-					mf.vt.add(ManagerFrame.ID);
-					f.mid = ManagerFrame.ID;
+					mf.vt.add(MainFrame.ID);
+					f.mid = MainFrame.ID;
 					f.setBackground(new Color(51, 153, 255));
 					f.labelName.setText(mf.labelLogInName.getText());
 					f.labelPrice.setText("0");

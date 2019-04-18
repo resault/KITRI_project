@@ -25,11 +25,11 @@ import javax.swing.JOptionPane;
 
 import com.kitri.EditMember.*;
 import com.kitri.JoinMember.*;
-import com.kitri.managerframe.ManagerFrame;
+import com.kitri.managerframe.MainFrame;
 
 public class MemberDao {
 
-	ManagerFrame mf;
+	MainFrame mf;
 	Connection con;
 	Statement st;
 	ResultSet rs;
@@ -39,7 +39,7 @@ public class MemberDao {
 	EditMemberFrameService emfs;
 	public String newID;
 
-	public MemberDao(ManagerFrame mf) {
+	public MemberDao(MainFrame mf) {
 		this.mf = mf;
 	}
 
@@ -267,7 +267,7 @@ public class MemberDao {
 		String num2 = emf.tfEP2.getText();
 		String num3 = emf.tfEP3.getText();
 		String sql = "update member set address = '" + address + "', phone_num1 = '" + num1 + "', phone_num2 = '" + num2
-				+ "', phone_num3 = '" + num3 + "', where member_id = '" + ManagerFrame.ID
+				+ "', phone_num3 = '" + num3 + "', where member_id = '" + MainFrame.ID
 				+ "'";
 		try {
 			a = statem().executeUpdate(sql);

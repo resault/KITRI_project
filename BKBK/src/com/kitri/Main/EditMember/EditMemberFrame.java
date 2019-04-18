@@ -23,7 +23,8 @@ public class EditMemberFrame extends JFrame {
 	public JTextField tfEP2;
 	public JTextField tfEP3;
 	public JLabel labelBirth;
-	public JLabel labelName;
+	public JTextField tfName;
+	public JButton buttonEM = new JButton("회원정보수정");
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +48,7 @@ public class EditMemberFrame extends JFrame {
 		this.mf = mf;
 		emfc = new EditMemberFrameController(this);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 650, 500);
+		setBounds(100, 100, 464, 414);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setForeground(Color.WHITE);
@@ -56,72 +57,74 @@ public class EditMemberFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel labelN = new JLabel("이름");
-		labelN.setBounds(78, 100, 57, 15);
+		labelN.setBounds(24, 46, 57, 15);
 		contentPane.add(labelN);
 		
 		JLabel labelB = new JLabel("생년월일");
-		labelB.setBounds(78, 156, 57, 15);
+		labelB.setBounds(24, 102, 57, 15);
 		contentPane.add(labelB);
 		
 		JLabel labelAdd = new JLabel("주소");
-		labelAdd.setBounds(78, 213, 57, 15);
+		labelAdd.setBounds(24, 159, 57, 15);
 		contentPane.add(labelAdd);
 		
 		JLabel labelPN = new JLabel("전화번호");
-		labelPN.setBounds(78, 270, 57, 15);
+		labelPN.setBounds(24, 216, 57, 15);
 		contentPane.add(labelPN);
 		
 		tfEAdd = new JTextField();
 		tfEAdd.setBackground(SystemColor.activeCaption);
 		tfEAdd.setColumns(10);
-		tfEAdd.setBounds(183, 210, 286, 21);
+		tfEAdd.setBounds(129, 156, 286, 21);
 		contentPane.add(tfEAdd);
 		
 		tfEP1 = new JTextField();
 		tfEP1.setBackground(SystemColor.activeCaption);
 		tfEP1.setColumns(10);
-		tfEP1.setBounds(183, 267, 57, 21);
+		tfEP1.setBounds(129, 213, 57, 21);
 		contentPane.add(tfEP1);
 		
 		tfEP2 = new JTextField();
 		tfEP2.setBackground(SystemColor.activeCaption);
 		tfEP2.setColumns(10);
-		tfEP2.setBounds(271, 267, 57, 21);
+		tfEP2.setBounds(217, 213, 57, 21);
 		contentPane.add(tfEP2);
 		
 		tfEP3 = new JTextField();
 		tfEP3.setBackground(SystemColor.activeCaption);
 		tfEP3.setColumns(10);
-		tfEP3.setBounds(361, 267, 57, 21);
+		tfEP3.setBounds(307, 213, 57, 21);
 		contentPane.add(tfEP3);
 		
-		JButton buttonEM = new JButton("회원정보수정");
+		
 		buttonEM.setForeground(Color.WHITE);
 		buttonEM.setBackground(SystemColor.textHighlight);
-		buttonEM.setBounds(78, 387, 116, 37);
+		buttonEM.setBounds(67, 296, 116, 37);
 		contentPane.add(buttonEM);
 		
 		JButton buttonCancel = new JButton("취소");
 		buttonCancel.setForeground(Color.WHITE);
 		buttonCancel.setBackground(SystemColor.controlShadow);
-		buttonCancel.setBounds(247, 387, 116, 37);
+		buttonCancel.setBounds(236, 296, 116, 37);
 		contentPane.add(buttonCancel);
 		
 		JLabel label_4 = new JLabel("-");
-		label_4.setBounds(252, 270, 14, 15);
+		label_4.setBounds(198, 216, 14, 15);
 		contentPane.add(label_4);
 		
 		JLabel label_5 = new JLabel("-");
-		label_5.setBounds(340, 270, 14, 15);
+		label_5.setBounds(286, 216, 14, 15);
 		contentPane.add(label_5);
 		
 		labelBirth = new JLabel("");
-		labelBirth.setBounds(183, 156, 171, 15);
+		labelBirth.setBounds(129, 102, 171, 15);
 		contentPane.add(labelBirth);
 		
-		labelName = new JLabel("");
-		labelName.setBounds(183, 100, 57, 15);
-		contentPane.add(labelName);
+		tfName = new JTextField();
+		tfName.setColumns(10);
+		tfName.setBackground(SystemColor.activeCaption);
+		tfName.setBounds(129, 41, 144, 21);
+		contentPane.add(tfName);
 		
 		buttonCancel.addActionListener(emfc);
 		buttonEM.addActionListener(emfc);

@@ -6,17 +6,24 @@ import javax.swing.JButton;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+
+import com.kitri.Statistics.chart.ChartMember;
+import com.kitri.Statistics.chart.StatisticsPanel;
+
 public class MgmtController implements ActionListener, FocusListener  {
 
 	// field
 	public MgmtMain mm;
 	public MgmtService mms;
-	
+	public StatisticsPanel statisticsPanel;
 	
 	// constructor
 	public MgmtController(MgmtMain m) {
 		 mm = m;
 		 mms = new MgmtService(this);
+		 statisticsPanel = new StatisticsPanel(this);
 	}
 
 	
@@ -49,6 +56,14 @@ public class MgmtController implements ActionListener, FocusListener  {
 		} else if(btnStr.equals("관리번호수정")) {
 			mms.mgmtNum();
 		} else if(btnStr.equals("통계")) {
+			statisticsPanel.c1.search();
+			JFreeChart chart = statisticsPanel.c1.createChart();
+						
+			ChartPanel pchart = new ChartPanel(chart);
+//			mm.mainFrame.statisticsPanel.c1.chartpanel.add(pchart);
+			ChartMember.chartpanel.add(pchart);
+			pchart.setSize(560, 522);
+			pchart.setVisible(true);
 			mm.mainFrame.serCard.show(mm.mainFrame.panelCard, "Statistics");
 //---------------------------------------------------------------------------------------------------------------------------------------Food 이벤트			
 

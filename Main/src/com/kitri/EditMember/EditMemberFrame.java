@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.kitri.managerframe.ManagerFrame;
+import com.kitri.managerframe.MainFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,7 +15,7 @@ import java.awt.Color;
 import java.awt.SystemColor;
 
 public class EditMemberFrame extends JFrame {
-	ManagerFrame mf;
+	MainFrame mf;
 	EditMemberFrameController emfc;
 	private JPanel contentPane;
 	public JTextField tfEAdd;
@@ -43,7 +43,7 @@ public class EditMemberFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditMemberFrame(ManagerFrame mf) {
+	public EditMemberFrame(MainFrame mf) {
 		this.mf = mf;
 		emfc = new EditMemberFrameController(this);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);

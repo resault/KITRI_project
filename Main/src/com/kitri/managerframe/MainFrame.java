@@ -57,7 +57,7 @@ import com.kitri.memberDto.MemberDao;
 import com.kitri.memberDto.MemberDto;
 import com.kitri.swing.box.FPanel;
 
-public class ManagerFrame extends JFrame implements Runnable {
+public class MainFrame extends JFrame implements Runnable {
 
 	ImageIcon icon;
 	BufferedReader in;
@@ -116,7 +116,7 @@ public class ManagerFrame extends JFrame implements Runnable {
 	 */
 //	mfs.currentDate()
 //	
-	public ManagerFrame() {
+	public MainFrame() {
 		mc = new ManagerController(this);
 		jmf = new JoinMemberFrame(this);
 		emf = new EditMemberFrame(this);
@@ -507,7 +507,7 @@ public class ManagerFrame extends JFrame implements Runnable {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManagerFrame frame = new ManagerFrame();
+					MainFrame frame = new MainFrame();
 					frame.setVisible(true);
 					Thread t = new Thread(frame);
 					t.start();

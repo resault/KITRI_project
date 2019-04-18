@@ -262,13 +262,14 @@ public class MemberDao {
 	}
 
 	public int editMember(EditMemberFrame emf) {
+		String name = emf.tfName.getText();
 		int a = 0;
 		String address = emf.tfEAdd.getText();
 		String num1 = emf.tfEP1.getText();
 		String num2 = emf.tfEP2.getText();
 		String num3 = emf.tfEP3.getText();
-		String sql = "update member set address = '" + address + "', phone_num1 = '" + num1 + "', phone_num2 = '" + num2
-				+ "', phone_num3 = '" + num3 + "', where member_id = '" + MainFrame.ID
+		String sql = "update member set name = '"+ name +"', address = '" + address + "', phone_num1 = '" + num1 + "', phone_num2 = '" + num2
+				+ "', phone_num3 = '" + num3 + "' where member_id = '" + MainFrame.ID
 				+ "'";
 		try {
 			a = statem().executeUpdate(sql);

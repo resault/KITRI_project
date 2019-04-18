@@ -4,16 +4,31 @@ import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
+import com.kitri.Main.dto.Basket;
+import com.kitri.Main.swing.box.FPanel;
+
 public class RentalService {
-	RentalMain r;
+	RentalMain rm;
 	RentalController rc;
 
 	public RentalService(RentalMain rentalMain) {
-		r = rentalMain;
+		rm = rentalMain;
 	}
 
+	public void makeBasket() {
+		FPanel f = rm.mf.mc.mfs.findFp();
+		int len = rm.bookL.getItemCount();
+		for (int i = 0; i < len; i++) {
+			String str = rm.bookL.getItem(i);
+			BookDTO bd = rm.dao.selectshbook(str);
+			Basket b = new Basket(bd, 1);
+			f.bookDtoBasket.add(b);
+		}
+		rm.mf.mc.mfs.printTable(f);
+	}
+	
 	public void searchData(String searchStr) {
-		Vector<BookDTO> list = r.dao.select(searchStr);
+		Vector<BookDTO> list = rm.dao.select(searchStr);
 
 		Vector<Vector<String>> newList = new Vector<Vector<String>>();
 		int len = list.size();
@@ -27,12 +42,18 @@ public class RentalService {
 
 		Vector<String> colVec = new Vector<String>();
 
-		for (int i = 0; i < r.col.size(); i++) {
-			colVec.add(r.col.elementAt(i));
+		for (int i = 0; i < rm.col.size(); i++) {
+			colVec.add(rm.col.elementAt(i));
 		}
 		
-		// 갱신하려면 model을 추가해야한다.
 		DefaultTableModel model = new DefaultTableModel(newList, colVec);
-		r.book.setModel(model);
+		rm.book.setModel(model);
+	}
+
+	public void MoveToList() {
+   	 int selected = rm.book.getSelectedRow();
+   	 System.out.println(selected);
+   	 String n = rm.dao.BookList().get(selected).getBookName();
+   	 rm.bookL.add(n);
 	}
 }

@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.kitri.managerframe.ManagerFrame;
+import com.kitri.managerframe.MainFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,7 +26,7 @@ public class JoinMemberFrame extends JFrame {
 	public JTextField tfPhoneNum2;
 	public JTextField tfPhoneNum3;
 	JoinMemberFrameController jmfc;
-	ManagerFrame mf;
+	MainFrame mf;
 	
 	/**
 	 * Launch the application.
@@ -36,7 +36,7 @@ public class JoinMemberFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JoinMemberFrame(ManagerFrame mf) {
+	public JoinMemberFrame(MainFrame mf) {
 		this.mf = mf;
 		jmfc = new JoinMemberFrameController(this);
 		

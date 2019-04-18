@@ -40,13 +40,13 @@ public class MainController implements ActionListener, MouseListener {
 		} else if (str.equals("비회원")) {
 			guestLoginProcess();
 		} else if (str.equals("도서대출")) {//---------------------------------------------------------------------------------[h]도서대출btn >>> rentalPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
-			mf.rentalMain.setVisible(true);
+			bookRentProcess();
 		} else if (str.equals("회원등록")) {
 			joinMemberProcess();
 		} else if (str.equals("회원정보수정")) {
-			editMemberProcess();
+			nonmemBlock();
 		} else if (str.equals("음식주문")) {
-			mf.serCard.show(mf.panelCard, "Food");//------------------------------------------------------------------------[h]음식주문btn >>> FoodPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
+			foodOrderProcess();//------------------------------------------------------------------------[h]음식주문btn >>> FoodPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
 			
 		} else if (str.equals("관리자")) {
 			managerProcess();
@@ -76,6 +76,34 @@ public class MainController implements ActionListener, MouseListener {
 		}
 	}
 
+	private void bookRentProcess() {
+		StringBuffer sb = new StringBuffer(MainFrame.ID);
+		int a = sb.indexOf("비회원");
+		if (MainFrame.ID.isEmpty()|| a>=0) {
+			return;
+		} else {
+			mf.rentalMain.setVisible(true);
+		}
+	}
+
+	private void foodOrderProcess() {
+		if (MainFrame.ID.isEmpty()) {
+			return;
+		} else {
+		mf.serCard.show(mf.panelCard, "Food");
+		}
+	}
+	
+	private void nonmemBlock() {
+		StringBuffer sb = new StringBuffer(MainFrame.ID);
+		int a = sb.indexOf("비회원");
+		if (MainFrame.ID.isEmpty()|| a>=0) {
+			return;
+		} else {
+			editMemberProcess();
+		}
+	}
+	
 	private void paymentProcess() {
 		System.out.println("1");
 	}
@@ -138,9 +166,8 @@ public class MainController implements ActionListener, MouseListener {
 			case "이용권":
 				mfs.bMProcess(a, f, f.voucherDtoBasket);
 				break;
-			case "음식":
-				mfs.bMProcess(a, f, f.foodDtoBasket);
-				break;
+			case "음식":	
+				return;
 			case "책":
 				mfs.bMProcess(a, f, f.bookDtoBasket);
 				break;
@@ -169,7 +196,7 @@ public class MainController implements ActionListener, MouseListener {
 				e.printStackTrace();
 			}
 		} else {
-			for (int i = 2; i < 31; i++) {
+			for (int i = 1; i < 31; i++) {
 				String str = "비회원" + (nf.format(i));
 				if (mf.vt.indexOf(str) == -1) {
 					try {
@@ -192,7 +219,6 @@ public class MainController implements ActionListener, MouseListener {
 
 	private void editMemberProcess() {
 		if (!mf.labelLogInName.getText().isEmpty()) {
-			mf.emf.labelName.setText(mf.labelLogInName.getText());
 			mf.emf.labelBirth.setText(mf.labelLogInBirth.getText());
 			mf.emf.setVisible(true);
 		} else {

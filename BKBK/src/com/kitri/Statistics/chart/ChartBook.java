@@ -119,6 +119,7 @@ public class ChartBook extends JPanel {
 		chartpanel = new JPanel();
 		chartpanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		chartpanel.setBounds(50, 214, 1150, 450);
+		chartpanel.setBackground(Color.WHITE); 
 		chartpanel.setLayout(null);
 		
 		// 5) J패널을 프레임에 붙이기

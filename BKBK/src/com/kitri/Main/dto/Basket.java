@@ -1,12 +1,13 @@
 package com.kitri.Main.dto;
 
+import com.kitri.Book.rent.BookDTO;
 import com.kitri.Main.voucher.VoucherDto;
 
 public class Basket {
 	
 	private VoucherDto vdto;
 //	public FoodDto fdto;
-//	public BookDto bdto;
+	public BookDTO bdto;
 	public int count;
 	private String name;
 	
@@ -22,12 +23,12 @@ public class Basket {
 //		this.count = count;
 //		this.name = dto.toString();
 //	}
-//	public Basket(BookDto bdto, int count) {
-//		super();
-//		this.dto = dto;
-//		this.count = count;
-//		this.name = dto.toString();
-//	}
+	public Basket(BookDTO bdto, int count) {
+		super();
+		this.bdto = bdto;
+		this.count = count;
+		this.name = bdto.toString();
+	}
 	
 	
 	
@@ -53,15 +54,15 @@ public class Basket {
 //
 //
 //
-//	public BookDto getBookDto() {
-//		return bdto;
-//	}
+	public BookDTO getBookDto() {
+		return bdto;
+	}
 //
 //
 //
-//	public void setBookDto(BookDto bdto) {
-//		this.bdto = bdto;
-//	}
+	public void setBookDto(BookDTO bdto) {
+		this.bdto = bdto;
+	}
 	
 
 	public int getCount() {

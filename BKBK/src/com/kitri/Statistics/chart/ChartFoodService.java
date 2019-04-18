@@ -147,6 +147,8 @@ public class ChartFoodService {
 			CategoryPlot p = chart.getCategoryPlot(); 
 			p.setRangeGridlinePaint(Color.yellow); 
 			
+			// X 축의 도메인 설정입니다.(이거다!!!!!!!!!!!!!!1)
+			p.getDomainAxis().setTickLabelFont(new Font("맑은고딕", Font.PLAIN, 8));
 			
 			return chart;
 	}

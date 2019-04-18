@@ -5,8 +5,11 @@ import java.util.Date;
 // 도서 DTO
 
 public class BookDTO {
-
-	private Date bookNum; // 도서코드
+	private int rowNum;
+	private String book_ctg_name;
+	private int one;
+	
+	private String bookNum; // 도서코드
 	private int genreNum; // 장르코드
 	private String bookName; // 도서명
 	private int bookCtg; // 종류코드
@@ -14,15 +17,39 @@ public class BookDTO {
 	private String publisher; // 출판사
 	private int bookPrice; // 정가
 	private char rentState; // 대출현황
-	private char replace; // 교체요망
+	private char replace; // 교체요망z
 	public CategoryDTO ctgDTO = new CategoryDTO();
 	public GenreDTO genDTO = new GenreDTO();
 
-	public Date getBookNum() {
+	public int getRowNum() {
+		return rowNum;
+	}
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
+	public String getBook_ctg_name() {
+		return book_ctg_name;
+	}
+
+	public void setBook_ctg_name(String book_ctg_name) {
+		this.book_ctg_name = book_ctg_name;
+	}
+
+	public int getOne() {
+		return one;
+	}
+
+	public void setOne(int one) {
+		this.one = one;
+	}
+	
+	public String getBookNum() {
 		return bookNum;
 	}
 
-	public void setBookNum(Date bookNum) {
+	public void setBookNum(String bookNum) {
 		this.bookNum = bookNum;
 	}
 
@@ -104,6 +131,11 @@ public class BookDTO {
 
 	public void setGenDTO(GenreDTO genDTO) {
 		this.genDTO = genDTO;
+	}
+	
+	@Override
+	public String toString() {
+		return bookName;
 	}
 
 }

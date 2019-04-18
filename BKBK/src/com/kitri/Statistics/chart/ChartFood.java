@@ -126,6 +126,7 @@ public class ChartFood extends JPanel {
 		chartpanel = new JPanel();
 		chartpanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		chartpanel.setBounds(50, 214, 560, 450);
+		chartpanel.setBackground(Color.WHITE);
 		chartpanel.setLayout(null);
 
 

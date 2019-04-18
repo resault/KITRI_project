@@ -5,13 +5,13 @@ package com.kitri.Book.rent;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.List;
 import java.awt.SystemColor;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -38,11 +38,13 @@ public class RentalMain extends JFrame {
    public JButton basket = new JButton("담  기");;
    
    public RentalController rc = new RentalController(this);
-   public JList bookL;
+   public List bookL = new List();
    public JButton change;
 
+   public MainFrame mf;
    public BookDAO dao = new BookDAO();
    public Vector<BookDTO> list = new Vector<BookDTO>();
+//   public ManagerFrame mf = new ManagerFrame();
 
    Vector<String> col = new Vector<String>(3);
    
@@ -50,13 +52,8 @@ public class RentalMain extends JFrame {
    public JTable book;
    public JButton move = new JButton("");
    
-//---------------------------------------------------------------------------------------------------------------------------[h] main frame 변수로 받기
-   public MainFrame mf;
-   
-   public RentalMain(MainFrame mainFrame) {
-	   
-	   this.mf = mainFrame;
-//----------------------------------------------------------------------------------------------------------------------------[h]	   
+   public RentalMain(MainFrame mf) {
+	   this.mf=mf;
       getContentPane().setBackground(new Color(255, 255, 255));
       setBackground(SystemColor.text);
       setBounds(0, 0, 1195, 529);
@@ -78,11 +75,12 @@ public class RentalMain extends JFrame {
 
       for (int i = 0; i < size; i++) {
     	  Vector<String> rows = new Vector<String>();
+    	  
          rows.addElement(list.get(i).getBookName());
          rows.addElement(list.get(i).getAuthor());
          rows.addElement(list.get(i).getPublisher());
 //         rows.addElement(list.get(i).getRentState());
-         
+        
          model.addRow(rows);
       }
 
@@ -120,11 +118,9 @@ public class RentalMain extends JFrame {
       search.setBounds(1038, 46, 123, 46);
       getContentPane().add(search);
 
-      bookL = new JList();
       bookL.setBounds(827, 100, 338, 345);
       getContentPane().add(bookL);
       bookL.setFont(new Font("굴림", Font.PLAIN, 18));
-      bookL.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 
       cancle.setFont(new Font("Dialog", Font.BOLD, 15));
       cancle.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -161,18 +157,16 @@ public class RentalMain extends JFrame {
       search.addActionListener(rc);
       change.addActionListener(rc);
       move.addActionListener(rc);
+      cancle.addActionListener(rc);
+      basket.addActionListener(rc);
       
    }
 
 
-
-
-
-
-//-------------------------------------------------------------------------------------------------------------------------------------------------[h] main 주석처리  
-//   /**
-//    * Launch the application.
-//    */
+   
+   /**
+    * Launch the application.
+    */
 //   public static void main(String[] args) {
 //      EventQueue.invokeLater(new Runnable() {
 //         public void run() {

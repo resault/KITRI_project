@@ -158,6 +158,6 @@ public class MemDialog extends JDialog {
 		buttonPane.add(cancelB);
 
 		setModal(true);
-		setBounds(700, 300, 372, 435);
+		setBounds(700, 300, 372, 445);
 	}
 }

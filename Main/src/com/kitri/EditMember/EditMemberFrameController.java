@@ -26,8 +26,8 @@ public class EditMemberFrameController implements ActionListener {
 					int len = emf.mf.fp.length;
 					for (int i = 0; i < len; i++) {
 					
-						System.out.println(ManagerFrame.ID);
-						if (emf.mf.fp[i].mid.equals(ManagerFrame.ID)) {
+						System.out.println(MainFrame.ID);
+						if (emf.mf.fp[i].mid.equals(MainFrame.ID)) {
 							emf.mf.fp[i].mid = emf.mf.dao.newID;
 							emf.mf.vt.remove(emf.mf.fp[i].mid);
 							emf.mf.vt.add(emf.mf.dao.newID);

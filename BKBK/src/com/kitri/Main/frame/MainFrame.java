@@ -122,7 +122,7 @@ public class MainFrame extends JFrame implements Runnable {
 	public FoodPanel foodPanel;
 	public RentalMain rentalMain;
 	public MgmtMain managerMain;
-	public StatisticsPanel statisticsPanel;
+	
 
 	/**
 	 * Create the frame.
@@ -136,7 +136,7 @@ public class MainFrame extends JFrame implements Runnable {
 		dao = new MemberDao(this);
 		foodPanel = new FoodPanel(this);
 		managerMain = new MgmtMain(this);
-		statisticsPanel = new StatisticsPanel(this);
+		
 
 		// 화면 첫번째 줄의 날짜 및 시간 표시_Label
 		titleL = new JLabel("//북크북크// 1호점"); // 점포이름
@@ -178,7 +178,7 @@ public class MainFrame extends JFrame implements Runnable {
 		//[h]Food Panel
 		panelCard.add(foodPanel, "Food");
 		panelCard.add(managerMain, "Manager");
-		panelCard.add(statisticsPanel, "Statistics");
+		panelCard.add(managerMain.mmc.statisticsPanel, "Statistics");
 		
 		serCard.show(panelCard, "Main");
 		
