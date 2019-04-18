@@ -182,7 +182,7 @@ public class MainFrame extends JFrame implements Runnable {
 		
 		serCard.show(panelCard, "Main");
 		
-		 rentalMain = new RentalMain(this);
+		rentalMain = new RentalMain(this);
 		
 //-----------------------------------------------------------------------------------------------------------------------------------//[h]		
 		

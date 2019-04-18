@@ -24,7 +24,7 @@ public class BookTM extends DefaultTableModel {
 		setDataVector(list, header);
 		bookT = new JTable(this);
 		bookT.setFillsViewportHeight(true);
-	
+		bookT.setSelectionMode(getRowCount());
 	}
 	
 	@Override

@@ -122,6 +122,7 @@ public class MainController implements ActionListener, MouseListener {
 
 	private void managerProcess() {
 		mfs.logout();
+		mf.managerMain.mmc.mms.foodPage();
 		mf.panelManager.setVisible(true);
 	}
 

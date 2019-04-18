@@ -52,13 +52,63 @@ public class MgmtService {
 		
 	}
 	
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------[h] 관리번호수정
 	
+	public boolean isNum(String str) { //숫자면 true 반환
+		boolean flag = true;
+		int len = str.length();
+		for (int i = 0; i < len; i++) {
+			int num = str.charAt(i) - 48;
+			if(num < 0 || num > 9) {
+				flag = false;
+				continue;
+			}
+		}
+		return flag;
+	}
+	
+	public void mgmtNum() {
+		while(true) {
+			String r = JOptionPane.showInputDialog(mmc.mm, "새로운 번호를 입력하세요", "관리번호수정", JOptionPane.OK_CANCEL_OPTION).trim();
+			
+			if(r.isEmpty()) {
+				JOptionPane.showMessageDialog(mmc.mm, "번호를 입력하세요.", "관리번호수정에러", JOptionPane.ERROR_MESSAGE);
+				continue;
+			}
+			if(r.length() != 5) {
+				JOptionPane.showMessageDialog(mmc.mm, "5자리 숫자를 입력하세요.", "관리번호수정에러", JOptionPane.ERROR_MESSAGE);
+				continue;
+			}
+			
+			
+			boolean rf = isNum(r);
+			if(rf) {
+				int result = FoodDao.getInstance().upMgmtNum(Integer.parseInt(r));
+				if(result != 0) {
+					JOptionPane.showMessageDialog(mmc.mm, "관리번호가 수정되었습니다.", "수정완료", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				}
+				else {
+					JOptionPane.showMessageDialog(mmc.mm, "알 수 없는 에러가 발생했습니다.", "관리번호수정에러", JOptionPane.ERROR_MESSAGE);
+					break;
+				}
+			} else {
+				JOptionPane.showMessageDialog(mmc.mm, "5자리 숫자를 입력하세요.", "관리번호수정에러", JOptionPane.ERROR_MESSAGE);
+				continue;
+			}
+		}
+	}
+	
+//-------------------------------------------------------------------------------------------------------------------------------------------------[h]
+
 //--------------------------------------------------------------------------------------------------------------------------------------FOOD
 	
 	
 	public void foodPage() {//---------------------------------------상품관리 페이지로 이동, 메뉴버튼&테이블 초기화
 		mmc.mm.cards.show(mmc.mm.cardP, "상품관리P");
 		setMenuB("음료");
+		setStockT("음료");
 	}
 	
 	
@@ -177,10 +227,12 @@ public class MgmtService {
 			return;
 		}
 		
-		for(String l : list) {
-			if(foodName.equals(l)) {
-				JOptionPane.showMessageDialog(fcA, "이미 존재하는 메뉴입니다.", "필수입력항목에러", JOptionPane.ERROR_MESSAGE);
-				return;
+		if(btn.equals("추가")) {
+			for(String l : list) {
+				if(foodName.equals(l)) {
+					JOptionPane.showMessageDialog(fcA, "이미 존재하는 메뉴입니다.", "필수입력항목에러", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 			}
 		}
 		
@@ -267,7 +319,7 @@ public class MgmtService {
 	
 	
 	// table 정렬
-	public void tableD() {
+	public void sTableD() {
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalAlignment(JLabel.CENTER);
 		fP.stockTM.stockT.getColumn("No").setCellRenderer(dtcr);
@@ -285,7 +337,7 @@ public class MgmtService {
 	public void setStockT(String ctg) {
 		fP.stockTM.list = FoodDao.getInstance().selStock(ctg);
 		fP.stockTM.setDataVector(fP.stockTM.list, fP.stockTM.header);
-		tableD();
+		sTableD();
 	}
 	
 	
@@ -299,7 +351,7 @@ public class MgmtService {
 		fP.stockTM.list = FoodDao.getInstance().findStockV(sName);
 		if(fP.stockTM.list!=null) {
 			fP.stockTM.setDataVector(fP.stockTM.list, fP.stockTM.header);
-			tableD();
+			sTableD();
 		}
 		else
 			JOptionPane.showMessageDialog(fcA, sName + ": 등록되지 않은 품목입니다.", "품목검색에러", JOptionPane.ERROR_MESSAGE);
@@ -358,14 +410,16 @@ public class MgmtService {
 		stockDto = new StockDto(); 
 		stockDto.setFoodCtg(ctg);
 		stockDto.setStockName(fsA.menuTF.getText());
-		stockDto.setRestAmt(Integer.parseInt(fsA.amtTF.getText()) + amtS);
+		stockDto.setRestAmt(Integer.parseInt(fsA.amtTF.getText()));
 		stockDto.setUnitCost(Integer.parseInt(fsA.priceTF.getText()));
 
-		FoodDao.getInstance().mergeStock(stockDto);
-		JOptionPane.showMessageDialog(fcA, "입고 처리가 완료되었습니다.", "입고완료", JOptionPane.INFORMATION_MESSAGE);
-		fsA.setVisible(false);
-		setStockT(ctg);
-		setMenuB(ctg);
+		int result = FoodDao.getInstance().mergeStock(stockDto);
+		if(result != 0) {
+			JOptionPane.showMessageDialog(fcA, "입고 처리가 완료되었습니다.", "입고완료", JOptionPane.INFORMATION_MESSAGE);
+			fsA.setVisible(false);
+			setStockT(ctg);
+			setMenuB(ctg);
+		}
 	}
 
 	
@@ -404,6 +458,26 @@ public class MgmtService {
 	
 	
 //--------------------------------------------------------------------------------------------------------------------------------------------BOOK
+	
+	public void bTableD() {
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(JLabel.CENTER);
+		bP.bookTM.bookT.getColumn("No").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("도서종류").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("장르").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("작가명").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("출판사").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("정가").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("보유현황").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("도서명").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("비고").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("No").setPreferredWidth(20);
+		bP.bookTM.bookT.getColumn("도서종류").setPreferredWidth(20);
+		bP.bookTM.bookT.getColumn("장르").setPreferredWidth(20);
+		bP.bookTM.bookT.getColumn("도서명").setPreferredWidth(200);
+		bP.bookTM.bookT.setRowHeight(30);
+	}
+	
 	public void bookPage() {
 		bP.serchC.setSelectedItem(null);
 		mmc.mm.cards.show(mmc.mm.cardP, "도서관리P");
@@ -418,6 +492,7 @@ public class MgmtService {
 		bP.bookTM.setDataVector(bP.bookTM.list, bP.bookTM.header);
 		bP.serchC.setSelectedItem(null);
 		bP.findTF.setText(null);
+		bTableD();
 	}
 
 	public void serchB() {//책 검색
@@ -446,7 +521,7 @@ public class MgmtService {
 		}
 			
 		bP.bookTM.setDataVector(bP.bookTM.list, bP.bookTM.header);
-		
+		bTableD();
 	}
 
 	public void addB() {
@@ -477,6 +552,29 @@ public class MgmtService {
 		bAdd.setVisible(true);
 	}
 
+	public void replaceBook() {
+		int x = bP.bookTM.bookT.getSelectedRow();
+		if(x < 0) {
+			JOptionPane.showMessageDialog(bP, "교체할 도서를 선택하세요.", "도서미선택에러", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		String bName = bP.bookTM.bookT.getValueAt(x, 3).toString();
+		String replace = bP.bookTM.bookT.getValueAt(x, 8).toString();
+		if(!replace.equals("교체요망")) {
+			JOptionPane.showMessageDialog(bP, "교체 대상 도서가 아닙니다.", "도서선택에러", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		int rr = JOptionPane.showConfirmDialog(bP, bName +" : 교체하시겠습니까?", "교체확인", JOptionPane.YES_NO_OPTION);
+		if(rr == 0) {
+			int result = BookDao.getInstance().replace(bName);
+			if(result != 0) {
+				JOptionPane.showMessageDialog(bP, bName + " : 교체 완료되었습니다.", "도서교체완료", JOptionPane.INFORMATION_MESSAGE);
+			}
+			setBT();
+		}else if(rr == 1) {
+			return;
+		}
+	}
 
 	public void delBook() {
 		int x = bP.bookTM.bookT.getSelectedRow();
@@ -495,6 +593,7 @@ public class MgmtService {
 			return;
 		}
 		setBT();
+		
 	}
 
 
@@ -736,6 +835,11 @@ public class MgmtService {
 		mAdd.setVisible(false);
 	}
 
+
+	
+
+
+	
 
 
 }

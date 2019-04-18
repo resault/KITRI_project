@@ -39,7 +39,7 @@ public class BookDao {
 			if(colName != null && str != null) {
 				sql = "select book_num, genre_name, book_name, book_ctg_name, author, publisher, book_price, rent_state, replace" + 
 						" from book b, category c, genre g" + 
-						" where b.book_ctg = c.book_ctg and b.genre_num = g.genre_num and " + colName +" like ?" +
+						" where b.book_ctg = c.book_ctg and b.genre_num = g.genre_num and " + colName +" like ? and state = '1'" +
 						" order by book_name";
 				conn = DriverManager.getConnection(url, user, pw);
 				pstmt = conn.prepareStatement(sql);
@@ -47,7 +47,7 @@ public class BookDao {
 			} else {
 				sql = "select book_num, genre_name, book_name, book_ctg_name, author, publisher, book_price, rent_state, replace" + 
 						" from book b, category c, genre g" + 
-						" where b.book_ctg = c.book_ctg and b.genre_num = g.genre_num order by book_name";
+						" where b.book_ctg = c.book_ctg and b.genre_num = g.genre_num and state = '1' order by book_name";
 				conn = DriverManager.getConnection(url, user, pw);
 				pstmt = conn.prepareStatement(sql);
 			}
@@ -62,12 +62,11 @@ public class BookDao {
 				a.add(rs.getString("author"));
 				a.add(rs.getString("publisher"));
 				a.add(rs.getInt("book_price"));
-				System.out.println(rs.getString("rent_state"));
-				if(rs.getString("rent_state").equals('0'))
+				if(rs.getString("rent_state").toString().equals("0"))
 					a.add("");
 				else
 					a.add("대출중");
-				if(rs.getString("replace").equals("0"))
+				if(rs.getString("replace").toString().equals("0"))
 					a.add("");
 				else
 					a.add("교체요망");
@@ -125,7 +124,7 @@ public class BookDao {
 		pstmt = null;
 		sql = "select book_num, genre_name, book_name, book_ctg_name, author, publisher, book_price, rent_state, replace" + 
 				" from book b, category c, genre g" + 
-				" where b.book_ctg = c.book_ctg and b.genre_num = g.genre_num and book_name = ?";
+				" where b.book_ctg = c.book_ctg and b.genre_num = g.genre_num and book_name = ? and state = '1'";
 		BookDto bookDto = new BookDto();
 		try {
 			conn = DriverManager.getConnection(url, user, pw);
@@ -159,7 +158,7 @@ public class BookDao {
 	public void delBook(String bName) {
 		conn = null;
 		pstmt = null;
-		sql = "delete book where book_name = ?";
+		sql = "update book set state = '0' where book_name = ?";
 		try {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
@@ -181,6 +180,33 @@ public class BookDao {
 		}
 	}
 	
+	public int replace(String bName) {
+		conn = null;
+		pstmt = null;
+		int result = 0;
+		sql = "update book set replace = '0' where book_name = ?";
+		try {
+			conn = DriverManager.getConnection(url, user, pw);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bName);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+				try {
+					if(rs!=null)
+						rs.close();
+					if(pstmt!=null)
+						pstmt.close();
+					if(conn!=null)
+						conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return result;
+	}
+	
 	public void mergeB(BookDto bookDto) {
 		BookDto b = bookDto;
 		conn = null;
@@ -190,9 +216,9 @@ public class BookDao {
 				" using dual" + 
 				" on (book_name = ?)" + 
 				" when matched then" + 
-				" update set genre_num = ?, book_ctg = ?, author = ?, publisher = ?, book_price = ?" + 
+				" update set genre_num = ?, book_ctg = ?, author = ?, publisher = ?, book_price = ?, state = '1'" + 
 				" when not matched then" + 
-				" insert values (sysdate, ?, ?, ?, ?, ?, ?, '0', '0')";
+				" insert values (sysdate, ?, ?, ?, ?, ?, ?, '0', '0', '1')";
 		try {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
@@ -224,5 +250,6 @@ public class BookDao {
 				}
 		}
 	}
+	
 	
 }

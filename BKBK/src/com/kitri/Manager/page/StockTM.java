@@ -28,18 +28,7 @@ public class StockTM extends DefaultTableModel{
 		setDataVector(list, header);
 		stockT = new JTable(this);
 		stockT.setFillsViewportHeight(true);
-		
-//		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
-//		dtcr.setHorizontalAlignment(JLabel.CENTER);
-//		stockT.getColumn("No").setCellRenderer(dtcr);
-//		stockT.getColumn("카테고리").setCellRenderer(dtcr);
-//		stockT.getColumn("품목").setCellRenderer(dtcr);
-//		stockT.getColumn("남은 수량").setCellRenderer(dtcr);
-//		stockT.getColumn("단가").setCellRenderer(dtcr);
-//		stockT.getColumn("비고").setCellRenderer(dtcr);
-//		stockT.getColumn("No").setPreferredWidth(10);
-//		stockT.getColumn("품목").setPreferredWidth(100);
-//		stockT.setRowHeight(30);
+		stockT.setSelectionMode(getRowCount());
 	}
 	
 	@Override

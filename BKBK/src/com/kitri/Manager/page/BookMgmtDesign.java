@@ -31,6 +31,7 @@ public class BookMgmtDesign extends JPanel {
 	public JButton mdfyB = new JButton("수정");
 	public JButton delB = new JButton("삭제");
 	public JButton mgmtNumB = new JButton("관리번호수정");
+	public JButton replace = new JButton("교체완료");
 
 	
 	/**
@@ -95,6 +96,7 @@ public class BookMgmtDesign extends JPanel {
 		btnD(addB, SystemColor.controlHighlight, 12);
 		btnD(mdfyB, SystemColor.controlHighlight, 12);
 		btnD(delB, SystemColor.controlHighlight, 12);
+		btnD(replace, SystemColor.controlHighlight, 12);
 		btnD(mgmtNumB, SystemColor.controlHighlight, 12);
 		homeB.setBounds(0, 10, 121, 30);
 		statsB.setBounds(250, 10, 75, 30);
@@ -120,6 +122,9 @@ public class BookMgmtDesign extends JPanel {
 		setLayout(null);
 		add(panelC);
 		add(panelS);
+		
+		replace.setBounds(1023, 10, 90, 30);
+		panelS.add(replace);
 
 	}
 	

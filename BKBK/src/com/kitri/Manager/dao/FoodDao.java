@@ -3,6 +3,8 @@ package com.kitri.Manager.dao;
 import java.sql.*;
 import java.util.*;
 
+import javax.swing.JOptionPane;
+
 import com.kitri.Manager.data.FoodDto;
 import com.kitri.Manager.data.StockDto;
 
@@ -37,6 +39,38 @@ public class FoodDao {
 		return instance;
 	}
 	
+//-------------------------------------------------------------------------------------------------------------------------------------------------[h] 관리번호수정
+	
+		public int upMgmtNum(int mgmtNum) {
+			conn = null;
+			pstmt = null;
+			int result = 0;
+			sql = "update manager set manager_id = ?";
+			try {
+				conn = DriverManager.getConnection(url, user, pw);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, mgmtNum);
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+					try {
+						if(rs!=null)
+							rs.close();
+						if(pstmt!=null)
+							pstmt.close();
+						if(conn!=null)
+							conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+			}
+			return result;
+		}
+		
+//-------------------------------------------------------------------------------------------------------------------------------------------------[h]
+		
+		
 	
 //--------------------------------------------------------------------------------------------------------------------------------------------메뉴
 	
@@ -381,15 +415,16 @@ public class FoodDao {
 		return stockDto;
 	}
 	
-	public void mergeStock(StockDto stockDto) {//재고 merge
+	public int mergeStock(StockDto stockDto) {//재고 merge
 		StockDto s = stockDto;
 		conn = null;
 		pstmt = null;
+		int i = 0;
 		sql = "merge into stock" + 
 				" using dual" + 
 				" on (stock_name = ?)" + 
 				" when matched then" + 
-				" update set food_ctg = ?, rest_amt = ?, unit_cost = ?" +
+				" update set food_ctg = ?, rest_amt = rest_amt + ?, unit_cost = ?" +
 				" when not matched then" + 
 				" insert values (?, ?, ?, ?)";
 		try {
@@ -403,7 +438,7 @@ public class FoodDao {
 			pstmt.setString(6, s.getStockName());
 			pstmt.setInt(7, s.getRestAmt());
 			pstmt.setInt(8, s.getUnitCost());
-			pstmt.executeUpdate();
+			i = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -418,8 +453,9 @@ public class FoodDao {
 					e.printStackTrace();
 				}
 		}
-		
+		return i;
 	}
+	
 	public void delStock(String sName) {
 		conn = null;
 		pstmt = null;

@@ -88,13 +88,20 @@ public class MgmtMain extends JPanel {
 		bookMgmtB.addActionListener(mmc);
 		membrMgmtB.addActionListener(mmc);
 		
+		//관리자 로그아웃
 		fm.homeB.addActionListener(mmc);
 		bm.homeB.addActionListener(mmc);
 		mm.homeB.addActionListener(mmc);
 		
+		//통계
 		fm.statsB.addActionListener(mmc);
 		bm.statsB.addActionListener(mmc);
 		mm.statsB.addActionListener(mmc);
+		
+		//관리자번호수정
+		fm.mgmtNumB.addActionListener(mmc);
+		bm.mgmtNumB.addActionListener(mmc);
+		mm.mgmtNumB.addActionListener(mmc);
 		
 //-------------------------------------------------------------------------------------------------Food
 		
@@ -130,6 +137,7 @@ public class MgmtMain extends JPanel {
 		fsAdd.addB.addActionListener(mmc);
 		fsAdd.cancelB.addActionListener(mmc);
 		fm.delB.addActionListener(mmc);
+		fsAdd.ctgC.addActionListener(mmc);
 		
 //-------------------------------------------------------------------------------------------------Book
 		
@@ -138,7 +146,9 @@ public class MgmtMain extends JPanel {
 		bm.findB.addActionListener(mmc);
 		bm.findTF.addActionListener(mmc);
 		
+		
 		//추가, 수정, 삭제 btn
+		bm.replace.addActionListener(mmc);
 		bm.addB.addActionListener(mmc);
 		bm.mdfyB.addActionListener(mmc);
 		bm.delB.addActionListener(mmc);
@@ -173,7 +183,6 @@ public class MgmtMain extends JPanel {
 		
 //--------------------------------------------------------------
 		
-		mmc.mms.foodPage();
 	}
 	
 	private void btnD(JButton b, Color c, int size) {	//버튼 디자인 method

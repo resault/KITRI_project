@@ -25,6 +25,7 @@ public class MemTM extends DefaultTableModel{
 		memT = new JTable(this);
 		memT.setFillsViewportHeight(true);
 	
+		memT.setSelectionMode(getRowCount());
 	}
 	
 	@Override

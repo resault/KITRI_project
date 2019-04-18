@@ -71,7 +71,7 @@ public class FsDialog extends JDialog {
 		contentPanel.add(priceTF);
 		contentPanel.add(tl5);
 		
-		buttonPane.setBounds(0, 306, 255, 33);
+		buttonPane.setBounds(0, 304, 255, 33);
 		buttonPane.setLayout(null);
 		addB.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
 		addB.setBounds(92, 2, 70, 25);

@@ -45,8 +45,9 @@ public class MgmtController implements ActionListener, FocusListener  {
 		} else if(ob == mm.membrMgmtB) {
 			mms.memPage();
 		} else if(btnStr.equals("관리자 로그아웃")) {
-			System.out.println("여기");
 			mm.mainFrame.serCard.show(mm.mainFrame.panelCard, "Main");
+		} else if(btnStr.equals("관리번호수정")) {
+			mms.mgmtNum();
 		} else if(btnStr.equals("통계")) {
 			mm.mainFrame.serCard.show(mm.mainFrame.panelCard, "Statistics");
 //---------------------------------------------------------------------------------------------------------------------------------------Food 이벤트			
@@ -95,6 +96,8 @@ public class MgmtController implements ActionListener, FocusListener  {
 			mms.mdfB();
 		} else if(ob == mm.bm.delB) {
 			mms.delBook();
+		} else if(ob  == mm.bm.replace) {
+			mms.replaceBook();
 		} else if(ob == mm.bAdd.addB || ob == mm.bAdd.mdfB) {//-----------------------------------book dialog
 			mms.amBook(e.getActionCommand());
 		} else if(ob == mm.bAdd.cancelB) {
