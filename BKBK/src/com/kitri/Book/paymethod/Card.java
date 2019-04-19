@@ -132,24 +132,9 @@ public class Card extends JFrame {
       info.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
       info.setBounds(25, 337, 558, 43);
       getContentPane().add(info);
-      
+   }
       
       
       // eventLister´Â payMainService¿¡ ÀÖÀ½
    
-   /**
-    * Launch the application.
-    */
-//   public static void main(String[] args) {
-//      EventQueue.invokeLater(new Runnable() {
-//         public void run() {
-//            try {
-//               Card card = new Card();
-//               card.setVisible(true);
-//            } catch (Exception e) {
-//               e.printStackTrace();
-//            }
-//         }
-//      });
-   }
 }
