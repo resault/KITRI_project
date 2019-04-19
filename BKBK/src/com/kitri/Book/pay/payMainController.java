@@ -12,7 +12,8 @@ public class payMainController implements ActionListener {
 		   
 		   public payMainController(payMain payMain) {
 		      this.p = payMain;
-		      pms = new payMainService(p);
+//		      pms = new payMainService(p);
+		      pms = new payMainService(this);
 		   }
 
 		   @Override
@@ -35,6 +36,7 @@ public class payMainController implements ActionListener {
 		          p.card.setVisible(true);
 		      } else if (ob == p.homeB) {
 		    	  allclear();
+		    	  p.mf.serCard.show(p.mf.panelCard, "Main");
 		   }
 	}
 

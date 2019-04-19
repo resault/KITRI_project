@@ -46,8 +46,6 @@ public class payMain extends JPanel {
 	private JScrollPane pane;
 	private JLabel memberL;
 	
-	JButton minus;
-	
 	
 	public DefaultTableModel model;
 
@@ -187,17 +185,9 @@ public class payMain extends JPanel {
 		JPanel panel_1 = new JPanel();
 		pane.setColumnHeaderView(panel_1);
 
-		minus = new JButton("-");
-		minus.setBounds(1113, 10, 47, 41);
-		listPanel.add(minus);
-		minus.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		minus.setForeground(new Color(255, 255, 255));
-		minus.setBackground(new Color(0, 0, 0));
-		minus.setFont(new Font("±¼¸²", Font.BOLD, 15));
-
 		homeB.setBackground(Color.WHITE);
-		homeB.setIcon(new ImageIcon(payMain.class.getResource("/project/kitri/bkbk/pay/home.png")));
-		homeB.setBounds(1381, 43, 59, 59);
+		homeB.setIcon(new ImageIcon(".\\src\\com\\kitri\\Book\\img\\home.png"));
+		homeB.setBounds(1377, 12, 57, 49);
 		listPanel.add(homeB);
 		
 //		buttonMain = new JButton("\uBA54\uC778\uC73C\uB85C \uB3CC\uC544\uAC00\uAE30");
@@ -297,7 +287,6 @@ public class payMain extends JPanel {
 		this.cardB.addActionListener(pmc);
 		this.cashB.addActionListener(pmc);
 		this.cardCashB.addActionListener(pmc);
-		minus.addActionListener(pmc);
 		homeB.addActionListener(pmc);
 
 	}

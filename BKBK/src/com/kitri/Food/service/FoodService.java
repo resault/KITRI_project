@@ -13,6 +13,8 @@ import com.kitri.Food.FoodPanel;
 import com.kitri.Food.data.BasketDto;
 import com.kitri.Food.data.FoodDto;
 import com.kitri.Food.data.StockDto;
+import com.kitri.Main.dto.Basket;
+import com.kitri.Main.swing.box.FPanel;
 
 public class FoodService {
 
@@ -20,7 +22,6 @@ public class FoodService {
 	public FoodPanel ff;
 
 	public FoodDto foodDto;
-	public BasketDto basketDto;
 
 	public FoodService(FoodController foodController) {
 		this.foodController = foodController;
@@ -127,12 +128,15 @@ public class FoodService {
 //	}
 
 	public void completeOrder() {
+		FPanel f = ff.mf.mc.mfs.findFp();
 		int rownum = ff.tM.getRowCount();
 		for (int i = 0; i < rownum; i++) {
 			String food_name = (String) ff.tM.getValueAt(i, 2);
 			int order_amt = (int) ff.tM.getValueAt(i, 3);
 			FoodDto food1 = FoodDao.getInstance().selectFood(food_name);
-			BasketDto bk = new BasketDto(food1, order_amt);
+			Basket bk = new Basket(food1, order_amt);
+			f.foodDtoBasket.add(bk);
+			ff.mf.mc.mfs.printTable(f);
 //			foodController.foodFrame.mf.mc.mfs.addFood(bk);//-----------------------------------------------------------------------------------------------[h] 세현이한테 정보 넘기는 부분
 			//재고 빼기
 			//얼만큼 빼야하는가?

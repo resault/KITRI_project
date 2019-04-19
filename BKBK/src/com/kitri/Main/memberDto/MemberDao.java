@@ -262,8 +262,8 @@ public class MemberDao {
 	}
 
 	public int editMember(EditMemberFrame emf) {
-		String name = emf.tfName.getText();
 		int a = 0;
+		String name = emf.tfName.getText();
 		String address = emf.tfEAdd.getText();
 		String num1 = emf.tfEP1.getText();
 		String num2 = emf.tfEP2.getText();

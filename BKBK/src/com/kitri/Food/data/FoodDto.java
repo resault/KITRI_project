@@ -93,5 +93,9 @@ public class FoodDto {
 	public void setState(char state) {
 		this.state = state;
 	}
-
+	
+	@Override
+	public String toString() {
+		return foodName;
+	}
 }

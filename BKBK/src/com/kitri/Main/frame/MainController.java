@@ -14,7 +14,6 @@ import com.kitri.Main.dto.Basket;
 import com.kitri.Main.swing.box.*;
 import com.kitri.Main.voucher.VoucherDto;
 
-
 public class MainController implements ActionListener, MouseListener {
 
 	public MainFrame mf;
@@ -39,15 +38,16 @@ public class MainController implements ActionListener, MouseListener {
 			memberLoginProcess();
 		} else if (str.equals("비회원")) {
 			guestLoginProcess();
-		} else if (str.equals("도서대출")) {//---------------------------------------------------------------------------------[h]도서대출btn >>> rentalPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
+		} else if (str.equals("도서대출")) {// ---------------------------------------------------------------------------------[h]도서대출btn
+										// >>> rentalPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
 			bookRentProcess();
 		} else if (str.equals("회원등록")) {
 			joinMemberProcess();
 		} else if (str.equals("회원정보수정")) {
 			nonmemBlock();
 		} else if (str.equals("음식주문")) {
-			foodOrderProcess();//------------------------------------------------------------------------[h]음식주문btn >>> FoodPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
-			
+			foodOrderProcess();// ------------------------------------------------------------------------[h]음식주문btn
+								// >>> FoodPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
 		} else if (str.equals("관리자")) {
 			managerProcess();
 		} else if (str.equals("결제")) {
@@ -64,9 +64,8 @@ public class MainController implements ActionListener, MouseListener {
 		} else if (ob == mf.tfMemberID) {
 			mf.tfPhoneNum.requestFocus();
 		} else if (ob == mf.tfManagerId) {
-			mf.buttonMlogin.requestFocus();
+			managerLogInProcess();
 		}
-
 		if (combo.equals("1시간 이용권")) {
 			mfs.addVoucher(vou1);
 		} else if (combo.equals("2시간 이용권")) {
@@ -74,12 +73,14 @@ public class MainController implements ActionListener, MouseListener {
 		} else if (combo.equals("3시간 이용권")) {
 			mfs.addVoucher(vou3);
 		}
+		mf.comboBoxVoucher.setSelectedIndex(0);
+		return;
 	}
 
 	private void bookRentProcess() {
 		StringBuffer sb = new StringBuffer(MainFrame.ID);
 		int a = sb.indexOf("비회원");
-		if (MainFrame.ID.isEmpty()|| a>=0) {
+		if (MainFrame.ID.isEmpty() || a >= 0) {
 			return;
 		} else {
 			mf.rentalMain.setVisible(true);
@@ -90,37 +91,41 @@ public class MainController implements ActionListener, MouseListener {
 		if (MainFrame.ID.isEmpty()) {
 			return;
 		} else {
-		mf.serCard.show(mf.panelCard, "Food");
+			mf.serCard.show(mf.panelCard, "Food");
 		}
 	}
-	
+
 	private void nonmemBlock() {
 		StringBuffer sb = new StringBuffer(MainFrame.ID);
 		int a = sb.indexOf("비회원");
-		if (MainFrame.ID.isEmpty()|| a>=0) {
+		if (MainFrame.ID.isEmpty() || a >= 0) {
 			return;
 		} else {
 			editMemberProcess();
 		}
 	}
-	
+
 	private void paymentProcess() {
-		System.out.println("1");
+		mf.pm.id.setText(MainFrame.ID);
+		mf.serCard.show(mf.panelCard, "pay");
+		FPanel f = mfs.findFp();
+		mfs.appendingPayment(f);
+		tatalPrice();
+
 	}
-//		//여기에 윤영이꺼 리스트로 옮기는 작업이 필요함 
-//		FPanel f = mfs.findFp();
-//		int size = f.voucherDtoBasket.size();
-//		for (int i = 0; i < size; i++) {
-//			윤영이꺼리스트 .add(f.voucherDtoBasket.get(i));
-//		}
-//		size = f.foodDtoBasket.size();
-//		for (int i = 0; i < size; i++) {
-//			윤영이꺼리스트 .add(f.foodDtoBasket.get(i));
-//		}
-//		size = f.bookDtoBasket.size();
-//		for (int i = 0; i < size; i++) {
-//			윤영이꺼리스트 .add(f.bookDtoBasket.get(i));
-//		}
+
+	public void tatalPrice() {
+		int total = 0;
+		int a = mf.pm.model.getRowCount();
+		if (a != 0) {
+			for (int j = 0; j < mf.pm.model.getRowCount(); j++) {
+				int amont = Integer.parseInt(String.valueOf(mf.pm.model.getValueAt(j, 5)));
+				total = total + amont;
+			}
+		}
+		mf.pm.totalR.setText(String.valueOf(total));
+	}
+
 //		//대여목록을 어떻게 넘길 건지 내일 이야기해보기
 
 	private void managerLogInProcess() {
@@ -166,7 +171,7 @@ public class MainController implements ActionListener, MouseListener {
 			case "이용권":
 				mfs.bMProcess(a, f, f.voucherDtoBasket);
 				break;
-			case "음식":	
+			case "음식":
 				return;
 			case "책":
 				mfs.bMProcess(a, f, f.bookDtoBasket);
@@ -297,12 +302,14 @@ public class MainController implements ActionListener, MouseListener {
 				}
 
 			} else {
+				System.out.println(MainFrame.ID);
+				System.out.println(f.mid);
 				return;
 			}
 		} else {
 			return;
 		}
-		
+
 	}
 
 	@Override

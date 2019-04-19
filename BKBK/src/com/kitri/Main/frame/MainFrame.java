@@ -52,6 +52,7 @@ import java.io.*;
 import java.awt.event.ActionEvent;
 import javax.swing.table.DefaultTableModel;
 
+import com.kitri.Book.pay.payMain;
 import com.kitri.Book.rent.RentalMain;
 import com.kitri.Food.FoodPanel;
 import com.kitri.Main.EditMember.EditMemberFrame;
@@ -74,7 +75,7 @@ public class MainFrame extends JFrame implements Runnable {
 	public Vector<String> vt = new Vector<String>();
 	public DefaultTableModel pay;
 	public DefaultTableModel book;
-	public static String ID; // = new MemberDto(null, null, null, null, null, null, 0, 0, 0);
+	public static String ID=""; // = new MemberDto(null, null, null, null, null, null, 0, 0, 0);
 //	public static String MEMBERID;
 
 	public MemberDao dao;
@@ -122,6 +123,7 @@ public class MainFrame extends JFrame implements Runnable {
 	public FoodPanel foodPanel;
 	public RentalMain rentalMain;
 	public MgmtMain managerMain;
+	public payMain pm;
 	
 
 	/**
@@ -130,24 +132,13 @@ public class MainFrame extends JFrame implements Runnable {
 //	mfs.currentDate()
 //	
 	public MainFrame() {
-		
-//-------------------------------------------------------------------------------------------------------[h]프레임 아이콘
-		
-		Toolkit kit = Toolkit.getDefaultToolkit();
-		Dimension screenSize = kit.getScreenSize();
-		setLocation(screenSize.width/2, screenSize.height/2);
-		setTitle("북크북크");
-		Image img = kit.getImage(".\\src\\com\\kitri\\Manager\\image\\bkbk.jpg");
-		setIconImage(img);
-		
-//-------------------------------------------------------------------------------------------------------[h]
-		
 		mc = new MainController(this);
 		jmf = new JoinMemberFrame(this);
 		emf = new EditMemberFrame(this);
 		dao = new MemberDao(this);
 		foodPanel = new FoodPanel(this);
 		managerMain = new MgmtMain(this);
+		pm = new payMain(this);
 		
 
 		// 화면 첫번째 줄의 날짜 및 시간 표시_Label
@@ -191,7 +182,7 @@ public class MainFrame extends JFrame implements Runnable {
 		panelCard.add(foodPanel, "Food");
 		panelCard.add(managerMain, "Manager");
 		panelCard.add(managerMain.mmc.statisticsPanel, "Statistics");
-		
+		panelCard.add(pm,"pay");
 		serCard.show(panelCard, "Main");
 		
 		rentalMain = new RentalMain(this);
@@ -477,6 +468,7 @@ public class MainFrame extends JFrame implements Runnable {
 		buttonMcancel.addActionListener(mc);
 		buttonMlogin.addActionListener(mc);
 		buttonMiner.addActionListener(mc);
+		tfManagerId.addActionListener(mc);
 		contentPane.add(panelDate);
 
 		icon = new ImageIcon("C:\\Users\\Administrator\\Pictures\\memberIcon\\배경화면.jpg");

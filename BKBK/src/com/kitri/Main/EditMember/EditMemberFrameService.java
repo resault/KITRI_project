@@ -8,6 +8,7 @@ public class EditMemberFrameService {
 	}
 	
 	public void clear() {
+		emfc.emf.tfName.setText("");
 		emfc.emf.tfEAdd.setText("");
 		emfc.emf.tfEP1.setText("");
 		emfc.emf.tfEP2.setText("");

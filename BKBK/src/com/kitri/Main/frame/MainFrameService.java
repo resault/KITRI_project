@@ -138,6 +138,18 @@ public class MainFrameService {
 		}
 		return flag;
 	}
+	
+	public boolean isNotNumber(String a) {
+		boolean flag = true;
+		for (int i = 1; i < a.length(); i++) {
+			int num = a.charAt(i) - 48;
+			if (num >= 0 && num <= 9) {
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+	}
 
 	public String secToHHMM(long secs) {
 		int hour, min, sec;
@@ -159,12 +171,49 @@ public class MainFrameService {
 		}
 		return f;
 	}
-
+	public void appendingPayment(FPanel f) {
+		int k;
+		int size=0;
+		size = f.bookDtoBasket.size();
+		if (size!=0) {
+			for (k = 0; k < size; k++) {
+				Basket bd = f.bookDtoBasket.get(k);
+				Object[] ob = { k + 1,"도서", bd.getBookDto().getBookName(),((bd.getBookDto()).getBookPrice()/10),
+						bd.getCount(), ((bd.getBookDto()).getBookPrice()/10) * (bd.getCount()), ""};
+				mc.mf.pm.model.addRow(ob);
+			}
+				
+		}
+		
+		int size2 = f.foodDtoBasket.size();
+		if (size2!=0) {
+			for (k = 0; k < size2; k++) {
+				Basket fd = f.foodDtoBasket.get(k);
+				Object[] ob = { size+k+ 1,"음식", fd.getFoodDto().getFoodName(),fd.getFoodDto().getFoodPrice(),
+						fd.getCount(),
+						fd.getFoodDto().getFoodPrice() * fd.getCount(),"" };
+				mc.mf.pm.model.addRow(ob);
+	
+			}
+		}
+		overTime();
+		int size3 = f.voucherDtoBasket.size();
+		if (size3!=0) {
+			for (k = 0; k < size3; k++) {
+				Basket bvd = f.voucherDtoBasket.get(k);
+				Object[] ob = { size+size2+k + 1,"이용권", bvd.getVoucherDto().getName(), (bvd.getVoucherDto()).getPrice(), bvd.getCount(),
+						(bvd.getVoucherDto()).getPrice() * (bvd.getCount()),"" };
+				mc.mf.pm.model.addRow(ob);
+			}
+		}
+	
+	}
+	
 	public void printTable(FPanel f) {
 		mc.mf.pay.setNumRows(0);
 		mc.mf.book.setNumRows(0);
 		int k;
-		int size=0;
+		int size;
 		size = f.bookDtoBasket.size();
 		if (size!=0) {
 			for (k = 0; k < size; k++) {
@@ -177,23 +226,23 @@ public class MainFrameService {
 				
 		}
 		
-//		int size2 = f.foodDtoBasket.size();
-//		if (size2!=0) {
-//			for (k = 0; k < size2; k++) {
-//				Basket fd = f.foodDtoBasket.get(k);
-//				Object[] ob = { size + 1, "음식", fd.getfoodDto().getName(),
-//						fd.getCount(),
-//						(fd.getVoucherDto()).getPrice() * (fd.getCount()) };
-//				mc.mf.pay.addRow(ob);
-//	
-//			}
-//		}
-		
+		int size2 = f.foodDtoBasket.size();
+		if (size2!=0) {
+			for (k = 0; k < size2; k++) {
+				Basket fd = f.foodDtoBasket.get(k);
+				Object[] ob = { size +k+ 1, "음식", fd.getFoodDto().getFoodName(),
+						fd.getCount(),
+						fd.getFoodDto().getFoodPrice() * fd.getCount() };
+				mc.mf.pay.addRow(ob);
+	
+			}
+		}
+		overTime();
 		int size3 = f.voucherDtoBasket.size();
 		if (size3!=0) {
 			for (k = 0; k < size3; k++) {
 				Basket bvd = f.voucherDtoBasket.get(k);
-				Object[] ob = { size + 1, "이용권", bvd.getVoucherDto().getName(), bvd.getCount(),
+				Object[] ob = { size+size2+k + 1, "이용권", bvd.getVoucherDto().getName(), bvd.getCount(),
 						(bvd.getVoucherDto()).getPrice() * (bvd.getCount()) };
 				mc.mf.pay.addRow(ob);
 			}
@@ -212,7 +261,7 @@ public class MainFrameService {
 		f.labelPrice.setText(String.valueOf(total));
 		mc.mf.fullPrice.setText(String.valueOf(total));
 		mc.mf.dao.rentBook(MainFrame.ID);
-//		overTime();
+		
 	}
 
 	public void overTime() {
@@ -229,10 +278,13 @@ public class MainFrameService {
 			paymentTime = (b.getVoucherDto().getSec() * b.count);
 			totalpaymentTime = totalpaymentTime + paymentTime;
 		}
-		int i = (int) f.a - totalpaymentTime;
+		long i = f.a - totalpaymentTime;
 		if (i > 0) {
-			Basket b = new Basket(mc.overTime, i / (mc.overTime.getSec()));
-			f.voucherDtoBasket.add(b);
+			Basket b = new Basket(mc.overTime, (int)(i / (mc.overTime.getSec())));
+			if (b.getCount()>=1) {
+				f.voucherDtoBasket.add(b);
+			}
+			
 		} else {
 			return;
 		}
@@ -242,55 +294,37 @@ public class MainFrameService {
 	public void addVoucher(VoucherDto vd) {
 		mc.mf.pay.setNumRows(0);
 		FPanel f = findFp();
-		if (MainFrame.ID==null) {
+		if (MainFrame.ID.isEmpty()||f==null) {
 			JOptionPane.showMessageDialog(mc.mf, "로그인 먼저 해주세요");
 		} else {
 			int len2 = f.voucherDtoBasket.size();
 			if (len2 == 0) {
 				Basket basket = new Basket(vd, 1);
 				f.voucherDtoBasket.add(basket);
+				System.out.println("1");
 				printTable(f);
+
 			} else {
 				for (int j = 0; j < len2; j++) {
 					Basket b = f.voucherDtoBasket.get(j);
 					if (b.getVoucherDto().getName().equals(vd.getName())) {
 						b.setCount(b.getCount() + 1);
-						mc.mf.pay.setNumRows(0);
 						printTable(f);
+
 						break;
 					} else if (j == len2 - 1) {
 						Basket basket = new Basket(vd, 1);
 						f.voucherDtoBasket.add(basket);
+						System.out.println("2");
 						printTable(f);
 					}
 				}
 			}
 		}
 		mc.mf.comboBoxVoucher.setSelectedIndex(0);
-
+	
 	}
 
-//	public void addFood(basket fd) {
-//	FPanel f = findFp();
-//	int len2 = f.foodDtoBasket.size();
-//	if (len2 == 0) {
-//		f.foodDtoBasket.add(fd);
-//		printTable(f);
-//	} else {
-//		for (int j = 0; j < len2; j++) {
-//			Basket b = f.foodDtoBasket.get(j);
-//			if (b.getFoodDto().getName().equals(fd.getName())) {
-//				b.setCount(b.getCount() + 1);
-//				mc.mf.pay.setNumRows(0);
-//				printTable(f);
-//				break;
-//			} else if (j == len2 - 1) {
-//				f.foodDtoBasket.add(fd);
-//				printTable(f);
-//			}
-//		}
-//	}
-////}
 	public void addBook(Basket bd) {
 		FPanel f = findFp();
 		int len2 = f.bookDtoBasket.size();
@@ -311,53 +345,6 @@ public class MainFrameService {
 		printTable(f);
 	}
 
-//	public void addFood(FoodDto fd) {
-//		FPanel f = findFp();
-//		int len2 = f.foodDtoBasket.size();
-//		if (len2 == 0) {
-//			Basket basket = new Basket(fd, 1);
-//			f.foodDtoBasket.add(basket);
-//			printTable(f);
-//		} else {
-//			for (int j = 0; j < len2; j++) {
-//				Basket b = f.foodDtoBasket.get(j);
-//				if (b.getVoucherDto().getName().equals(fd.getName())) {
-//					b.setCount(b.getCount() + 1);
-//					mc.mf.pay.setNumRows(0);
-//					printTable(f);
-//					break;
-//				} else if (j == len2 - 1) {
-//					Basket basket = new Basket(fd, 1);
-//					f.foodDtoBasket.add(basket);
-//					printTable(f);
-//				}
-//			}
-//		}
-//	}
-//	
-//	public void addBook(BookDto bd) {
-//		FPanel f = findFp();
-//		int len2 = f.bookDtoBasket.size();
-//		if (len2 == 0) {
-//			Basket basket = new Basket(bd, 1);
-//			f.bookDtoBasket.add(basket);
-//			printTable(f);
-//		} else {
-//			for (int j = 0; j < len2; j++) {
-//				Basket b = f.foodDtoBasket.get(j);
-//				if (b.getbookDto().getName().equals(bd.getName())) {
-//					b.setCount(b.getCount() + 1);
-//					mc.mf.pay.setNumRows(0);
-//					printTable(f);
-//					break;
-//				} else if (j == len2 - 1) {
-//					Basket basket = new Basket(bd, 1);
-//					f.bookDtoBasket.add(basket);
-//					printTable(f);
-//				}
-//			}
-//		}
-//	}
 	public void bMProcess(int a, FPanel f, List<Basket> b) {
 		Object ob1 = mc.mf.tablePayment.getValueAt(a, 2);
 		String str1 = String.valueOf(ob1);
@@ -366,7 +353,7 @@ public class MainFrameService {
 		int len = b.size();
 		if (t == 1) {
 			for (int i = 0; i < len; i++) {
-				if (b.get(i).getVoucherDto().toString().equals(str1)) {
+				if (b.get(i).toString().equals(str1)) {
 					b.remove(i);
 					printTable(f);
 					break;
@@ -375,7 +362,7 @@ public class MainFrameService {
 
 		} else {
 			for (int i = 0; i < len; i++) {
-				if (b.get(i).getVoucherDto().toString().equals(str1)) {
+				if (b.get(i).toString().equals(str1)) {
 					Basket basket = b.get(i);
 					int c = basket.getCount();
 					basket.setCount(c - 1);
