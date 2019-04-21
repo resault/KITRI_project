@@ -8,8 +8,8 @@ import com.kitri.Main.dto.Basket;
 import com.kitri.Main.swing.box.FPanel;
 
 public class RentalService {
-	RentalMain rm;
-	RentalController rc;
+	public RentalMain rm;
+	public RentalController rc;
 
 	public RentalService(RentalMain rentalMain) {
 		rm = rentalMain;

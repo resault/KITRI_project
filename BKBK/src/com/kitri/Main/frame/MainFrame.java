@@ -68,6 +68,7 @@ public class MainFrame extends JFrame implements Runnable {
 	ImageIcon icon;
 	BufferedReader in;
 	public MainController mc;
+	
 	public MainFrameService mfs;
 	public JoinMemberFrame jmf;
 	public EditMemberFrame emf;
@@ -186,6 +187,13 @@ public class MainFrame extends JFrame implements Runnable {
 		serCard.show(panelCard, "Main");
 		
 		rentalMain = new RentalMain(this);
+		
+		Toolkit kit = Toolkit.getDefaultToolkit();
+		Dimension screenSize = kit.getScreenSize();
+		setLocation(screenSize.width/2, screenSize.height/2);
+		setTitle("合农合农");
+		Image img = kit.getImage(".\\src\\com\\kitri\\Manager\\image\\bkbk.jpg");
+		setIconImage(img);
 		
 //-----------------------------------------------------------------------------------------------------------------------------------//[h]		
 		

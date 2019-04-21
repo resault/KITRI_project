@@ -10,8 +10,8 @@ import javax.swing.table.DefaultTableModel;
 
 public class RentalController implements ActionListener {
    
-   RentalMain rm;
-   RentalService rs;
+   public RentalMain rm;
+   public RentalService rs;
 
    public RentalController(RentalMain r) {
       this.rm = r;

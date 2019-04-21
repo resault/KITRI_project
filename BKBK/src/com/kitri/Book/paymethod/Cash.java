@@ -141,7 +141,11 @@ public class Cash extends JFrame implements ActionListener, KeyListener{
                      moneyL.setText(c);
                   break;
                   case 12:
+                	 
                      clearAll();
+                  case 13 :
+                	  JOptionPane.showMessageDialog(null, "[승인완료] 결제되었습니다.");
+                	  setVisible(false);
          }}}}}
                
             
@@ -191,6 +195,7 @@ public class Cash extends JFrame implements ActionListener, KeyListener{
          number(9);
          break;
       case 27: // 다 지우기
+    	  
          clearAll(); 
          break;
       }

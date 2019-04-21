@@ -39,8 +39,8 @@ public class MainController implements ActionListener, MouseListener {
 		} else if (str.equals("비회원")) {
 			guestLoginProcess();
 		} else if (str.equals("도서대출")) {// ---------------------------------------------------------------------------------[h]도서대출btn
-										// >>> rentalPanel 여기 로그인 되어있을 때만 넘어가도록 조건설정
 			bookRentProcess();
+//			mf.rentalMain.rc.rs.bookListAppend();
 		} else if (str.equals("회원등록")) {
 			joinMemberProcess();
 		} else if (str.equals("회원정보수정")) {
@@ -111,6 +111,7 @@ public class MainController implements ActionListener, MouseListener {
 		FPanel f = mfs.findFp();
 		mfs.appendingPayment(f);
 		tatalPrice();
+		mf.pm.payR.setText(String.valueOf(Integer.parseInt(mf.pm.totalR.getText()) - Integer.parseInt(mf.pm.discountR.getText())));
 
 	}
 

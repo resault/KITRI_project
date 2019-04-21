@@ -12,8 +12,7 @@ public class payMainController implements ActionListener {
 		   
 		   public payMainController(payMain payMain) {
 		      this.p = payMain;
-//		      pms = new payMainService(p);
-		      pms = new payMainService(this);
+		      pms = new payMainService(p);
 		   }
 
 		   @Override
@@ -49,26 +48,6 @@ public class payMainController implements ActionListener {
 		
 	}
 
-	private void buttonMinusProcess() {
-		int a = p.jTable.getSelectedRow();
-		if (a == -1) {
-			return;
-		} else {
-			Object ob = p.jTable.getValueAt(a, 1);
-			String str = String.valueOf(ob);
-			FPanel f = p.mf.mc.mfs.findFp();
-			switch (str) {
-			case "이용권":
-				pms.bMProcess(a, f, f.voucherDtoBasket);
-				break;
-			case "음식":
-				pms.bMProcess(a, f, f.foodDtoBasket);
-				break;
-			case "도서":
-				pms.bMProcess(a, f, f.bookDtoBasket);
-				break;
-			}
-		}
-	}
+
 
 }
