@@ -2,7 +2,6 @@ package com.kitri.godinator.schoolinfo.service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,27 +110,11 @@ public class SearchSchoolServiceImpl implements SearchSchoolService{
 
 	@Override
 	public List<HSchoolDto> getHRecomSchool(String userId) {
-		List<HSchoolDto> list = sqlSession.getMapper(SearchSchoolDao.class).getHRecomSchool(userId);
-		String regex = "^(https?):\\/\\/([^:\\/\\s]+)(:([^\\/]*))?((\\/[^\\s/\\/]+)*)?\\/?([^#\\s\\?]*)(\\?([^#\\s]*))?(#(\\w*))?$";
-		Pattern p = Pattern.compile(regex);
-		for(HSchoolDto h : list) {
-			if(!p.matcher(h.getHomePage()).matches()) {
-				h.setHomePage("http://"+h.getHomePage());
-			}
-		}
-		return list;
+		return sqlSession.getMapper(SearchSchoolDao.class).getHRecomSchool(userId);
 	}
 	@Override
 	public List<USchoolDto> getURecomSchool(String userId) {
-		List<USchoolDto> list =  sqlSession.getMapper(SearchSchoolDao.class).getURecomSchool(userId);
-		String regex = "^(https?):\\/\\/([^:\\/\\s]+)(:([^\\/]*))?((\\/[^\\s/\\/]+)*)?\\/?([^#\\s\\?]*)(\\?([^#\\s]*))?(#(\\w*))?$";
-		Pattern p = Pattern.compile(regex);
-		for(USchoolDto u : list) {
-			if(!p.matcher(u.getLink()).matches()) {
-				u.setLink("http://"+u.getLink());
-			}
-		}
-		return list;
+		return sqlSession.getMapper(SearchSchoolDao.class).getURecomSchool(userId);
 	}
 	
 	//이미지 체크
