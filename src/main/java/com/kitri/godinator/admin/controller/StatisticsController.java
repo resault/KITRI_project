@@ -51,7 +51,7 @@ public class StatisticsController {
 	            if(obj != null) {
 	                   JsonObject member = new JsonObject();
 	                   
-	                   String rownum = ((VisitDto)obj).getRownum();
+	                   int rownum = ((VisitDto)obj).getRownum();
 	                   String visitCnt = ((VisitDto)obj).getVisitCnt();
 	                   String visitUserId = ((VisitDto)obj).getVisitUserId();
 	                   String userName = ((VisitDto)obj).getUserName();
@@ -62,11 +62,10 @@ public class StatisticsController {
 	                   member.addProperty("userName", userName);
 	                   
 	                   jsonArray.add(member);
-	                   System.out.println(jsonArray);
 	               }
 	           }   
 	       members.add("members", jsonArray);
-	       //System.out.println(members);
+	       System.out.println(members);
 	       return members.toString();
 	   }
 	
