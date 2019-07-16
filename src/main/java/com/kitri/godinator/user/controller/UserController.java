@@ -94,6 +94,7 @@ public class UserController {
 		System.out.println("로그아웃 : 여기까지는 오나?");
 		//model.addAttribute("logoutMsg", msg);
 		//session.setAttribute("userInfo", "");
+		
 		return msg;
 		//return "redirect:/view/user/main.jsp";
 

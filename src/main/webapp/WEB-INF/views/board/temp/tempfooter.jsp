@@ -9,18 +9,20 @@
          <span>GODINATOR[MAIN]</span>
       </section>
       
+      
       <nav id="menu">
          <header class="major"><h2>Menu</h2></header>
          <ul>
-            <c:if test="${not empty userInfo}">
-               <li>
-               <span class="opener">마이페이지</span>
-               <ul>
-                  <li><a href="${root}/">진로검사</a></li>
-                  <li><a href="${root}/">모교 평가</a></li>
-               </ul>
-               </li>
-            </c:if>
+              <c:if test="${not empty userInfo}">
+					<li>
+					<span class="opener">마이페이지</span>
+					<ul>
+						<li><a href="${root}/jinro/geomsa">진로검사</a></li>
+						<li><a href="${root}/schoolinfo/hrating">고등학교 평가</a></li>
+						<li><a href="${root}/schoolinfo/urating">대학교 평가</a></li>
+					</ul>
+					</li>
+				</c:if>
             <li>
                <span class="opener">학교 정보</span>
                <ul>
@@ -87,6 +89,9 @@
       });
    });
 </script>
+
+
+
 
 
 </body>

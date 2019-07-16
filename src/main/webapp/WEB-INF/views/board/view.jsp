@@ -134,7 +134,7 @@ $(document).ready(function() {
 		
 		//자기가 작성한 댓글에 수정 삭제 
  		if('${userInfo.userId}' == memo.CUserId){
-			memostr += '<td colspan="2" rowspan ="1" data-seq="'+memo.boardNo+'" data-mseq="'+memo.commentNo+'"  style = "maring:0;padding:0;"><a href= "#" class = "mmodifyBtn">수정</a><br><a href = "#" class="mdeleteBtn">삭제</a></td>';
+			memostr += '<td colspan="2" rowspan ="1" data-seq="'+memo.boardNo+'" data-mseq="'+memo.commentNo+'"  style = "maring:0;padding:0;"><a href= "#" class = "mmodifyBtn">수정</a></td>';
 			
 			//댓글 수정 창 
 			memostr +='<tr class = "modifyComment" style = "display : none;">';

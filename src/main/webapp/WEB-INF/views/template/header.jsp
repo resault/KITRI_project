@@ -56,7 +56,7 @@ $(document).ready(function() {
 							type: 'post',
 							success: function(msg) {
 								alert(msg);
-								location.href="${root}/view/user/main.jsp";
+								location.href="${root}/board/main";
 							} 
 						});
 					});
@@ -66,7 +66,7 @@ $(document).ready(function() {
 						type: 'post',
 						success: function(msg) {
 							alert(msg);
-							location.href="${root}/view/user/main.jsp";
+							location.href="${root}/board/main";
 						} 
 					});
 				}
@@ -83,6 +83,14 @@ $(document).ready(function() {
 </head>
 
 <body class="is-preload">
+
+
+<form id="editForm" name="editForm">
+   <input type="hidden" name="userInfo" id="userInfo" value="${userInfo}">
+   <input type="hidden" name="hName" id="hName" value="${hName}">
+   <input type="hidden" name="uName" id="uName" value="${uName}">
+   <input type="hidden" name="cateList" id="cateList" value="${cateList}">
+</form>
 <div id="wrapper">
 	<div id="main">
 		<div class="inner">
@@ -98,7 +106,7 @@ $(document).ready(function() {
 					<li><a href="" id="logoutBtn">로그아웃</a></li>
 					<li><a href="" id="moveMypageBtn">회원정보수정</a></li>
 					<c:if test="${sessionScope.userInfo.userId == 'admin'}">
-						<li><a href="${root}/member/main" id="logoutBtn">관리자페이지</a></li>
+						<li><a href="${root}/member/view" id="logoutBtn">관리자페이지</a></li>
 					</c:if>	
 				</c:if>	
 				</ul>

@@ -26,14 +26,20 @@ import org.springframework.web.multipart.MultipartFile;
 import com.kitri.godinator.board.service.BoardCommonService;
 import com.kitri.godinator.board.service.BoardService;
 import com.kitri.godinator.model.BbsDto;
+import com.kitri.godinator.model.HSchoolDto;
 import com.kitri.godinator.model.LoveDto;
 import com.kitri.godinator.model.MemberDto;
 import com.kitri.godinator.model.PageNavigation;
+import com.kitri.godinator.model.USchoolDto;
+import com.kitri.godinator.schoolinfo.service.SearchSchoolService;
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-
+	
+	@Autowired
+	private SearchSchoolService searchSchoolService;
+	
 	@Autowired
 	private ServletContext servletContext;
 
@@ -44,7 +50,36 @@ public class BoardController {
 	private BoardService boardService;
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String main(@RequestParam Map<String, String> parameter, Model model) {
+	public String main(@RequestParam Map<String, String> parameter, Model model, HttpSession session) {
+		
+		
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+	      
+	      if(memberDto != null) {
+	         System.out.println(memberDto.getUserId());
+	         Map<String, String> map = searchSchoolService.getUserPrefer(memberDto.getUserId());
+	         System.out.println(map);
+	         String userId = memberDto.getUserId();
+	         System.out.println(userId);
+	         System.out.println(!"0".equals(map.get("H")));
+	         if(map != null) {
+	            if(!"0".equals(map.get("H"))) {
+	               List<HSchoolDto> hRecomList = searchSchoolService.getHRecomSchool(userId);
+	               model.addAttribute("hRecomList", hRecomList);
+	               System.out.println(hRecomList);
+	            } 
+	            if(!"0".equals(map.get("U"))) {
+	               List<USchoolDto> uRecomList = searchSchoolService.getURecomSchool(userId);
+	               model.addAttribute("uRecomList", uRecomList);
+	               System.out.println(uRecomList);
+	            }
+	         }
+	      }
+	      List<HSchoolDto> hSchoolList = searchSchoolService.getHSchoolList();
+	      List<USchoolDto> uSchoolList = searchSchoolService.getUSchoolList();
+	      model.addAttribute("hSchoolList", hSchoolList);
+	      model.addAttribute("uSchoolList", uSchoolList);
+		
 		return "board/main";
 	}
 
