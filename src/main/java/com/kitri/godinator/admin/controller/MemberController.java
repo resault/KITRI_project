@@ -101,7 +101,7 @@ public class MemberController {
 	   
 	   @RequestMapping(value = "/mentor", method = RequestMethod.GET)
 		public void changeMentor(@RequestParam Map<String, String> parameter) {
-		   String id = parameter.get("id");
+		   String id = parameter.get("memberid");
 		   System.out.println("> 멘토로 바꿀 ID : "+ id);
 		   
 		   memberService.setMentor(id);

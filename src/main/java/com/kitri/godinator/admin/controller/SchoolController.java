@@ -229,6 +229,7 @@ public class SchoolController {
                String userCate = ((MemberDto)h).getUserCate();
                String joinDate = ((MemberDto)h).getJoinDate();
                
+               if(joinDate != null) {
                mentoInfo.addProperty("userId", userId);
                mentoInfo.addProperty("userName", userName);
                mentoInfo.addProperty("userCate", userCate);
@@ -236,6 +237,7 @@ public class SchoolController {
                
                jsonArray.add(mentoInfo);
                //System.out.println("	> 해당학교 멘토list : " + jsonArray);
+               }
            }
        }  
 	   mentoInfos.add("mentoInfos", jsonArray);

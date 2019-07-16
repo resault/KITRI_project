@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/template/header.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_header.jsp"%>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -137,4 +137,4 @@ $(document).ready(function() {
    	</table>
 </div>
 </section>
-<%@ include file="/WEB-INF/views/template/sidebar.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_sidebar.jsp"%>

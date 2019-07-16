@@ -21,5 +21,11 @@
   	SET visit_cnt = visit_cnt+1 
   	WHERE visit_user_id = #{StaticId}
   	</update>
+  	
+  	<!-- <select id="upperMemberList" resultType="VisitDto">
+  	select rownum, visit_cnt visitCnt, visit_user_id visitUserId, user_name userName
+	from (select visit_cnt, visit_user_id FROM visit ORDER BY visit_cnt desc), member
+	where rownum <= 5
+  	</select> -->
   
   </mapper>

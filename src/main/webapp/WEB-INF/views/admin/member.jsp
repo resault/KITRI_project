@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/template/header.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_header.jsp"%>
 
 <!-- modal 되는 link
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -47,6 +47,9 @@ table th, table td {
 	background-color: lightgray;
 }
 
+input[id="mentoConfirm"]{
+	margin-left: 80px; margin-top: 3px; margin-bottom: 3px;
+}
 </style>
 
 <script type="text/javascript">
@@ -94,11 +97,12 @@ $(document).ready(function(){
              			 var td6 = $("<td>").html(joinDate);
              			 var td7 = "";
              			 if(temp == "r") { // 대기
-             			 	td7 = $("<td><input type='button' id='mentoConfirm' value='멘토승인'>").html();
+             				 // <input type="button" id="mentoConfirm" value="멘토승인" style="margin-left: 80px; margin-top: 3px;margin-bottom: 3px;">
+             				td7 = $("<td><input type='button' id='mentoConfirm' value='멘토승인'>").html();
              			 } else if (temp == "n") { // 아님
 	            			td7 = $("<td>").html(""); // 멘토
              			 } else {
-             				td7 = $("<td>").html("멘토끼에엑!!"); 
+             				td7 = $("<td>").html("멘토"); 
              			 }
              			 
              			 tr.append(td1).append(td2).append(td3).append(td4).append(td5).append(td6).append(td7);
@@ -110,16 +114,17 @@ $(document).ready(function(){
              }});
    		 } // allList끝 
    		 
-   		 
-   		 
-   	 	$(document).on('click', 'tr.table-active', function(){
-   			/* confirm('멘토로 저장하시겠습니까?');
+   		$(document).on('click', '#mentoConfirm', function(){
    			
-   			var a = $(this).children();
+   			confirm('멘토로 승인하시겠습니까?');
+   			location.href = "member/view";
+   			//$("#hiddenInfo").attr("method","GET").attr("action","${root}/member/mentor").submit();
+   			/* var a = $(this);
+   			console.log('a는 ' + a);
    	  		var id = a[0].childNodes[0].nodeValue;
    	  		console.log(a+'/'+id);
-   	  		
-	   	  	$.ajax({
+   	  		location.href = "member/view";
+	   	  	 $.ajax({
 	            url : "${root}/member/mentor",
 	            type : "GET",
 	            contentType : "application/json;charset=UTF-8",
@@ -129,11 +134,15 @@ $(document).ready(function(){
 	                alert('멘토로 수정되었습니다.');
 	                location.href = "";
 	            }
-	         }); */
+	         });    */
+   		}); 
+   		 
+   	 	$(document).on('click', 'tr.table-active', function(){
    	  		
    	 		var a = $(this).children();	
    	 		var memberid = a[0].childNodes[0].nodeValue;
-   	 		alert(memberid);
+   	 		
+   	 		alert(memberid + '님의 회원정보를 확인합니다.');
    	 		
    	 	$("#memberid").val(memberid);
    	    $("#hiddenInfo").attr("method","GET").attr("action","${root}/member/goModify").submit();
@@ -199,4 +208,4 @@ $(document).ready(function(){
    </div>
 </section>
 <form id="hiddenInfo"><input type="hidden" name="memberid" id="memberid" value=""></form>
-<%@ include file="/WEB-INF/views/template/sidebar.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_sidebar.jsp"%>

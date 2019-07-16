@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/template/header.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
    #memberlist {
@@ -203,4 +203,4 @@ $(document).ready(function(){
 	   	<input type="hidden" name="adressDetail" id="adressDetail" value="">
    </form>
 </section>
-<%@ include file="/WEB-INF/views/template/sidebar.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_sidebar.jsp"%>

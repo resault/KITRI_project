@@ -13,10 +13,10 @@
 		<!-- my own -->
 		<nav id="admin">`
 			<header class="major"><h2>Admin</h2></header>
-			<div class="adminBtn" id="adminMemberBtn" style="width: 80px; display: inline-block;"><img src="${root }/resources/images/admin/member.png"></div>
-			<div class="adminBtn" id="adminSchoolBtn" style="width: 80px; display: inline-block;"><img src="${root }/resources/images/admin/school.png"></div>
-			<div class="adminBtn" id="adminReportBtn" style="width: 80px; display: inline-block;"><img src="${root }/resources/images/admin/warning.png"></div>
-			<div class="adminBtn" id="adminStatisticsBtn" style="width: 80px; display: inline-block;"><img src="${root }/resources/images/admin/statistics.png"></div>
+			<div class="adminBtn" id="adminMemberBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/member.png" style="width: 60px;"></div>
+			<div class="adminBtn" id="adminSchoolBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/school.png" style="width: 60px;"></div>
+			<div class="adminBtn" id="adminReportBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/warning.png" style="width: 60px;"></div>
+			<div class="adminBtn" id="adminStatisticsBtn" style="width: 40px; display: inline-block;"><img src="${root }/resources/images/admin/statistics.png" style="width: 60px;"></div>
 		</nav>
 		
 		<nav id="menu">
@@ -59,27 +59,6 @@
 			</ul>
 		</nav>
 
-		<!-- Section -->
-		<section>
-			<header class="major">
-				<h2>Get in touch</h2>
-			</header>
-			<ul class="contact">
-				<li class="icon solid fa-envelope"><a href="#">claire97j@naver.com</a></li>
-				<li class="icon solid fa-phone">(000) 000-0000</li>
-				<li class="icon solid fa-home">서울시 구로구 디지털로 34길 43 <br>코오롱사이언스벨리 1차 4층
-				</li>
-			</ul>
-		</section>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<p class="copyright">
-				&copy; Untitled. All rights reserved. Demo Images: <a
-					href="https://unsplash.com">Unsplash</a>. Design: <a
-					href="https://html5up.net">HTML5 UP</a>.
-			</p>
-		</footer>
 
 	</div>
 </div>
