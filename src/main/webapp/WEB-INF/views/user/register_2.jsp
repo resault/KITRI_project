@@ -195,13 +195,8 @@ $("#university").keyup(function(e) {
 									</form>
 										   <br>
 									<ul class="actions">
-<<<<<<< Upstream, based on branch 'develop' of https://github.com/godinator/Godinator.git
-										<!-- <li>2/4</li> -->
-										<li><a href="#" class="button primary" id="mentorRegisterBtn" name="mentorRegisterBtn">다음페이지</a></li>
-=======
 										<li>2/4</li>
 										<li><a href="#" class="button primary" id="mentorRegisterBtn" name="mentorRegisterBtn">건너뛰기</a></li>
->>>>>>> f76ca33 19.07.16
 									</ul>
 									
 								</div>
