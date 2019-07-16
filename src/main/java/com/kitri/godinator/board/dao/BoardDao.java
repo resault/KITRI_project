@@ -64,7 +64,4 @@ public interface BoardDao {
 	//핫게시물
 	List<BbsDto> listHotArticle(Map<String, String> parameter);
 	
-	//메인 핫게시물
-	List<BbsDto> mainHotArticle();
-	
 }
