@@ -140,13 +140,13 @@
 					
 				}
 			}); */
-			$(window).scroll(function () { 
+			/* $(window).scroll(function () { 
 				   if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
 				      //Add something at the end of the page
 						if(pageCnt < 5 && pageCnt != 0)
 							searchNews("append");
 				   }
-				});
+				}); */
 			//학교 이름 검색
 			$("#newsSearch").keydown(function(e) {
 				var $schoolCate = $("#schoolCate").val();
