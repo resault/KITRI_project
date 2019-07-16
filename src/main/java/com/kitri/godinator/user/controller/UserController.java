@@ -88,7 +88,7 @@ public class UserController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public @ResponseBody String logout(HttpSession session) {
-		System.out.println("로그아웃 컨트롤러");
+		//System.out.println("로그아웃 컨트롤러");
 		String msg = "로그아웃 되었습니다.";
 		session.removeAttribute("userInfo");
 		System.out.println("로그아웃 : 여기까지는 오나?");
@@ -199,18 +199,13 @@ public class UserController {
 				model.addAttribute("uName", uName);
 			}
 			model.addAttribute("cateList", cateList);
-			return "forward:/view/user/main.jsp";
+			return "/board/main";
 		} else if (memberDto ==null) {// 로그인실패 >> 비번, 아이디 확인해달라 (모달창에 메세지 가지고 가기)
 			String msg = "아이디 또는 비밀번호를 확인하세요.";
-
 			model.addAttribute("msg", msg);
-//			return msg;
 			return "forward:/view/user/login.jsp";
 		}
 		return "error";
-
-		// 뒤로가기 만들기(?)
-
 	}
 
 	@RequestMapping(value = "/moveRegister", method = RequestMethod.GET)

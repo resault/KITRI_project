@@ -65,7 +65,7 @@
 		                     where school_name = #{highSchool}),
 		    h_school_cate = (select school_cate1 
   							from h_school 
-  							where school_name=#{highSchool} )	
+  							where school_name=#{highSchool})	
 		where user_id = #{registerId}
   	</update>
   	

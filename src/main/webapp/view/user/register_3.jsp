@@ -18,6 +18,7 @@ hr{
 	
 	.icon{
 	padding-left: 20px;
+	width: 150px;
 	}
 	
 	.bin{
@@ -136,7 +137,7 @@ function allowDrop(ev) {
 									<header class="main">
 									
 										<h1>회원가입</h1>
-										<h3 class="subtitle">학교 선택 기준은?        드래그해서 기준을 정해주세요!</h3>
+										<h3 class="subtitle">학교 선택 기준은?       드래그해서 기준을 정해주세요!</h3>
 									</header>
 
 <br>
@@ -238,7 +239,7 @@ function allowDrop(ev) {
 										
 										   <br><br>
 									<ul class="actions">
-										<!-- <li>3/4</li> -->
+										<li>3/4</li>
 										<li><a href="" class="button primary" id="registerPreferenceBtn">다음페이지</a></li>
 									</ul>
 								</div>

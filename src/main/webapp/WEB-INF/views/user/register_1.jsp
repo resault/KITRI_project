@@ -216,7 +216,7 @@ function sample6_execDaumPostcode() {
 									</form>
 										   <br>
 									<ul class="actions">
-										<li>1/4</li>
+										<!-- <li>1/4</li> -->
 										<li><a href="#" class="button primary" id="registerBtn">다음페이지</a></li>
 									</ul>
 									

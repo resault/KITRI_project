@@ -46,7 +46,7 @@ $(document).ready(function() {
 	
 		Kakao.init('18f3deb02686176a9f41dc7fd612c3d0');
 	$("#logoutBtn").click(function() {
-		alert("로그아웃 되었습니다.")
+		//alert("로그아웃 되었습니다.")
 		//$("#logoutBtn").attr("method","post").attr("action","${root}/user/logout").submit();
 				var isKakao = $(this).attr("data-pass");
 				if(isKakao == 'kakao'){

@@ -193,7 +193,7 @@ $("#university").keyup(function(e) {
 									</form>
 										   <br>
 									<ul class="actions">
-										<li>2/4</li>
+										<!-- <li>2/4</li> -->
 										<li><a href="#" class="button primary" id="mentorRegisterBtn" name="mentorRegisterBtn">다음페이지</a></li>
 									</ul>
 									
