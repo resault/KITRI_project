@@ -52,7 +52,7 @@ public class ChatController{
 	
 	// #### 온라인 멘토 목록 가져오기 ####
 	@RequestMapping("/list")
-	public @ResponseBody String getMentor(@RequestParam Map<String, String> params) {
+	public @ResponseBody String getOnMentor(@RequestParam Map<String, String> params) {
 		return chatService.getOnMentor(params);
 	}
 	
