@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/template/header.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_header.jsp"%>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -27,19 +27,13 @@ $(document).ready(function() {
                         var joinDate = data.mentoInfos[i].joinDate;
                         var userCate = data.mentoInfos[i].userCate;
                         
-                        if (userCate=='R') {
-                        	userCate = '승인대기중';
-                        } else if (userCate == 'M') {
-                        	userCate = '';
-                        }
                           
                         var tr = $("<tr>").attr("id", "mentoInfo2");
          	    		var td1 = $("<td>").html(userId);
             			var td2 = $("<td>").html(userName);
             			var td3 = $("<td>").html(joinDate);
-            			var td4 = $("<td>").html(userCate);
             			 
-            			 tr.append(td1).append(td2).append(td3).append(td4);
+            			 tr.append(td1).append(td2).append(td3);
             			 $("#mentoInfo").append(tr);
             			 
          			   }}
@@ -120,7 +114,7 @@ td #schoolCode {
 			<li><a href="#" id="deleteBtn" class="button primary icon"><i class="far fa-trash-alt"></i></a></li>
 		</ul>
 	</div>
-	<div style="float: right;"><button type="button" id="modifyBtn" style="margin-right: 10px;">수정</button></div>
+	<div style="float: right;"><button type="button" id="modifyBtn" style="margin-right: 10px;">수 정</button></div>
 	
     <table class="table" id="schoollistTop" >
          <thead>
@@ -144,8 +138,7 @@ td #schoolCode {
                <th>홈페이지</th>
                <th>전화번호</th>
                <th>우편번호</th>
-               <th>주소</th>
-               <th></th>
+               <th colspan="2">주소</th>
             </tr>
          </thead>
          <tbody class="userInfoTable">
@@ -168,7 +161,6 @@ td #schoolCode {
                <th>ID</th>
                <th>이름</th>
                <th>승인날짜</th>
-               <th>비고</th>
             </tr>
          </thead>
          <tbody id="mentoInfo"></tbody>
@@ -229,4 +221,4 @@ td #schoolCode {
 </div>
 </section> 
 --%>
-<%@ include file="/WEB-INF/views/template/sidebar.jsp"%>
+<%@ include file="/WEB-INF/views/template/own/admin_sidebar.jsp"%>
