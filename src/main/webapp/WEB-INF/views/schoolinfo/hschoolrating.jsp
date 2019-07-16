@@ -163,7 +163,7 @@
 						<a href="" class="button primary" id="submit">확인</a>
 					</div>
 					<div class="col-2 col-1-small">
-						<a href="" class="button" id="cancel">건너뛰기</a>
+						<a href="" class="button" id="cancel">취소</a>
 					</div>
 				</div>
 		</section>
@@ -358,8 +358,8 @@
 				if(evalDCheck == "false") {
 					$("#eval_d").val("${evalD}").attr("readonly", "readonly");
 				}
-				if(joinCheck != "true") {
-			    	$("a#cancel").text("취소");
+				if(joinCheck == "true") {
+			    	$("a#cancel").text("건너뛰기");
 		    	}
 				if(recordCheck == "false" && evalACheck == "false" && evalDCheck == "false") {
 					$("a#submit").remove();
@@ -367,11 +367,11 @@
 				}
 				//건너뛰기 & 취소
 			    $("div.submit-school-evaluation a#cancel").click(function() {
-			    	if(joinCheck != "true") {
-			    		$(location).attr("href", "${root}/board/main");
+			    	if(joinCheck == "true") {
+				    	$(location).attr("href", "${root}/schoolinfo/urating");
 				    	return false;
 			    	} else {
-				    	$(location).attr("href", "${root}/schoolinfo/urating");
+			    		$(location).attr("href", "${root}/board/main");
 				    	return false;
 			    	}
 			    });
