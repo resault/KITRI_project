@@ -1,7 +1,5 @@
 package com.kitri.godinator.schoolinfo.controller;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,35 +28,33 @@ public class SearchSchoolController {
 	@RequestMapping(value = "/viewsearch", method = RequestMethod.GET)
 	public String viewSearchSchool(Model model, HttpSession httpSession) {
 		
-		if(httpSession.getAttribute("userInfo") != null) {
-			MemberDto memberDto = (MemberDto) httpSession.getAttribute("userInfo");
-			
-			if(memberDto != null) {
-				System.out.println(memberDto.getUserId());
-				Map<String, String> map = searchSchoolService.getUserPrefer(memberDto.getUserId());
-				System.out.println(map);
-				String userId = memberDto.getUserId();
-				System.out.println(userId);
-				System.out.println(!"0".equals(map.get("H")));
-				if(map != null) {
-					if(!"0".equals(map.get("H"))) {
-						List<HSchoolDto> hRecomList = searchSchoolService.getHRecomSchool(userId);
-						model.addAttribute("hRecomList", hRecomList);
-						System.out.println(hRecomList);
-					} 
-					if(!"0".equals(map.get("U"))) {
-						List<USchoolDto> uRecomList = searchSchoolService.getURecomSchool(userId);
-						model.addAttribute("uRecomList", uRecomList);
-						System.out.println(uRecomList);
-					}
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("userInfo");
+		
+		if(memberDto != null) {
+			System.out.println(memberDto.getUserId());
+			Map<String, String> map = searchSchoolService.getUserPrefer(memberDto.getUserId());
+			System.out.println(map);
+			String userId = memberDto.getUserId();
+			System.out.println(userId);
+			System.out.println(!"0".equals(map.get("H")));
+			if(map != null) {
+				if(!"0".equals(map.get("H"))) {
+					List<HSchoolDto> hRecomList = searchSchoolService.getHRecomSchool(userId);
+					model.addAttribute("hRecomList", hRecomList);
+					System.out.println(hRecomList);
+				} 
+				if(!"0".equals(map.get("U"))) {
+					List<USchoolDto> uRecomList = searchSchoolService.getURecomSchool(userId);
+					model.addAttribute("uRecomList", uRecomList);
+					System.out.println(uRecomList);
 				}
 			}
-			List<HSchoolDto> hSchoolList = searchSchoolService.getHSchoolList();
-			List<USchoolDto> uSchoolList = searchSchoolService.getUSchoolList();
-			
-			model.addAttribute("hSchoolList", hSchoolList);
-			model.addAttribute("uSchoolList", uSchoolList);
 		}
+		List<HSchoolDto> hSchoolList = searchSchoolService.getHSchoolList();
+		List<USchoolDto> uSchoolList = searchSchoolService.getUSchoolList();
+		
+		model.addAttribute("hSchoolList", hSchoolList);
+		model.addAttribute("uSchoolList", uSchoolList);
 		return "/schoolinfo/searchschool";
 	}
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
