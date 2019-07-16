@@ -8,7 +8,7 @@
 <div id="sidebar">
 	<div class="inner">
 		<section id="mainPage" class="alt">
-			<span>GODINATOR[MAIN]</span>
+			<span>고디네이터</span>
 		</section>
 		
 		<nav id="menu">

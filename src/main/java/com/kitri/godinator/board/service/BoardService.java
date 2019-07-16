@@ -51,5 +51,4 @@ public interface BoardService {
 
 	List<BbsDto> listHotArticle(Map<String, String> parameter);
 	
-	List<BbsDto> mainHotArticle();
 }
