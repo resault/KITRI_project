@@ -59,7 +59,7 @@ public class ChatServiceImpl implements ChatService {
 		return sqlSession.getMapper(ChatDao.class).checkOnlineMentor(mentor);
 	}
 
-	// #### 선택한 멘토가 접속중인지 확인 ####
+	// #### 접속중인지 확인 ####
 	@Override
 	public int checkOnlineUser(String userID) {
 		int result = sqlSession.getMapper(ChatDao.class).checkOnlineUser(userID);
