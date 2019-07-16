@@ -323,10 +323,13 @@ public class UserController {
 
 		System.out.println("ucheck: " + ucheck);
 		System.out.println("hcheck : " + hcheck);
-
-		
-		String hSchoolCate = userService.findHcate(highSchool);
-		System.out.println("hschoolcate : "+ hSchoolCate);
+//		String hSchoolCate ="";
+//		if(highSchool!=null) {
+//		hSchoolCate = userService.findHcate(highSchool);
+//		System.out.println("hschoolcate : "+ hSchoolCate);
+//		}else {
+//			
+//		}
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("registerId", registerId);// 로그인한 아이디
@@ -334,8 +337,8 @@ public class UserController {
 		map.put("university", university);// 입력한 대학교 이름
 		map.put("ucheck", ucheck);// 대학교 멘토 체크 유무
 		map.put("hcheck", hcheck);// 고등학교 멘토 체크 유무
-		map.put("hSchoolCate", hSchoolCate);// 고등학교 멘토 체크 유무
-		map.put("uSchoolCate", uSchoolCate);// 고등학교 멘토 체크 유무
+		//map.put("hSchoolCate", hSchoolCate);
+		map.put("uSchoolCate", uSchoolCate);
 
 		
 		int cnt = userService.mentorRegister(map);
