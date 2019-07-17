@@ -85,13 +85,13 @@ $(document).ready(function() {
 <body class="is-preload">
 
 
+<div id="wrapper">
 <form id="editForm" name="editForm">
    <input type="hidden" name="userInfo" id="userInfo" value="${userInfo}">
    <input type="hidden" name="hName" id="hName" value="${hName}">
    <input type="hidden" name="uName" id="uName" value="${uName}">
    <input type="hidden" name="cateList" id="cateList" value="${cateList}">
 </form>
-<div id="wrapper">
 	<div id="main">
 		<div class="inner">
 			<header id="header">

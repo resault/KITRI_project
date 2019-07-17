@@ -61,7 +61,7 @@ $(function(){
 
 	<%-- 웹소켓 통신 연결 --%>
 	function connect(){
-		wsocket = new WebSocket("ws://192.168.14.49:80/godinator/connchat");
+		wsocket = new WebSocket("ws://localhost:80/godinator/connchat");
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
 	}

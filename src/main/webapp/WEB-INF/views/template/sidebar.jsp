@@ -77,6 +77,7 @@
 	</div>
 </div>
 </div>
+</div>
 
 <!-- Scripts -->
 <script src="${root}/js/browser.min.js"></script>
