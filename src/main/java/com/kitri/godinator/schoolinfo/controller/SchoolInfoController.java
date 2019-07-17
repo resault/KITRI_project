@@ -33,7 +33,7 @@ public class SchoolInfoController {
 	
 	@RequestMapping(value = "/schooldetail", method = RequestMethod.GET)
 	public String viewSchoolDetail(@RequestParam Map<String, String> parameter, Model model, HttpSession httpSession) {
-		MemberDto memberDto = (MemberDto) httpSession.getAttribute("registerId");
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("userInfo");
 		if(memberDto != null) {
 			System.out.println("memberDto.getUserId() : "+memberDto.getUserId());
 			parameter.put("userId", memberDto.getUserId());

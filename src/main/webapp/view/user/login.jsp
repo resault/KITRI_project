@@ -50,19 +50,21 @@ $(document).ready(function() {
 							<!-- Content -->
 								<div id="loginAll">
 									<header class="main">
-										<h1>로그인</h1>
+										<label style="font-size: 3em;">로그인</label>
 									</header>
 									<!-- Content -->
 									<form id="loginForm" name="loginForm">
 									<div>
-										<h2 id="contentId">아이디</h2>
-										   <input type="text" name="userId" id="userId" value="" placeholder="아이디를 입력하세요" />
+										<label style="font-size: 1em; float: left; " id="contentId">아이디</label>
+										   <input type="text" style="width: 200px; float: left; margin-left: 1em;" name="userId" id="userId" value="" placeholder="아이디를 입력하세요" />
 									</div>
+									<div style="clear: both; margin-bottom: 1em;"></div>
 										   <br>
 									<div> 
-										<h2 id="contentPwd">비밀번호</h2>
-										   <input type="password" name="pass" id="pass" value="" placeholder="비밀번호를 입력하세요" />
+										<label style="font-size: 1em; float: left; " id="contentPwd">비밀번호</label>
+										   <input type="password" style="width: 200px; float: left; margin-left: 1em;" name="pass" id="pass" value="" placeholder="비밀번호를 입력하세요" />
 									</div>
+									<div style="clear: both; margin-bottom: 1em;"></div>
 									</form>
 										   <br>
 									<ul class="actions">
@@ -75,7 +77,7 @@ $(document).ready(function() {
 										
 										var token;
 									    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-									    Kakao.init('18f3deb02686176a9f41dc7fd612c3d0');
+									    Kakao.init('45bb62aaacbd960790cdbac158d998e7');
 									    // 카카오 로그인 버튼을 생성합니다.
 									    Kakao.Auth.createLoginButton({
 									      container: '#kakao-login-btn',
@@ -105,13 +107,13 @@ $(document).ready(function() {
 							                             userEmail = "";
 							                          }
 							                          
-							                          if(!age_agree){
+							                          /* if(!age_agree){
 							                             age = res.kakao_account.age_range;
 							                             var idx = age.lastIndexOf("~");
 							                             age = age.substring(0, idx);
 							                          }else {
 							                             age = 0;
-							                          }
+							                          } */
 							                          
 							                          if(!gender_agree){
 							                             gender = (res.kakao_account.gender == "female") ? "여" : "남";

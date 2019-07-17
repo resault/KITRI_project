@@ -243,6 +243,7 @@ public class UserController {
 	public String register(MemberDto memberDto, Model model, HttpSession session) {
 
 		int cnt = userService.register(memberDto);
+		
 		/** 윤영 : visit 통계용 **/
 		String id = memberDto.getUserId();
 		statisticsService.enrollVisit(id);

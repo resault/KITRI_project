@@ -249,7 +249,7 @@ $(document).ready(function() {
 <!----------------------------[다음 지도 ]-------------------------------------------------------------->
 
 <div id = "map" style="width:100%;height:300px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f22525e443605fce310be835dea5bdc2&libraries=services,clusterer,drawing&autoload=false"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45bb62aaacbd960790cdbac158d998e7&libraries=services,clusterer,drawing&autoload=false"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	

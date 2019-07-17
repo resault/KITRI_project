@@ -11,7 +11,7 @@
 <div id="map" style="width:100%;height:350px;"></div>
 <input type="text" id = "search">
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f22525e443605fce310be835dea5bdc2&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45bb62aaacbd960790cdbac158d998e7&libraries=services,clusterer,drawing"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 var latitude = 36.46;

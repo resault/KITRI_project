@@ -298,7 +298,7 @@ $(document).ready(function() {
 								<div class = "row col-12">
 									<div class = "col-2"></div>
 									<div class = "col-8" id = "maparea" style="width:300px;height:300px;"></div>
-										<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f22525e443605fce310be835dea5bdc2&libraries=services,clusterer,drawing"></script>
+										<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45bb62aaacbd960790cdbac158d998e7&libraries=services,clusterer,drawing"></script>
 										<script>
 											var latitude = ${article.latitude};
 											var longtitude = ${article.longtitude};

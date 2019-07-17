@@ -3,10 +3,10 @@
 
  
 					<!-- Sidebar -->
-<div id="sidebar">
+<div id="sidebar" class="inactive">
    <div class="inner">
       <section id="mainPage" class="alt">
-         <span>GODINATOR[MAIN]</span>
+         <span>고디네이터</span>
       </section>
       
       

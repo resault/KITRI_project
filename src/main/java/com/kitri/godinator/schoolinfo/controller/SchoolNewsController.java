@@ -119,11 +119,11 @@ public class SchoolNewsController {
 		String nextGoogle = googleNews(encodeKeyWord, list, nextGoogleURL);
 		String nextNaver = naverNews(encodeKeyWord, list, nextNaverURL);
 		
-		Collections.sort(list);
-		
-		for(SchoolNewsDto s : list) {
-			System.out.println(s.getDate());
-		}
+//		Collections.sort(list);
+//		
+//		for(SchoolNewsDto s : list) {
+//			System.out.println(s.getDate());
+//		}
 		Gson gson = new Gson();
 		JsonObject jsonObject = new JsonObject();
 		JsonArray jsonArray = new JsonArray();

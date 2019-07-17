@@ -126,7 +126,7 @@ function sample6_execDaumPostcode() {
 										   <br>
 									
 										<h3 id="contentPwd">아이디</h3>
-										   <input type="text" name="userId" id="userId" value="${userId}"/>
+										   <input type="text" name="userId" id="userId" readonly="readonly" value="${userId}"/>
 										   <div id="idresult"></div>
 										   <br>
 									

@@ -37,20 +37,19 @@ div.school {
                            <div class = "table-wrapper">
                                  <div class = "row school">
                                  <img src="${root}/img/school2.png">
-                                 <hr>
-                                 <div class = "row">
-                                 </div>
-                                 <br>
-                                 <div class="school-recommendation">
+                                 <div class="school-recommendation" style="margin-top: 5em; width: 100%;">
                                  <c:if test="${not empty uRecomList}">
-                                 <label style="font-size: 2em;">회원님을 위한 추천 학교 목록</label><br>
+                                 <div style="text-align: center; border: none;">
+                                 	<label style="font-size: 2em;">회원님을 위한 추천 학교 목록</label>
+                                 </div>
+                                 <div style="width: 45%; float: left; border: none; margin: 1em; text-align: center;">
                                    <label style="font-size: 1em;">추천 고등학교</label>
                                                 <table>
                                                    <thead>
                                                       <tr>
-                                                      <th>학교이름</th>
-                                                      <th>구분</th>
-                                                      <th>홈페이지</th>
+                                                      <th style="text-align: center;">학교이름</th>
+                                                      <th style="text-align: center;">구분</th>
+                                                      <th style="text-align: center;">홈페이지</th>
                                                       </tr>
                                                 
                                                    </thead>
@@ -80,16 +79,17 @@ div.school {
                                                       </c:forEach>
                                                    </tbody>
                                                 </table>
+                                                </div>
                                                 </c:if>
                                                 <c:if test="${not empty uRecomList}">
-                                                
+                                                <div style="width: 48%; float: left; border: none; margin: 1em; text-align: center;">
                                                <label style="font-size: 1em;">추천 대학교</label> 
                                                 <table>
                                                    <thead>
                                                       <tr>
-                                                      <th>학교이름</th>
-                                                      <th>구분</th>
-                                                      <th>홈페이지</th>
+                                                      <th style="text-align: center;">학교이름</th>
+                                                      <th style="text-align: center;">구분</th>
+                                                      <th style="text-align: center;">홈페이지</th>
                                                       </tr>
                                                 
                                                    </thead>
@@ -119,6 +119,7 @@ div.school {
                                                       </c:forEach>
                                                    </tbody>
                                                 </table>
+                                                </div>
                                                 </c:if>
                                  </div>
                                  </div>
