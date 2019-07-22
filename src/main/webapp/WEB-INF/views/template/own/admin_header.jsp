@@ -75,7 +75,7 @@ $(document).ready(function() {
 							type: 'post',
 							success: function(msg) {
 								alert(msg);
-								location.href="${root}/view/user/main.jsp";
+								location.href="${root}/board/main";
 							} 
 						});
 					});
@@ -85,7 +85,7 @@ $(document).ready(function() {
 						type: 'post',
 						success: function(msg) {
 							alert(msg);
-							location.href="${root}/view/user/main.jsp";
+							location.href="${root}/board/main";
 						} 
 					});
 				}
@@ -114,7 +114,9 @@ $(document).ready(function() {
 		<div class="inner">
 			<header id="header">
 			<c:if test="${not empty userInfo}">
-				<a href="index.html" class="logo" id="userNameShow"><strong>${userInfo.userName}</strong> 님 환영합니다.</a>
+				<div id="userNameShow" style="margin-bottom: 0; padding-bottom: 0;">
+					<label style="font-size: 1em; display:inline; ">${userInfo.userName}</label><label style="font-size: 1em; display:inline; color: silver;"> 님 환영합니다.</label>
+				</div>
 			</c:if>
 				<ul class="icons">
 				<c:if test="${empty userInfo}">

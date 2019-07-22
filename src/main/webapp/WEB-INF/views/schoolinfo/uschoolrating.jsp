@@ -17,7 +17,7 @@
 				</div>
 				<div class="col-2 col-12-small">
 					<c:if test="${schoolCode == '' || schoolCode eq null}">
-						<h3 class="mogyoH2R">모교 검색</h3>
+					<label style="font-size: 1.5em;" class="mogyoH2R" id="contentPwd">모교 검색</label>
 					</c:if>
 				</div>
 			</div>

@@ -133,20 +133,19 @@ $("#university").keyup(function(e) {
 							<!-- Content -->
 								<div id="loginAll">
 									<header class="main">
-									
-										<h1>회원가입</h1>
-										<h3 class="subtitle">후배들의 멘토가 되어주세요!</h3>
+										<label style="font-size: 3em;">회원가입</label>
+										<label style="font-size: 1em; color: darkgray;">후배들의 멘토가 되어주세요!</label>
 									</header>
 									<br><br>
 									<!-- Content -->
 									<form id="schoolForm" name="schoolForm" method="post" action="">
 									<div>
-										<h3 id="contentId">출신 고등학교</h3>
-										   <input type="text" name="highSchool" id="highSchool" />
+										<label style="font-size: 1em; float: left; " id="contentId">출신 고등학교</label>
+										   <input type="text" name="highSchool" id="highSchool" style="width: 180px; float: left; margin-left: 1em;"/>
+										   <div style="clear: both; margin-bottom: 1em;"></div>
 										  <div id="schoolScrollDivH"><ul id="schoolScrollUlH"></ul></div>
-										   <br><br>
-										   <h5>고등학교 구분</h5>
-										   <div id="h_category" class="custom-control-inline">
+										   <label style="font-size: 1em; float: left;"> 고등학교 구분</label>
+										   <div id="h_category" class="custom-control-inline" style="width: 180px; float: left; margin-left: 1em;">
 													<select class="form-control" id="hSchoolCate" name="hSchoolCate">
 														<option value="특수목적고등학교">특수목적고등학교</option>
 														<option value="일반고등학교">일반고등학교</option>
@@ -154,13 +153,14 @@ $("#university").keyup(function(e) {
 														<option value="특성화고등학교">특성화고등학교</option>
 													</select>
 										   </div>
-										<br><br><br><br>
-										<h3 id="contentPwd">출신 대학교</h3>
-										   <input type="text" name="university" id="university" />
+										   <div style="clear: both; margin-bottom: 1em;"></div>
+										<br><br>
+										<label style="font-size: 1em; float: left; " id="contentPwd">출신 대학교</label>
+										   <input type="text" name="university" id="university" style="width: 180px; float: left; margin-left: 1em;"/>
+										   <div style="clear: both; margin-bottom: 1em;"></div>
 										 <div id="schoolScrollDivU"><ul id="schoolScrollUlU"></ul></div>
-										   <br><br>
-										    <h5>대학교 구분</h5>
-										   <div id="u_category" class="custom-control-inline">
+										    <label style="font-size: 1em; float: left; "> 대학교 구분</label>
+										   <div id="u_category" class="custom-control-inline" style="width: 180px; float: left; margin-left: 1em;">
 													<select class="form-control" id="uSchoolCate" name="uSchoolCate">
 
 														<option value="인문,사회">인문,사회</option>
@@ -170,24 +170,20 @@ $("#university").keyup(function(e) {
 														<option value="교육">교육</option>
 													</select>
 										   </div>
-									
+									<div style="clear: both; margin-bottom: 1em;"></div>
 <input type="hidden" id="registerId" name="registerId" value="${registerInfo.userId}">
 									<hr>
 									<br><br>
 									<section id="highMentorSection">
-										<h3 id="contentPwd"><strong>고등학교</strong> 멘토 구분</h3>
-								<div class="col-6 col-12-small">
+										<label style="font-size: 1em; float: left; "  id="contentPwd"><strong>고등학교</strong> 멘토 신청!</label>
 										<input type="checkbox" id="highMentorCheck" name="highMentorCheck" >
-										<label for="highMentorCheck">선택</label>
-									</div>
+										<label for="highMentorCheck" style="margin-left: 1em;"></label>
 									</section>						
 										   <br>
 									<section id="uniMentorSection">
-										<h3 id="contentPwd"><strong>대학교</strong> 멘토 구분</h3>
-						<div class="col-6 col-12-small">
-											<input type="checkbox" id="uniMentorCheck" name="uniMentorCheck" >
-											<label for="uniMentorCheck">선택</label>
-										</div>
+										<label style="font-size: 1em; float: left; "  id="contentPwd"><strong>대학교</strong> 멘토 신청!</label>
+											<input type="checkbox" id="uniMentorCheck" name="uniMentorCheck">
+											<label for="uniMentorCheck" style="margin-left: 1em;"></label>
 									</section>						
 										   <br>
 										   
@@ -196,7 +192,7 @@ $("#university").keyup(function(e) {
 										   <br>
 									<ul class="actions">
 										<li>2/4</li>
-										<li><a href="#" class="button primary" id="mentorRegisterBtn" name="mentorRegisterBtn">건너뛰기</a></li>
+										<li><a href="#" class="button primary" id="mentorRegisterBtn" name="mentorRegisterBtn">다음페이지</a></li>
 									</ul>
 									
 								</div>

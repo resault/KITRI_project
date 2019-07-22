@@ -15,7 +15,7 @@
 			<header class="major"><h2>Admin</h2></header>
 			<div class="adminBtn" id="adminMemberBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/member.png" style="width: 60px;"></div>
 			<div class="adminBtn" id="adminSchoolBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/school.png" style="width: 60px;"></div>
-			<div class="adminBtn" id="adminReportBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/warning.png" style="width: 60px;"></div>
+			<%-- <div class="adminBtn" id="adminReportBtn" style="width: 40px; display: inline-block; margin-right: 40px;"><img src="${root }/resources/images/admin/warning.png" style="width: 60px;"></div> --%>
 			<div class="adminBtn" id="adminStatisticsBtn" style="width: 40px; display: inline-block;"><img src="${root }/resources/images/admin/statistics.png" style="width: 60px;"></div>
 		</nav>
 		

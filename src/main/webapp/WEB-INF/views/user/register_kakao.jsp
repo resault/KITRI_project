@@ -112,27 +112,30 @@ function sample6_execDaumPostcode() {
 							<!-- Content -->
 								<div id="loginAll">
 									<header class="main">
-									
-										<h1>회원가입</h1>
-										<h4 class="subtitle">기본 인적사항을 입력해주세요!</h4>
+										<label style="font-size: 3em;">회원가입</label>
+										<label style="font-size: 1em; color: darkgray;">기본 인적사항을 입력해주세요!</label>
 									</header>
 							<br><br>
 									<!-- Content -->
 									<form id="memberform" name="memberform" method="post" action="">
 									<div>
-										<h3 id="contentId">이름</h3>
-
-										   <input type="text" name="userName" id="userName" value=""/>
+										<label style="font-size: 1em; float: left; " id="contentId">이름</label>
+										   <input type="text" name="userName" id="userName" value="" style="width: 180px; float: left; margin-left: 1em;"/>
+										  <label style="font-size: 1em; float: left; margin-left: 2em;" id="contentPwd">회원구분</label>
+										   <select class="form-control" id=userCate name="userCate" style="width: 200px; float: left; margin-left: 1em;">
+												<option value="선택하세요">선택하세요</option>
+												<option value="s">학생</option>
+												<option value="p">학부모</option>
+											</select>
+											<div style="clear: both; margin-bottom: 1em;"></div>
 										   <br>
-									
-										<h3 id="contentPwd">아이디</h3>
-										   <input type="text" name="userId" id="userId" readonly="readonly" value="${userId}"/>
-										   <div id="idresult"></div>
-										   <br>
-									
+										<label style="font-size: 1em; float: left;" id="contentPwd">아이디</label>
+										   <input type="text" name="userId" id="userId" readonly="readonly" value="${userId}" style="width: 180px; float: left; margin-left: 1em;"/>
+										   <div id="idresult" style="float: left; margin-left: 1em;"></div>
+										   <div style="clear: both; margin-bottom: 1em;"></div>
+									   <br>
 										<!-- <h3 id="contentPwd">비밀번호</h3> -->
 										   <input type="hidden" name="pass" id="pass" value="${pass}" />
-										   <br>
 									
 										<%-- <h3 id="contentPwd">비밀번호 확인</h3>
 										   <input type="password" name="passcheck" id="passcheck" value="${pass}"/>
@@ -149,9 +152,9 @@ function sample6_execDaumPostcode() {
 										
 										
 										<div class="form-group" align="left">
-											<label for="tel">전화번호</label>
+											<label style="font-size: 1em; float: left;" for="tel">전화번호</label>
 											<div id="tel" class="custom-control-inline">
-											<select class="form-control" id="phone1" name="phone1">
+											<select class="form-control" id="phone1" name="phone1" style="width: 100px; float: left; margin-left: 1em;">
 												<option value="010">010</option>
 												<option value="02">02</option>
 												<option value="031">031</option>
@@ -159,41 +162,34 @@ function sample6_execDaumPostcode() {
 												<option value="041">041</option>
 												<option value="051">051</option>
 												<option value="061">061</option>
-											</select> _
-											<input type="text" class="form-control" id="phone2" name="phone2" placeholder="1234"> _
-											<input type="text" class="form-control" id="phone3" name="phone3" placeholder="5678">
+											</select>
+											<input type="text" class="form-control" id="phone2" name="phone2" placeholder="1234" style="width: 100px; float: left; margin-left: 1em;">
+											<input type="text" class="form-control" id="phone3" name="phone3" placeholder="5678" style="width: 100px; float: left; margin-left: 1em;">
 											</div>
 										</div>
-										
-										   <br> <br>
+										<div style="clear: both; margin-bottom: 5em;"></div>
+										<hr style="margin-bottom: 5em;">
 									     
-										<h3 id="contentPwd">우편번호</h3>
-										   <input type="text" name="zipcode" id="zipcode"/>
-										   <a href="#" class="button" id="zipcodeSearchBtn" onclick="sample6_execDaumPostcode();">우편번호검색</a>
-										   
+										<label style="font-size: 1em; float: left; " id="contentPwd">우편번호</label>
+										   <input type="text" name="zipcode" id="zipcode"  readonly="readonly" style="width: 150px; float: left; margin-left: 1em;"/>
+										   <a href="#" class="button" id="zipcodeSearchBtn" style="float: left; margin-left: 1em;" onclick="sample6_execDaumPostcode();">우편번호검색</a>
+										   <div style="clear: both; margin-bottom: 1em;"></div>
 									
  	   								<div id="list"> <!-- 검색 결과 리스트 출력 영역 -->
  	   								 </div>
 										   <br>
 										   <br>
-										<h3 id="contentPwd">주소</h3>
-										   <input type="text" name="address" id="address" />
-										   <br>
-									
-										<h3 id="contentPwd">상세주소</h3>
-										   <input type="text" name="addressDetail" id="addressDetail" />
-										   <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+										<label style="font-size: 1em; float: left;" id="contentPwd">주소</label>
+										   <input type="text" name="address" id="address"  style="width: 350px; float: left; margin-left: 1em;"/>
+										<label style="font-size: 1em; float: left; margin-left: 2em;" id="contentPwd">상세주소</label>
+										   <input type="text" name="addressDetail" id="addressDetail"  style="width: 350px; float: left; margin-left: 1em;"/>
+										   <input type="text" id="sample6_extraAddress" style="width: 200px; float: left; margin-left: 1em;" placeholder="참고항목">
 										   
 										   <br><br>
-										   <h3 id="contentPwd">회원구분</h3>
-										   <select class="form-control" id=userCate name="userCate">
-												<option value="선택하세요">선택하세요</option>
-												<option value="s">학생</option>
-												<option value="p">학부모</option>
-											</select> 
+										   
 									</div>
 									</form>
-										   <br>
+										   <br><br>
 									<ul class="actions">
 										<!-- <li>1/4</li> -->
 										<li><a href="#" class="button primary" id="registerBtn">다음페이지</a></li>

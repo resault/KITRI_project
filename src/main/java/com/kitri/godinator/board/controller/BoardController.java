@@ -61,7 +61,7 @@ public class BoardController {
 	         System.out.println(map);
 	         String userId = memberDto.getUserId();
 	         System.out.println(userId);
-	         System.out.println(!"0".equals(map.get("H")));
+//	         System.out.println(!"0".equals(map.get("H")));
 	         if(map != null) {
 	            if(!"0".equals(map.get("H"))) {
 	               List<HSchoolDto> hRecomList = searchSchoolService.getHRecomSchool(userId);

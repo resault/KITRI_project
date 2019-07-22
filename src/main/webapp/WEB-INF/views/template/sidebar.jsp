@@ -18,7 +18,7 @@
 					<li>
 					<span class="opener">마이페이지</span>
 					<ul>
-						<li><a href="${root}/jinro/geomsa">진로검사</a></li>
+						<%-- <li><a href="${root}/jinro/geomsa">진로검사</a></li> --%>
 						<li><a href="${root}/schoolinfo/hrating">고등학교 평가</a></li>
 						<li><a href="${root}/schoolinfo/urating">대학교 평가</a></li>
 					</ul>

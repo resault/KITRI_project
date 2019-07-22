@@ -82,7 +82,7 @@ $(document).ready(function() {
 						data: $("#modifyForm").serialize(),
 						success: function(msg) {
 							alert(msg);
-							location.href="${root}/view/user/main.jsp";
+							location.href="${root}/board/main";
 						}
 					}); 
 					//location.href = "${root}/user/withdrawMember"; 
@@ -96,7 +96,7 @@ $(document).ready(function() {
 					data: $("#modifyForm").serialize(),
 					success: function(msg) {
 						alert(msg);
-						location.href="${root}/view/user/main.jsp";
+						location.href="${root}/board/main";
 					}
 				}); 
 		} 
@@ -163,79 +163,16 @@ function sample6_execDaumPostcode() {
 							<!-- Content -->
 								<div id="loginAll">
 									<header class="main">
-									
-										<h1>개인정보 수정</h1>
-									
+										<label style="font-size: 3em;">개인정보 수정</label>
 									</header>
-
+									<br><br>
 									<!-- Content -->
 									<form id="modifyForm" name="modifyForm" method="post">
 									<div>
-										<h3 id="contentId">이름</h3>
-										   <input type="text" name="userName" id="userName" value="${userInfo.userName}"/>
-										   <br>
-									
-										<%-- <h3 id="contentPwd">아이디</h3>
-										   <input type="text" name="userId" id="userId" value="${userInfo.userId}" />
-										   <br> --%>
-									<input type="hidden" id="userId" name="userId" value="${userInfo.userId}" >
-										<h3 id="contentPwd">새 비밀번호 혹은 기존 비밀번호</h3>
-										   <input type="password" name="pass" id="pass" />
-										   <div id="passresult"></div>
-										   <br>
-									
-										<h3 id="contentPwd">비밀번호 확인</h3>
-										   <input type="password" name="passcheck" id="passcheck" />
-										   <div id="pwdCheck"></div>
-										   <br>
-
-									<input type="hidden" class="form-control" id=email name="email" placeholder="" size="25" value="kakao-email">
-									<input type="hidden" id="emailDomain" name="emailDomain" value="kakao-emailDomain">
-									<!-- </div> -->
-
-										   <br>
-<input type="hidden" name="userInfo" id="userInfo" value="${userInfo}">
-<input type="hidden"  name="hName" id="hName" value="${hName}">
-<input type="hidden" name="uName" id="uName" value="${uName}">
-<input type="hidden" name="cateList" id="cateList" value="${cateList}">										
-										<div class="form-group" align="left">
-											<label for="tel">전화번호</label>
-											<div id="tel" class="custom-control-inline">
-											<select class="form-control" id="phone1" name="phone1" value="${userInfo.phone1}">
-												<option value="010">010</option>
-												<option value="02">02</option>
-												<option value="031">031</option>
-												<option value="032">032</option>
-												<option value="041">041</option>
-												<option value="051">051</option>
-												<option value="061">061</option>
-											</select> _
-											<input type="text" class="form-control" id="phone2" name="phone2" placeholder="1234" value="${userInfo.phone2}"> _
-											<input type="text" class="form-control" id="phone3" name="phone3" placeholder="5678" value="${userInfo.phone2}">
-											</div>
-										</div>
-										
-										   <br> <br>
-									     
-										<h3 id="contentPwd">우편번호</h3>
-										   <input type="text" name="zipcode" id="zipcode" value="${userInfo.zipcode}"/>
-										   <a href="#" class="button" id="zipcodeSearchBtn" onclick="sample6_execDaumPostcode();">우편번호검색</a>
-										   
-									
- 	   								<div id="list"> <!-- 검색 결과 리스트 출력 영역 -->
- 	   								 </div>
-										   <br>
-										   <br>
-										<h3 id="contentPwd">주소</h3>
-										   <input type="text" name="address" id="address" value="${userInfo.address}"/>
-										   <br>
-									
-										<h3 id="contentPwd">상세주소</h3>
-										   <input type="text" name="addressDetail" id="addressDetail" value="${userInfo.addressDetail}"/>
-										   <input type="text" id="sample6_extraAddress" placeholder="참고항목">
-										   <br><br>
-										   <h3 id="contentPwd">회원구분</h3>
-										   <select class="form-control" id=userCate name="userCate">
+										<label style="font-size: 1em; float: left;" id="contentId">이름</label>
+										   <input type="text" name="userName" id="userName" style="width: 180px; float: left; margin-left: 1em;" value="${userInfo.userName}"/>
+										    <label style="font-size: 1em; float: left; margin-left: 2em;" id="contentPwd">회원구분</label>
+										   <select class="form-control" id=userCate name="userCate" style="width: 200px; float: left; margin-left: 1em;">
 												<option value="선택하세요">선택하세요</option>
 												<c:choose>
 													<c:when test="${userInfo.userCate eq 's'}">
@@ -255,16 +192,76 @@ function sample6_execDaumPostcode() {
 													</c:otherwise>
 												</c:choose>
 											</select> 
+											<div style="clear: both; margin-bottom: 1em;"></div>
+										   <br>
+									
+										<%-- <h3 id="contentPwd">아이디</h3>
+										   <input type="text" name="userId" id="userId" value="${userInfo.userId}" />
+										   <br> --%>
+									<input type="hidden" id="userId" name="userId" value="${userInfo.userId}" >
+										<label style="font-size: 1em; id="contentPwd">새 비밀번호 혹은 기존 비밀번호</label>
+										   <input type="password" name="pass" id="pass" style="width: 180px; float: left; "/>
+										   <div id="passresult" style="float: left; margin-left: 1em;"></div>
+										   <div style="clear: both; margin-bottom: 1em; "></div>
+										   <br>
+									
+										<label style="font-size: 1em; id="contentPwd">비밀번호 확인</label>
+										   <input type="password" name="passcheck" id="passcheck"  style="width: 180px;"/>
+										   <div id="pwdCheck"></div>
+										   <br>
+
+									<input type="hidden" class="form-control" id=email name="email" placeholder="" size="25" value="kakao-email">
+									<input type="hidden" id="emailDomain" name="emailDomain" value="kakao-emailDomain">
+									<!-- </div> -->
+
+										   <br>
+<input type="hidden" name="userInfo" id="userInfo" value="${userInfo}">
+<input type="hidden"  name="hName" id="hName" value="${hName}">
+<input type="hidden" name="uName" id="uName" value="${uName}">
+<input type="hidden" name="cateList" id="cateList" value="${cateList}">										
+										<div class="form-group" align="left">
+											<label style="font-size: 1em; float: left;" for="tel">전화번호</label>
+											<div id="tel" class="custom-control-inline">
+											<select class="form-control" id="phone1" name="phone1" style="width: 100px; float: left; margin-left: 1em;" value="${userInfo.phone1}">
+												<option value="010">010</option>
+												<option value="02">02</option>
+												<option value="031">031</option>
+												<option value="032">032</option>
+												<option value="041">041</option>
+												<option value="051">051</option>
+												<option value="061">061</option>
+											</select>
+											<input type="text" class="form-control" id="phone2" name="phone2" placeholder="1234" value="${userInfo.phone2}" style="width: 100px; float: left; margin-left: 1em;">
+											<input type="text" class="form-control" id="phone3" name="phone3" placeholder="5678" value="${userInfo.phone2}" style="width: 100px; float: left; margin-left: 1em;">
+											</div>
+										</div>
+										
+										   <div style="clear: both; margin-bottom: 5em;"></div>
+										<hr style="margin-bottom: 5em;">
+									     
+										<label style="font-size: 1em; float: left; " id="contentPwd">우편번호</label>
+										   <input type="text" name="zipcode" id="zipcode"  readonly="readonly" style="width: 150px; float: left; margin-left: 1em;" value="${userInfo.zipcode}"/>
+										   <a href="#" class="button" id="zipcodeSearchBtn" style="float: left; margin-left: 1em;" onclick="sample6_execDaumPostcode();">우편번호검색</a>
+										   <div style="clear: both; margin-bottom: 1em;"></div>
+									
+ 	   								<div id="list"> <!-- 검색 결과 리스트 출력 영역 -->
+ 	   								 </div>
+ 	   								 <br>
+										<label style="font-size: 1em; float: left;" id="contentPwd">주소</label>
+										   <input type="text" name="address" id="address" value="${userInfo.address}"   style="width: 300px; float: left; margin-left: 1em;"/>
+										   <label style="font-size: 1em; float: left; margin-left: 2em;" id="contentPwd">상세주소</label>
+										   <input type="text" name="addressDetail" id="addressDetail" value="${userInfo.addressDetail}" style="width: 300px; float: left; margin-left: 1em;"/>
+										   <input type="text" style="width: 200px; float: left; margin-left: 1em;" id="sample6_extraAddress" placeholder="참고항목">
+										   <br><br>
 									</div>
 									</form>
-										   <br>
+										   <br><br>
 									<ul class="actions">
 										<li><a href="#" class="button primary" id="modifyOkBtn">수정하기</a></li>
 										<li><a href="#" class="button primary" id="withdrawBtn">탈퇴</a></li>
 										<!-- <li><a href="#" class="button" id="modifySchoolBtn">학교수정하러가기</a></li> -->
 									</ul>
 									
-									<hr class="major" />
 								</div>
 <%@ include file="/WEB-INF/views/template/sidebar.jsp"%>
 

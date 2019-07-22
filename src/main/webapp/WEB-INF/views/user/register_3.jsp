@@ -134,15 +134,14 @@ function allowDrop(ev) {
 							<!-- Content -->
 								<div id="loginAll">
 									<header class="main">
-									
-										<h1>회원가입</h1>
-										<h3 class="subtitle">학교 선택 기준은?        드래그해서 기준을 정해주세요!</h3>
+										<label style="font-size: 3em;">회원가입</label>
+										<label style="font-size: 1em; color: darkgray;">학교 선택 기준은?! (드래그해서 기준을 정해주세요!)</label>
 									</header>
 
 <br>
 
 									<!-- Content -->
-									<h2 class="schoolName">고등학교 우선순위</h2>
+									<label style="font-size: 1.5em; margin-top: 2em;" id="contentId">고등학교 우선순위</label>
 									
 									<br><br>
 									<form id="PreferenceForm" name="PreferenceForm">
@@ -152,33 +151,27 @@ function allowDrop(ev) {
 	<input type="hidden" id="university" name="university" value="${university}"> <!-- 유무에 따라 register_4 평가할 항목 정해짐 -->
 										
 									<div id="boardsHigh">
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위1</label></div>
+									<div class="row" style="float: left;">
 										<div class="col-lg-6" id="firstPreH" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">1순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위2</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="secondPreH" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">2순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위3</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="thirdPreH" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">3순위</div>
 									</div>
-									
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위4</label></div>
+									<div  style="clear: both;"></div>
+									<div class="row" style="float: left;">
 										<div class="col-lg-6" id="fourthPreH" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">4순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위5</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="fifthPreH" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">5순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위6</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="sixthPreH" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">6순위</div>
 									</div>
 									</div>	
-										
+									<div  style="clear: both;"></div>
 									<br>									
 									<div id="imagesHigh">
 											<div><img src="/godinator/resources/images/user/facility.jpg" data-seq="h1" id="facilityH" class="iconHigh" draggable="true" ondragstart="drag(event)"></div>
@@ -186,43 +179,36 @@ function allowDrop(ev) {
 										    <div><img src="/godinator/resources/images/user/teacher.jpg"  data-seq="h3" id="teacherH" class="iconHigh" draggable="true" ondragstart="drag(event)"></div>
 											<div><img src="/godinator/resources/images/user/result_instruct.jpg"  data-seq="h4" id="instructH" class="iconHigh" draggable="true" ondragstart="drag(event)"></div>
 											<div><img src="/godinator/resources/images/user/result.jpg"  data-seq="h5" id="resultH" class="iconHigh" draggable="true" ondragstart="drag(event)"></div>
-											<div><img src="/godinator/resources/images/user/group.jpg"  data-seq="h6" id="groupH" class="icon" draggable="true" ondragstart="drag(event)"></div>
+											<div><img src="/godinator/resources/images/user/group.jpg"  data-seq="h6" id="groupH" class="iconHigh" draggable="true" ondragstart="drag(event)"></div>
 									</div>
+									<img class="bin" src="/godinator/resources/images/user/trash.png" style="margin-left:15em; width:150px; height:180px;" class="bin" ondrop="bin(event)" ondragover="allowDrop(event)"/>
+									<div style="clear: both;"></div>
+									<hr  style="margin-bottom: 5em; margin-top: 5em;">
 									<br>
-									<br><br>
-									<img class="bin" src="/godinator/resources/images/user/trash.png" style="width:150px; height:180px;" class="bin" ondrop="bin(event)" ondragover="allowDrop(event)"/>
-									<hr>
-									<br>
-										<h2 class="schoolName">대학교 우선순위</h2>
+										<label style="font-size: 1.5em; margin-top: 2em;" id="contentId">대학교 우선순위</label>
 									<br><br>
 									<div id="boardsUni">
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위1</label></div>
+									<div class="row" style="float: left;">
 										<div class="col-lg-6" id="firstPreU" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">1순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위2</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="secondPreU" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">2순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위3</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="thirdPreU" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">3순위</div>
 									</div>
-									
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위4</label></div>
+									<div  style="clear: both;"></div>
+									<div class="row" style="float: left;">
 										<div class="col-lg-6" id="fourthPreU" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">4순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위5</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="fifthPreU" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">5순위</div>
 									</div>
-									<div class="row">
-									<div class="col-lg-6" style="display: inline-block;"><label class="prefer" >우선순위6</label></div>
+									<div class="row" style="float: left; margin-left: 1em;">
 										<div class="col-lg-6" id="sixthPreU" style="display: inline-block; width: 200px; height: 200px; padding-left: 100px;" class="pre" ondrop="drop(event)" ondragover="allowDrop(event)">6순위</div>
 									</div>
 									</div>	
-										
+									<div  style="clear: both;"></div>
 									<br>									
 									<div id="imagesUni">
 											<div><img src="/godinator/resources/images/user/facility.jpg" data-seq="u1" id="facilityU" class="iconUni" draggable="true" ondragstart="drag(event)"></div>
@@ -230,10 +216,10 @@ function allowDrop(ev) {
 											<div><img src="/godinator/resources/images/user/teacher.jpg"  data-seq="u3" id="teacherU" class="iconUni" draggable="true" ondragstart="drag(event)"></div>
 											<div><img src="/godinator/resources/images/user/result_instruct.jpg"  data-seq="u4" id="instructU" class="iconUni" draggable="true" ondragstart="drag(event)"></div>
 											<div><img src="/godinator/resources/images/user/result.jpg"  data-seq="u5" id="resultU" class="iconUni" draggable="true" ondragstart="drag(event)"></div>
-											<div><img src="/godinator/resources/images/user/group.jpg"  data-seq="u6" id="groupU" class="icon" draggable="true" ondragstart="drag(event)"></div>
+											<div><img src="/godinator/resources/images/user/group.jpg"  data-seq="u6" id="groupU" class="iconUni" draggable="true" ondragstart="drag(event)"></div>
 									</div>
-									<br><br>
-									<img class="bin" src="/godinator/resources/images/user/trash.png" style="width:150px; height:180px;" class="bin" ondrop="bin(event)" ondragover="allowDrop(event)"/>
+									<img class="bin" src="/godinator/resources/images/user/trash.png" style="margin-left:15em; width:150px; height:180px;" class="bin" ondrop="bin(event)" ondragover="allowDrop(event)"/>
+									<div style="clear: both;"></div>
 									</form>
 										
 										   <br><br>

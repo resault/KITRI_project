@@ -96,7 +96,7 @@ public class UserController {
 		//session.setAttribute("userInfo", "");
 		
 		return msg;
-		//return "redirect:/view/user/main.jsp";
+//		return "redirect:/view/user/main.jsp";
 
 	}
 
@@ -187,7 +187,7 @@ public class UserController {
 		if (memberDto !=null) {// 로그인 성공
 			// 세션에 정보 얻어서 메인페이지로 넘어가기
 			session.setAttribute("userInfo", memberDto);
-			//System.out.println("SESSION에 넣어졌니?");
+//			System.out.println("SESSION에 넣어졌니?");
 			
 			/** 윤영 : visit 통계용 : 로그인한사람**/
 			String StaticId = memberDto.getUserId();
@@ -200,7 +200,7 @@ public class UserController {
 				model.addAttribute("uName", uName);
 			}
 			model.addAttribute("cateList", cateList);
-			return "/board/main";
+			return "forward:/index.jsp";
 		} else if (memberDto ==null) {// 로그인실패 >> 비번, 아이디 확인해달라 (모달창에 메세지 가지고 가기)
 			String msg = "아이디 또는 비밀번호를 확인하세요.";
 			model.addAttribute("msg", msg);

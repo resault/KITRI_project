@@ -12,7 +12,7 @@ $(document).ready(function() {
 		$(this).attr("href","${root}/view/user/login.jsp");
 	});
 	$("#moveGoMainBtn").click(function() {
-		$(this).attr("href","${root}/view/user/main.jsp");
+		$(this).attr("href","${root}/board/main");
 	});
 });
 
@@ -20,8 +20,8 @@ $(document).ready(function() {
 
 									<!-- Content -->
 									<div style="text-align: center">
-									<h2>"회원가입이 성공적으로 완료되었습니다."</h2>
-									로그인 후 이용 가능합니다.
+									<label style="font-size: 2em; margin-top: 2em;" id="contentId">"회원가입이 성공적으로 완료되었습니다."</label>
+									<label style="font-size: 1em; color: darkgray;">로그인 후 이용 가능합니다.</label>
 									</div>
 										   <br>
 									<ul class="actions">

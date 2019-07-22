@@ -194,9 +194,9 @@ function sample6_execDaumPostcode() {
  	   								 </div>
 										   <br>
 										<label style="font-size: 1em; float: left;" id="contentPwd">주소</label>
-										   <input type="text" name="address" id="address"  style="width: 350px; float: left; margin-left: 1em;"/>
+										   <input type="text" name="address" id="address"  style="width: 300px; float: left; margin-left: 1em;"/>
 										<label style="font-size: 1em; float: left; margin-left: 2em;" id="contentPwd">상세주소</label>
-										   <input type="text" name="addressDetail" id="addressDetail" style="width: 350px; float: left; margin-left: 1em;"/>
+										   <input type="text" name="addressDetail" id="addressDetail" style="width: 300px; float: left; margin-left: 1em;"/>
 										   <input type="text" id="sample6_extraAddress" style="width: 200px; float: left; margin-left: 1em;" placeholder="참고항목">
 										   
 										   <br><br>

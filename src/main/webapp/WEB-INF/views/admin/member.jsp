@@ -169,7 +169,7 @@ $(document).ready(function(){
 <div class="col-9 col-12-small">
                
                <div class="col-3 col-5-small" style="margin: 0 1em 0 0.5em; float: right;">
-                  <input type="email" name="demo-email" id="demo-email" value="" placeholder="ID나 이름을 입력하세요." style="margin-bottom: 50px;"/>
+                  <input type="text" name="demo-email" id="demo-email" value="" placeholder="ID나 이름을 입력하세요." style="margin-bottom: 50px;"/>
                </div>
                <div class="col-7 col-7-small" style="float: right;">
                    <select name="school-cate2" id="school-cate2">
