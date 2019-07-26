@@ -1,0 +1,29 @@
+.subtitle{
+	font: lighter;
+	color: #828282;
+}
+
+div#telAll{
+	display: inline;
+	width: 600px;
+}
+
+div.tel{
+	display: inline;
+	float: left;
+	width: 200px;
+}
+
+div.preference{
+	border: 3px solid #FFD4DF;
+	padding: 50px;
+	margin: 30px;
+}
+
+hr{
+	border: 1px dashed #5a5a5a;
+}
+
+.schoolName{
+	color: #84799F;
+}
