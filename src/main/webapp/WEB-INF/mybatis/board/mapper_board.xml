@@ -4,5 +4,246 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.kitri.godinator.board.dao.BoardDao">
-  </mapper>
+<mapper namespace="com.kitri.godinator.board.dao.BoardDao">
+	
+  	
+  	
+  	<!-- 학교 이름 찾기  -->
+  	<select id="findHSchool" parameterType="String" resultType="String">
+  		select distinct school_name schoolName
+			from h_school
+			where school_name like '%'||#{schoolName}||'%'
+  	</select>
+  	
+  	<select id="findUSchool" parameterType="String" resultType="String">
+  		select distinct name schoolName
+			from u_school
+			where name like '%'||#{schoolName}||'%'
+  	</select>  
+  	
+  	<!-- 글 작성 완료  -->
+  	<insert id="writeArticle" parameterType="BbsDto">
+	insert all
+		into board (BOARD_NO, B_USER_ID, BOARD_CATEGORY, USER_NAME, BOARD_SUBJECT, BOARD_CONTENT, B_SCHOOL_NAME, B_SCHOOL_CODE,
+		B_SCHOOL_CATE1, B_SCHOOL_CATE2, REGION, B_VIEW_COUNT, DEL_STATUS, STATE, B_POSTDATE )
+		values(#{boardNo}, #{bUserId}, #{boardCategory}, #{userName}, #{boardSubject}, #{boardContent}, #{bSchoolName}, null, null, null, #{region},  0, 0, 0, sysdate)
+		
+		into bbs (BBS_NO, BOARD_NO, SAVE_FOLDER, ORIGINAL_NAME, SAVED_NAME, FILE_SIZE, LATITUDE, LONGTITUDE)
+		values (bbs_seq.nextval, #{boardNo}, #{saveFolder, jdbcType=VARCHAR}, #{originalName, jdbcType=VARCHAR}, #{savedName, jdbcType=VARCHAR}, #{fileSize, jdbcType=VARCHAR}, #{latitude, jdbcType=INTEGER}, #{longtitude, jdbcType=INTEGER})
+	select * from dual
+	
+	</insert>
+	
+	<!-- list에 뿌려주기 -->
+	<select id="listArticle" parameterType="map" resultType="bbsDto">
+	select c.board_no boardNo, c.board_category boardCategory,c.b_user_id bUserId, c.board_subject boardSubject, c.b_school_name bSchoolName, c.b_view_count bViewCount, 
+    decode(to_char(c.b_postdate ,'yymmdd'),
+                    to_char(sysdate,'yymmdd'), to_char(c.b_postdate,'hh24:mi:ss'),
+                    to_char(c.b_postdate ,'yy.mm.dd')) bPostdate, 
+		    c.region region
+		from
+		    (
+		    select rownum r, total.* 
+		    from
+		        (
+		        select board_no,board_category, b_user_id, board_subject, b_school_name, b_view_count, b_postdate, region
+		            from board
+		            where del_status = 0 
+		            and board_category = #{boardCategory}
+		             <if test="word != null and word != ''" >
+		            	<!-- 글 제목으로 검색 -->
+		            	<if test="key == 'board_subject'">
+		            		and board_subject like '%'||#{word}||'%'
+		            	</if>
+		            	
+		            	<!-- 작성자로 검색 -->
+		            	<if test="key == 'b_user_id'">
+		            		and b_user_id like '%'||#{word}||'%'
+		            	</if>
+		            
+		            	<!-- 학교 이름으로 검색하기 -->
+		            	<!-- 
+		            	<if test="key != 'b_school_name'">
+		            		and ${key} = #{word}
+		            	</if> -->
+		            </if>
+		            order by board_no DESC
+		            ) total
+				        where rownum &lt;= #{end}
+		        <if test="word != null and word != ''" >
+					<if test="key == 'b_school_name'">
+		           		where c.b_school_name like '%'||#{word}||'%'
+				        and rownum &lt;= #{end}
+           			</if>
+			 	</if>
+		    )c
+		where c.r &gt; #{start}
+	</select> 
+	
+	
+	
+	<!-- hot 게시물 에 뿌려주기 -->
+	<select id="listHotArticle" parameterType="map" resultType="bbsDto">
+	select c.board_no boardNo, c.board_category boardCategory,c.b_user_id bUserId, c.board_subject boardSubject, c.b_school_name bSchoolName, c.b_view_count bViewCount, 
+    decode(to_char(c.b_postdate ,'yymmdd'),
+                    to_char(sysdate,'yymmdd'), to_char(c.b_postdate,'hh24:mi:ss'),
+                    to_char(c.b_postdate ,'yy.mm.dd')) bPostdate, 
+		    c.region region, c.lc, c.lc*1 + c.b_view_count*0.1 hot, TRUNC(sysdate - to_date(c.b_postdate)) today
+		from
+		    (
+		    select rownum r, total.* 
+		    from
+		        (
+		        select b.board_no, b.board_category, b.b_user_id, b.board_subject, b.b_school_name, b.b_view_count, b.b_postdate, b.region, l.lc
+					from board b, (
+					                    select count(*) lc, board_no
+					                    from love
+					                    where like_unlike = 'L'
+					                    group by board_no
+					                    ) l
+					where b.board_no = l.board_no
+
+		            ) total
+		        where rownum &lt;= #{end}
+		    )c
+		where c.r &gt; #{start}
+        	and c.lc*1 + c.b_view_count*0.1 &gt;= 5
+        	and TRUNC(sysdate - to_date(c.b_postdate)) = 0
+        	order by hot desc, bpostdate
+	</select>
+	
+	<select id="mainHotArticle" parameterType="map" resultType="bbsDto">
+	select c.board_no boardNo, c.board_category boardCategory,c.b_user_id bUserId, c.board_subject boardSubject, c.b_school_name bSchoolName, c.b_view_count bViewCount, 
+    decode(to_char(c.b_postdate ,'yymmdd'),
+                    to_char(sysdate,'yymmdd'), to_char(c.b_postdate,'hh24:mi:ss'),
+                    to_char(c.b_postdate ,'yy.mm.dd')) bPostdate, 
+		    c.region region, c.lc, c.lc*1 + c.b_view_count*0.1 hot, TRUNC(sysdate - to_date(c.b_postdate)) today
+		from
+		    (
+		    select rownum r, total.* 
+		    from
+		        (
+		        select b.board_no, b.board_category, b.b_user_id, b.board_subject, b.b_school_name, b.b_view_count, b.b_postdate, b.region, l.lc
+					from board b, (
+					                    select count(*) lc, board_no
+					                    from love
+					                    where like_unlike = 'L'
+					                    group by board_no
+					                    ) l
+					where b.board_no = l.board_no
+
+		            ) total
+		        where rownum &lt;= #{end}
+		    )c
+		where c.r &gt; #{start}
+        	and c.lc*1 + c.b_view_count*0.1 &gt;= 5
+        	and TRUNC(sysdate - to_date(c.b_postdate)) = 0
+        	order by hot desc, bpostdate
+	</select>
+	
+	
+	
+	<!-- 게시물 보기 -->
+	<select id = "viewArticle" parameterType="int" resultType="bbsDto">
+	select a.board_no boardNo, a.board_category boardCategory, a.b_user_id bUserId, a.board_subject boardSubject, a.board_content boardContent, a.b_school_name bSchoolName,
+        decode(to_char(a.b_postdate ,'yymmdd'),
+                    to_char(sysdate,'yymmdd'), to_char(a.b_postdate,'hh24:mi:ss'),
+                    to_char(a.b_postdate ,'yy.mm.dd')) bPostdate, a.region region, a.b_view_count bViewCount,
+        b.save_folder saveFolder, b.original_name originalName, b.saved_name savedName, b.file_size fileSize, b.latitude latitude, b.longtitude longtitude
+	from board a, bbs b
+	where a.board_no = b.board_no 
+	and a.board_no = #{boardNo}
+	</select>
+	
+	<!-- 글 수정 -->
+	<update id="modifyArticle" parameterType="BbsDto">
+		update board
+		  set 
+		     board_subject = #{boardSubject},
+		     board_content = #{boardContent},
+		     b_postdate = sysdate
+		  where board_no = #{boardNo}
+	</update>
+	
+	
+	<!-- 이전 글 찾기 -->
+	<select id="prevArticle" parameterType="map" resultType="int">
+		select nvl(max(board_no), 0) result
+			from board
+			where board_no &lt; #{boardNo}
+			and board_category = #{boardCategory}
+			and del_status = 0
+	</select>
+	
+	<!-- 다음 글 찾기  -->
+	<select id="nextArticle" parameterType="map" resultType="int">
+		select nvl(min(board_no), 0) result
+			from board
+			where board_no &gt; #{boardNo}
+			and board_category = #{boardCategory}
+			and del_status = 0
+	</select>
+	
+	<!-- 글 삭제 -->
+	<update id="deleteArticle">
+		update board
+			  set 
+			     del_status = 1
+			  where board_no = #{boardNo}
+	</update>
+	
+	<!--좋아요 싫어요 버튼 확인-->
+	<select id="isLike" parameterType="loveDto" resultType="int">
+		select count(*)
+		from love
+		where board_no = #{boardNo}
+		and user_id = #{userId}
+	</select>
+	
+	<!-- 좋아요&싫어요 뭐 눌렀는지 확인 -->
+	<select id = "likeUnlike" parameterType="loveDto" resultType="String">
+		select like_unlike likeUnlike
+		from love
+		where board_no = #{boardNo}
+		and user_id = #{userId}
+	</select>
+	
+	
+	<!-- 좋아요 싫어요 버튼 isnert -->
+	<insert id="insertLike" parameterType="loveDto">
+		insert into love (like_no, board_no, user_id, like_unlike)
+    		values (like_seq.nextval, #{boardNo}, #{userId}, #{likeUnlike})
+	</insert>
+	
+	<!-- 좋아요 싫어요 버튼 취소 -->
+	<delete id="deleteLike" parameterType="loveDto">
+		delete love
+		where board_no = #{boardNo}
+		and user_id = #{userId}
+		and like_unlike = #{likeUnlike}
+	</delete>
+	
+	<!-- 좋아요 ->싫어요 & 싫어요 ->좋아요 -->
+	<update id = "updateLike" parameterType="loveDto">
+		update love set 
+			like_unlike = #{likeUnlike}
+			where user_id = #{userId}
+	</update>
+	
+	<!-- 좋아요 싫어요 전체 숫자 -->
+	<select id="totalLike" parameterType="int" resultType="int">
+	select count(*)
+		from love
+		where board_no = #{boardNo}
+		and like_unlike = 'L'
+	</select>
+	
+	<select id="totalHate" parameterType="int" resultType="int">
+	select count(*)
+		from love
+		where board_no = #{boardNo}
+		and like_unlike = 'U'
+	</select>
+	
+	
+</mapper>

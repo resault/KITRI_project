@@ -5,4 +5,59 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.kitri.godinator.admin.dao.MemberDao">
+	  <select id="viewAll" parameterType="String" resultType="MemberDto">
+	  SELECT m1.user_id userId, m1.user_name userName, m1.h_school_code hSchoolCode, m1.u_school_code uSchoolCode, m1.user_cate userCate, m1.join_date joinDate, nvl(m2.mentor , 'n') temp
+	  FROM member m1 full outer join mentor m2
+	  ON m1.user_id = m2.user_id
+	  </select>
+	  
+	  <select id="getHSchoolName" parameterType="String" resultType="String">
+	  select school_name
+   	  from h_school
+      where school_code = #{hSchoolCode}
+	  </select>
+	  
+	  <update id="setMentor" parameterType="String">
+	  update mentor
+	  set mentor = 'm', aprvl_date = sysdate
+	  where user_id = #{id}
+	  </update>
+	  
+	  <select id="countAllMembers" parameterType="String" resultType="int">
+	  SELECT count(*)
+	  FROM member
+	  </select>
+	  
+	  <select id="countAllMentors" resultType="int">
+	  SELECT count(*)
+	  FROM mentor
+	  </select>
+	  
+	  <select id="viewMoreInfo" parameterType="String" resultType="MemberDto">
+	  SELECT user_id userId, user_name userName, user_cate userCate, h_school_Code hSchoolCode, u_school_code uSchoolCode, email || email_domain email, phone1 || '-' || phone2 || '-' || phone3 phone1, '(' || zipcode || ') ' || address || ' '|| address_detail address, join_date joinDate
+	  FROM member
+	  WHERE user_id = #{memberid}
+	  </select>
+	  
+	  <delete id="deleteInfo_child" parameterType="String">
+	  DELETE mentor
+   	  WHERE user_id = #{userid}
+	  </delete>
+	  
+	  <delete id="deleteInfo" parameterType="String">
+	  DELETE member
+   	  WHERE user_id = #{userid}
+	  </delete>
+	  
+	  <select id="viewBoard" parameterType="String" resultType="BoardDto">
+	  select b_postdate bPostdate, board_subject boardSubject, board_content boardContent 
+	  from board
+	  where b_user_id = #{userid}
+	  </select>
+	  
+	  <select id="countBoard" parameterType="String" resultType="int">
+	  SELECT count(*)
+	  FROM board
+	  WHERE b_user_id = #{userid}
+	  </select>
   </mapper>

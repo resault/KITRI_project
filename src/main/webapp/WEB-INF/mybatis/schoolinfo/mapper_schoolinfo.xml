@@ -1,8 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.kitri.godinator.schoolinfo.dao.SchoolInfoDao">
+  	<select id="getEvalsBySchoolCode" parameterType="map" resultType="evalSchoolDto">
+  		SELECT *
+  		FROM	(SELECT rownum r, a.*
+  		
+  				FROM 	(SELECT ad_no adNo, ad_div adDiv, substr(user_id, 1, 4) || '****' userId, school_cate schoolCate, school_code schoolCode, content, upvote, downvote, regit_date regitDate
+  						FROM eval_school
+  						WHERE school_cate = #{schoolCate}
+  						AND school_code = #{schoolCode}
+  						AND ad_div = #{adDiv}
+  						AND state = 'a'
+  						<if test='searchType == "r"'>
+  							ORDER BY upvote/(downvote+1) DESC) a
+  						</if>
+  						<if test='searchType == "m"'>
+  							ORDER BY upvote DESC) a
+  						</if>
+  						<if test='searchType == "l"'>
+  							ORDER BY ad_no DESC) a
+  						</if>
+  		<![CDATA[
+  				WHERE rownum <= #{endRow}) 
+  		WHERE r >= #{startRow}
+  		]]>
+  	</select>
+  	<select id="getCountEvals" resultType="int">
+  		SELECT count(*)
+  		FROM eval_school
+  		WHERE school_cate = #{schoolCate}
+  		AND school_code = #{schoolCode}
+  		AND ad_div = #{adDiv}
+  		AND state = 'a'
+  	</select>
+  	<select id="getUpDownByUser" parameterType="map" resultType="string">
+  		SELECT updown
+  		FROM eval_ud_log
+  		WHERE ad_no = #{adNo}
+  		AND user_id = #{userId}
+  	</select>
+  	<insert id="insertEvalLogUpDown" parameterType="map">
+		INSERT into eval_ud_log (user_id, ad_no, updown) values (#{userId},#{adNo},#{upDown})
+  	</insert>
+  	<update id="plusEvalVote" parameterType="map">
+  		UPDATE eval_school
+  		SET 
+  		<if test='upDown == "u"'>
+  			upvote = upvote + 1
+  		</if>
+  		<if test='upDown == "d"'>
+  			downvote = downvote + 1
+  		</if>
+  		WHERE ad_no = #{adNo}
+  		AND user_id = #{userId}
+  	</update>
+  	<update id="minusEvalVote" parameterType="map">
+  		UPDATE eval_school
+  		SET 
+  		<if test='upDown == "u"'>
+  			upvote = upvote - 1
+  		</if>
+  		<if test='upDown == "d"'>
+  			downvote = downvote - 1
+  		</if>
+  		WHERE ad_no = #{adNo}
+  		AND user_id = #{userId}
+  	</update>
+  	<delete id="deleteEvalUpDown" parameterType="map">
+  		DELETE eval_ud_log 
+		WHERE ad_no = #{adNo}
+		AND user_id = #{userId}
+  	</delete>
+  	<select id="getEvalUpDown" parameterType="map" resultType="map">
+  		SELECT upvote, downvote
+  		FROM eval_school
+  		WHERE ad_no = #{adNo}
+  	</select>
+  	<select id="getHEvalCateAvg" parameterType="map" resultType="map">
+  		select 	avg(eval1_avg) eval1Avg, avg(eval2_avg) eval2Avg, avg(eval3_avg) eval3Avg, 
+  				avg(eval4_avg) eval4Avg, avg(eval5_avg) eval5Avg, avg(eval6_avg) eval6Avg
+		from h_school 
+		WHERE school_cate2 =    (SELECT school_cate2 
+		                        FROM h_school 
+		                        WHERE school_code = #{schoolCode})
+  	</select>
+  	<select id="getUEvalCateAvg" parameterType="map" resultType="map">
+  		select 	avg(eval1_avg) eval1Avg, avg(eval2_avg) eval2Avg, avg(eval3_avg) eval3Avg, 
+  				avg(eval4_avg) eval4Avg, avg(eval5_avg) eval5Avg, avg(eval6_avg) eval6Avg
+		from u_school 
+		WHERE type =    (SELECT type 
+		                        FROM u_school 
+		                        WHERE code = #{schoolCode})
+  	</select>
+  	<select id="selectHEvalByUser" parameterType="string" resultType="int">
+  		select count(*)
+  		from user_record 
+  		WHERE user_id = #{userid}
+  		AND h_eval1 is not null
+  	</select>
+  	<insert id="insertRecordHEvalByUser" parameterType="map">
+  		INSERT INTO user_record (user_id, h_eval1, h_eval2, h_eval3, h_eval4, h_eval5, h_eval6)
+		VALUES (#{userId}, #{facilities}, #{study}, #{teachers}, #{course}, #{erate}, #{clubVital})
+  	</insert>
+  	<update id="updateHEvalAvgByUser" parameterType="map">
+  		update h_school set eval1_avg = ((eval1_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{facilities}) / (eval_cnt+1), 
+                    eval2_avg = ((eval2_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{study}) / (eval_cnt+1), 
+                    eval3_avg = ((eval3_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{teachers}) / (eval_cnt+1), 
+                    eval4_avg = ((eval4_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{course}) / (eval_cnt+1), 
+                    eval5_avg = ((eval5_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{erate}) / (eval_cnt+1), 
+                    eval6_avg = ((eval6_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{clubVital}) / (eval_cnt+1), 
+                    eval_cnt = eval_cnt + 1
+                    WHERE school_code = #{schoolCode}
+  	</update>
+  	<update id="udpateHAlmaMater" parameterType="map">
+  		update member set h_school_code = #{schoolCode} WHERE user_id = #{userId}
+  	</update>
+  	<select id="selectUEvalByUser" parameterType="string" resultType="int">
+  		select count(*)
+  		from user_record 
+  		WHERE user_id = #{userid}
+  		AND u_eval1 is not null
+  	</select>
+  	<insert id="insertRecordUEvalByUser" parameterType="map">
+  	
+  		MERGE INTO user_record
+		USING dual
+		     ON (user_id = #{userId})
+		WHEN MATCHED THEN
+		     UPDATE SET u_eval1 = #{facilities}, u_eval2 = #{study}, u_eval3 = #{teachers}, u_eval4 = #{course}, u_eval5 = #{erate}, u_eval6 = #{clubVital}
+		WHEN NOT MATCHED THEN
+		     INSERT (user_id, u_eval1, u_eval2, u_eval3, u_eval4, u_eval5, u_eval6) 
+		     VALUES (#{userId}, #{facilities}, #{study}, #{teachers}, #{course}, #{erate}, #{clubVital})
+  	</insert>
+  	<update id="updateUEvalAvgByUser" parameterType="map">
+  		update u_school set eval1_avg = ((eval1_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{facilities}) / (eval_cnt+1), 
+                    eval2_avg = ((eval2_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{study}) / (eval_cnt+1), 
+                    eval3_avg = ((eval3_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{teachers}) / (eval_cnt+1), 
+                    eval4_avg = ((eval4_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{course}) / (eval_cnt+1), 
+                    eval5_avg = ((eval5_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{erate}) / (eval_cnt+1), 
+                    eval6_avg = ((eval6_avg * decode(eval_cnt, 0, 1, eval_cnt)) + #{clubVital}) / (eval_cnt+1), 
+                    eval_cnt = eval_cnt + 1
+                    WHERE code = #{schoolCode}
+  	</update>
+  	<update id="udpateUAlmaMater" parameterType="map">
+  		update member set u_school_code = #{schoolCode} WHERE user_id = #{userId}
+  	</update>
+  	<select id="checkHAlmaMater" parameterType="string" resultType="string">
+  		select h_eval1||'' from user_record WHERE user_id = #{userId}
+  	</select>
+  	<select id="checkUAlmaMater" parameterType="string" resultType="string">
+  		select u_eval1||'' from user_record WHERE user_id = #{userId}
+  	</select>
+  	<select id="getUserHRecord" parameterType="string" resultType="map">
+  		select h_eval1, h_eval2, h_eval3, h_eval4, h_eval5, h_eval6 from user_record WHERE user_id = #{userId}
+  	</select>
+  	<select id="getUserURecord" parameterType="string" resultType="map">
+  		select u_eval1, u_eval2, u_eval3, u_eval4, u_eval5, u_eval6 from user_record WHERE user_id = #{userId}
+  	</select>
+  	<select id="getUserHEvalA" parameterType="string" resultType="string">
+  		SELECT content from eval_school 
+  		WHERE user_id = #{userId}
+  		AND school_cate = 'h'
+  		AND ad_div = 'a'
+  		AND school_code = (select h_school_code from member WHERE user_id = #{userId})
+  	</select>
+  	<select id="getUserHEvalD" parameterType="string" resultType="string">
+  		SELECT content from eval_school 
+  		WHERE user_id = #{userId}
+  		AND school_cate = 'h'
+  		AND ad_div = 'd'
+  		AND school_code = (select h_school_code from member WHERE user_id = #{userId})
+  	</select>
+  	<select id="getUserUEvalA" parameterType="string" resultType="string">
+  		SELECT content from eval_school 
+  		WHERE user_id = #{userId}
+  		AND school_cate = 'u'
+  		AND ad_div = 'a'
+  		AND school_code = (select u_school_code from member WHERE user_id = #{userId})
+  	</select>
+  	<select id="getUserUEvalD" parameterType="string" resultType="string">
+  		SELECT content from eval_school 
+  		WHERE user_id = #{userId}
+  		AND school_cate = 'u'
+  		AND ad_div = 'd'
+  		AND school_code = (select u_school_code from member WHERE user_id = #{userId})
+  	</select>
+  	<insert id="insertUserHEvalA" parameterType="map">
+  		INSERT INTO eval_school (ad_no, ad_div, user_id, school_cate, school_code, content, upvote, downvote, state)
+  					values(ad_seq.nextval, 'a', #{userId}, 'h', #{schoolCode}, #{eval_a}, 0, 0, 'a')
+  	</insert>
+  	<insert id="insertUserHEvalD" parameterType="map">
+  		INSERT INTO eval_school (ad_no, ad_div, user_id, school_cate, school_code, content, upvote, downvote, state)
+  					values(ad_seq.nextval, 'd', #{userId}, 'h', #{schoolCode}, #{eval_d}, 0, 0, 'a')
+  	</insert>
+  	<insert id="insertUserUEvalA" parameterType="map">
+  		INSERT INTO eval_school (ad_no, ad_div, user_id, school_cate, school_code, content, upvote, downvote, state)
+  					values(ad_seq.nextval, 'a', #{userId}, 'u', #{schoolCode}, #{eval_a}, 0, 0, 'a')
+  	</insert>
+  	<insert id="insertUserUEvalD" parameterType="map">
+  		INSERT INTO eval_school (ad_no, ad_div, user_id, school_cate, school_code, content, upvote, downvote, state)
+  					values(ad_seq.nextval, 'd', #{userId}, 'u', #{schoolCode}, #{eval_d}, 0, 0, 'a')
+  	</insert>
+  	<select id="getUserHschoolCode" parameterType="string" resultType="map">
+  		SELECT m.h_school_code schoolCode, h.school_name schoolName
+  		FROM member m JOIN h_school h
+  		ON m.h_school_code = h.school_code
+  		WHERE user_id = #{userId}
+  	</select>
+  	<select id="getUserUschoolCode" parameterType="string" resultType="map">
+  		SELECT m.u_school_code schoolCode, u.name schoolName
+  		FROM member m JOIN u_school u
+  		ON m.u_school_code = u.code
+  		WHERE user_id = #{userId}
+  	</select>
   </mapper>

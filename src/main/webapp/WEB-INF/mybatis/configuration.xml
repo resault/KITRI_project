@@ -6,6 +6,28 @@
 
 <configuration>
 
-	
+	<typeAliases>
+		<typeAlias alias="bbsDto" type="com.kitri.godinator.model.BbsDto"/>
+		<typeAlias alias="boardDto" type="com.kitri.godinator.model.BoardDto"/>
+		<typeAlias alias="categoryDto" type="com.kitri.godinator.model.CategoryDto"/>
+		<typeAlias alias="editDto" type="com.kitri.godinator.model.EditDto"/>
+		<typeAlias alias="evalSchoolDto" type="com.kitri.godinator.model.EvalSchoolDto"/>
+		<typeAlias alias="evalUDLogDto" type="com.kitri.godinator.model.EvalUDLogDto"/>
+		<typeAlias alias="hSchoolDto" type="com.kitri.godinator.model.HSchoolDto"/>
+		<typeAlias alias="jinroDto" type="com.kitri.godinator.model.JinroDto"/>
+		<typeAlias alias="loveDto" type="com.kitri.godinator.model.LoveDto"/>
+		<typeAlias alias="memberDto" type="com.kitri.godinator.model.MemberDto"/>
+		<typeAlias alias="memberPreferDto" type="com.kitri.godinator.model.MemberPreferDto"/>
+		<typeAlias alias="mentorDto" type="com.kitri.godinator.model.MentorDto"/>
+		<typeAlias alias="msgDto" type="com.kitri.godinator.model.MsgDto"/>
+		<typeAlias alias="replyDto" type="com.kitri.godinator.model.ReplyDto"/>
+		<typeAlias alias="reportCateDto" type="com.kitri.godinator.model.ReportCateDto"/>
+		<typeAlias alias="reportDto" type="com.kitri.godinator.model.ReportDto"/>
+		<typeAlias alias="searchLogDto" type="com.kitri.godinator.model.SearchLogDto"/>
+		<typeAlias alias="uSchoolDto" type="com.kitri.godinator.model.USchoolDto"/>
+		<typeAlias alias="visitDto" type="com.kitri.godinator.model.VisitDto"/>
+		<typeAlias alias="onChatDto" type="com.kitri.godinator.model.OnChatDto"/>
+		<typeAlias alias="mentorInfoDto" type="com.kitri.godinator.model.MentorInfoDto"/>
+	</typeAliases>
 
 </configuration>

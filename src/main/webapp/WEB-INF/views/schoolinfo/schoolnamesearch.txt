@@ -1,0 +1,41 @@
+<div class="ado_company_list"></div>
+
+//업체명 받아오기
+		$('div#myModal div.container>div.row>div>input[name=ado_company]').keyup(function(e) {
+			$adp_company_list = $('div#myModal div.ado_company_list');
+			$adp_company_list.empty();
+			var companyKeyword = $(this).val().trim();
+			if(preCompanyKeyword != companyKeyword && companyKeyword != '') {
+					preCompanyKeyword = companyKeyword;
+					$.ajax({
+						url : '/hobby/ajaxservlet?act=mgntregistAjax',
+						method : 'get',
+						data : 'keyword=' + companyKeyword,
+						dataType : 'json',
+						success : function(result) {
+							if($(result).length != 0) {
+								$ul = $('<ul/>', {
+									"class" : "list-group scrollBlind",
+									"style" : "cursor : point;"
+								});
+								$(result).each(function(i, e) {
+									$li = $('<li/>', {
+										"class" : "list-group-item",
+										"click" : function() {
+											$('#adResgist>input[name=ado_no]').val(e.ado_no);
+											$('form#adResgist input[name=ado_company]').val(e.ado_company);
+											$adp_company_list.empty();
+										}
+									});
+									$li.text(e.ado_company);
+									$ul.append($li);
+								});
+								$adp_company_list.append($ul);
+							}
+						},
+						error : function(jqXHR, textStatus, errorThrown) {
+							alert('jqXHR : ' + jqXHR + 'textStatus : ' + textStatus + 'errorThrown : ' + errorThrown);
+						}
+					});
+			}
+		});
