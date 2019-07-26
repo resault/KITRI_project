@@ -58,13 +58,18 @@ vertical-align: top;
     z-index: 1000;
 }
 </style>
-
-
-
 </head>
-<body class="homepage is-preload" style="background-color: black;">
+
+
+
 <script type="text/javascript">
-	$(function() {
+$(function() {
+		
+	
+		if(${Recursion != 1}){
+			location.href='/MovieHolic/film';
+		}
+	
 		var arr = $("div>div>nav.nav2>li>a");
 		$(arr).click(function() {
 		var vurl = $(this).attr("href");
@@ -77,8 +82,14 @@ vertical-align: top;
 		});
 			
 		});
-	});
+});
 </script>
+<%
+if((Integer)request.getAttribute("Recursion") != null){
+	int Recursion = (Integer)request.getAttribute("Recursion");
+	if(Recursion == 1 ){ %>
+
+<body class="homepage is-preload" style="background-color: black;">
 
 
 
@@ -151,7 +162,8 @@ List<FilmDto> variousfilm2 = (List<FilmDto>)request.getAttribute("variousfilm2")
 			<div class="reel">
 
 <%
-for(FilmDto dto : box){
+if(box != null){
+	for(FilmDto dto : box){
 %>	
 
 				<article style="background-color: rgb(3, 39, 49);">
@@ -170,6 +182,7 @@ for(FilmDto dto : box){
 					</header>
 				</article>
 <%
+	}
 }
 %> 
 			</div>
@@ -178,7 +191,7 @@ for(FilmDto dto : box){
 		
 <%
 // ################## 비로그인 ##################
-if(id == null) {
+if(id == null || (id!=null && favoritefilm.get(0).getCategory() == "")) {
 %>
 
 		<!---------------------------------------- ② 취향 저격 리스트 ---------------------------------------->
@@ -203,7 +216,8 @@ if(id == null) {
 					<div class="reel" id="romance">
 
 <%
-for(FilmDto dto : variousfilm){
+if(variousfilm != null){
+	for(FilmDto dto : variousfilm){
 %>					
 						<article style="margin: ; height: 410px; background-color: rgb(3, 39, 49);">
 							<a href="<%=root%>/film?act=viewfilmdetail&movieCdYoung=<%=dto.getMovieCdYoung()%>&movieCdNaver=<%=dto.getMovieCdNaver()%>"  class="image featured">
@@ -218,6 +232,7 @@ for(FilmDto dto : variousfilm){
 							</header>
 						</article>
 <%
+	}
 }
 %>
 	
@@ -243,7 +258,8 @@ for(FilmDto dto : variousfilm){
 					<div class="reel" id="romance">
 
 <%
-for(FilmDto dto : variousfilm2){
+if(variousfilm2 != null){
+	for(FilmDto dto : variousfilm2){
 %>					
 						<article style="margin: ; height: 410px; background-color: rgb(3, 39, 49);">
 							<a href="<%=root%>/film?act=viewfilmdetail&movieCdYoung=<%=dto.getMovieCdYoung()%>&movieCdNaver=<%=dto.getMovieCdNaver()%>"  class="image featured">
@@ -258,6 +274,7 @@ for(FilmDto dto : variousfilm2){
 							</header>
 						</article>
 <%
+	}
 }
 %>
 	
@@ -297,7 +314,8 @@ else {
 					<div class="reel" id="romance">
 
 <%
-for(FilmDto dto : favoritefilm){
+if(favoritefilm != null) {
+	for(FilmDto dto : favoritefilm){
 %>					
 						<article style="margin: ; height: 410px; background-color: rgb(3, 39, 49);">
 							<a href="<%=root%>/film?act=viewfilmdetail&movieCdYoung=<%=dto.getMovieCdYoung()%>&movieCdNaver=<%=dto.getMovieCdNaver()%>"  class="image featured">
@@ -312,6 +330,7 @@ for(FilmDto dto : favoritefilm){
 							</header>
 						</article>
 <%
+	}
 }
 %>
 	
@@ -337,7 +356,8 @@ for(FilmDto dto : favoritefilm){
 					<div class="reel" id="romance">
 
 <%
-for(FilmDto dto : favoritefilm2){
+if(favoritefilm2!=null){
+	for(FilmDto dto : favoritefilm2){
 %>					
 						<article style="margin: ; height: 410px; background-color: rgb(3, 39, 49);">
 							<a href="<%=root%>/film?act=viewfilmdetail&movieCdYoung=<%=dto.getMovieCdYoung()%>&movieCdNaver=<%=dto.getMovieCdNaver()%>"  class="image featured">
@@ -352,6 +372,7 @@ for(FilmDto dto : favoritefilm2){
 							</header>
 						</article>
 <%
+	}
 }
 %>
 	
@@ -364,10 +385,22 @@ for(FilmDto dto : favoritefilm2){
 <%
 }
 %>	
-
-  
- <section id="banner">
- <br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+ 
+<section id="banner">
+<br><br><br><br><br><br><br><br><br><br><br><br>
 </section>
 		
 		<%@ include file="/template/footer.jsp"%>
+		
+<%
+	}
+}else{%>
+
+<img style="display: block; margin: 250px auto; " alt="로딩중" src="/MovieHolic/images/loding.gif">
+	
+<%
+}
+%>
+
+  

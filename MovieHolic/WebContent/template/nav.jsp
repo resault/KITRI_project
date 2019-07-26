@@ -23,15 +23,20 @@
 						<li><a href="/MovieHolic/page/mypage/wishlist.jsp">WISH LIST</a></li>
 						<li><a href="/MovieHolic/mypage?page=diary">DIARY</a></li>
 						<li><a href="/MovieHolic/page/mypage/social.jsp">SOCIAL</a></li>
-						<li><a href="/MovieHolic/mypage?page=setting">SETTING</a></li>
-					</ul>
+<!-- 						<li><a href="/MovieHolic/mypage?page=setting">SETTING</a></li>
+ -->					</ul>
 				</li>
 				<% } %>
 				
 				<% if(userid != null) {%>
 					<% if(userid.equals("admin")) {%>
-				<li><a href="/MovieHolic/admin?act=alllist&notify=notify">MANAGEMENT</a></li>
-					<%-- <li><a href="/MovieHolic/page/adminchart/statistics.jsp">STATISTICS</a></li> --%>
+				<li>
+					<a href="#">MANAGEMENT</a>
+					<ul>
+						<li><a href="/MovieHolic/admin?act=alllist&notify=notify">MANAGEMENT BOARD</a></li>
+						<li><a href="/MovieHolic/chart?act=chart">STATISTICS</a></li>
+					</ul>
+				</li>
 					<%} %>
 				<%} %>
 				
