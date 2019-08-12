@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+				<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl" />
+				<property name="username" value="godinator" />
+				<property name="password" value="godinator" />	
+		</bean> -->
+		
+		<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	      <property name="jndiName" value="java:comp/env/jdbc/godinator"/>
+	   </bean>
+		
+		<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="configLocation" value="/WEB-INF/mybatis/configuration.xml"/>  <!-- 설정파일이 어디있는지 property설정 -->
+			<property name="mapperLocations"> <!-- 여러 개일 때는 list로 처리 -->
+				<list>	
+					<value>/WEB-INF/mybatis/mentor/mapper_mentor.xml</value>
+					<value>/WEB-INF/mybatis/mentor/mapper_msg.xml</value>
+					<value>/WEB-INF/mybatis/mentor/mapper_resume.xml</value>
+					<value>/WEB-INF/mybatis/mentor/mapper_chat.xml</value>
+					<value>/WEB-INF/mybatis/admin/mapper_statistics.xml</value>
+					<value>/WEB-INF/mybatis/admin/mapper_member.xml</value>
+					<value>/WEB-INF/mybatis/admin/mapper_school.xml</value>
+					<value>/WEB-INF/mybatis/board/mapper_board.xml</value>
+					<value>/WEB-INF/mybatis/board/mapper_bbs.xml</value>
+					<value>/WEB-INF/mybatis/board/mapper_comment.xml</value>
+					<value>/WEB-INF/mybatis/user/mapper_user.xml</value>
+					<value>/WEB-INF/mybatis/user/mapper_jinro.xml</value>
+					<value>/WEB-INF/mybatis/schoolinfo/mapper_searchschool.xml</value>
+					<value>/WEB-INF/mybatis/schoolinfo/mapper_schoolnews.xml</value>
+					<value>/WEB-INF/mybatis/schoolinfo/mapper_schoolinfo.xml</value>
+					<value>/WEB-INF/mybatis/common/mapper_schoolinfo_common.xml</value>
+					<value>/WEB-INF/mybatis/common/mapper_admin_common.xml</value>
+					<value>/WEB-INF/mybatis/common/mapper_board_common.xml</value>
+					<value>/WEB-INF/mybatis/common/mapper_user_common.xml</value>
+				</list>
+			</property> 
+		</bean>
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"> <!-- sqlSession이 interface이기 때문에 하위생성자를 통해 생성 -->
+			<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg><!-- 생성자 설정 -->
+		</bean>
+		
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
+		
+		<tx:annotation-driven transaction-manager="transactionManager"/>
+		
+</beans>
+

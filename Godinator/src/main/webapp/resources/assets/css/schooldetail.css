@@ -1,0 +1,55 @@
+h2.schooldetail {
+	text-align: center;
+}
+
+section span>img {
+	max-width: 100%;
+	height: inherit;
+}
+
+p>span.adis:hover {
+	cursor: pointer;
+	color: black;
+	font-weight: bold;
+}
+
+p.adis {
+	vertical-align: middle !important;
+}
+
+div.textarea {
+	border: 1px solid red;
+	margin: 1% auto;
+}
+
+ul.school-detail {
+	text-align: center;
+}
+div.schooldetail-map {
+	height: 100%;	
+	width: 100%;	
+}
+div#schooldetail-map {
+	width: 500px;
+	height: 500px;
+}
+ul#pros-cons>li .eval:hover	{
+	cursor: pointer !important;
+}
+ul#pros-cons>li .active:hover {
+	cursor: default !important;
+}
+div.adis-contents a[data-state="u"] {
+	border: 3px solid yellow !important;
+}
+div.adis-contents a[data-state="d"] {
+	border: 3px solid blue !important;
+}
+div#schooldetail-map {
+	width: 80%;
+	margin: 0 auto;
+}
+p#schoolDetailAddress {
+	font-size: 2em;
+	text-align: center;
+}

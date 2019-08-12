@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kitri.godinator.admin.dao.SchoolDao">
+	<select id="viewMember" resultType="HSchoolDto">
+	select '고등학교', school_cate1, school_name, phone, address || ' ' || address_detail 
+	from h_school
+	</select>
+	
+	<select id="searchSchool" parameterType="map" resultType="HSchoolDto">
+	SELECT distinct school_cate1 schoolCate1, school_name schoolName, phone, address, address_detail addressDetail
+	FROM h_school
+	WHERE school_name LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="searchRegion" parameterType="map" resultType="HSchoolDto">
+	SELECT school_cate1 schoolCate1, school_name schoolName, phone, address, address_detail addressDetail
+	FROM h_school
+	WHERE address LIKE '%'||#{keyword}||'%'
+	</select>
+	
+	<select id="viewAll" parameterType="String" resultType="HSchoolDto">
+	SELECT school_cate1 schoolCate1, school_name schoolName, phone, address, address_detail addressDetail
+	FROM h_school
+	</select>
+	
+	<select id="viewMoreInfo" parameterType="String" resultType="HSchoolDto">
+	SELECT school_code schoolCode, address, address_detail addressDetail, home_page homePage, zipcode
+    FROM h_school
+    WHERE school_name = #{schoolName}
+	</select>
+	
+	<update id="modifyInfo" parameterType="HSchoolDto" >
+	UPDATE h_school
+    SET school_name = #{schoolName}, school_cate1 = #{schoolCate1}, home_page = #{homePage}, phone = #{phone}, zipcode = #{zipcode}, address = #{address}, address_detail = #{addressDetail}
+    WHERE school_code = #{schoolCode}
+	</update>
+	
+	<delete id="deleteInfo" parameterType="String">
+	DELETE h_school
+    WHERE school_code = #{schoolCode}
+	</delete>
+	
+	<select id="getMentoInfo" parameterType="String" resultType="MemberDto">
+	SELECT distinct m1.user_id userId, m1.user_name userName, m2.mentor userCate, m2.aprvl_date joinDate
+	FROM member m1, mentor m2
+	WHERE m1.user_id = m2.user_id AND m1.h_school_code = #{schoolCode}
+	</select>
+	
+</mapper>

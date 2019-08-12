@@ -1,0 +1,82 @@
+SELECT *
+
+FROM    (SELECT  nvl(
+                    (select count(*) 
+    
+                    from board 
+                    
+                    WHERE b_school_code = h.school_code) * 3 +
+                    
+                    (select count(*) 
+                    
+                    from board b 
+                    
+                    join reply r 
+                    
+                    on b.board_no = r.board_no 
+                    
+                    WHERE b_school_code = h.school_code) +
+                    
+                    (SELECT count(*) + sum(upvote) * 0.002 
+                    
+                    from eval_school 
+                    
+                    WHERE school_code = h.school_code) +
+                    
+                    (SELECT h_eval1 * h.eval1_avg + 
+                    
+                            h_eval2 * h.eval2_avg + 
+                            
+                            h_eval3 * h.eval3_avg + 
+                            
+                            h_eval4 * h.eval4_avg + 
+                            
+                            h_eval5 * h.eval5_avg + 
+                            
+                            h_eval6 * h.eval6_avg 
+                            
+                    from user_prefer 
+                    
+                    WHERE user_id = 'testid') +
+                    
+                    rk
+                    
+                , 0) total_score, 
+                
+                school_code, 
+                
+                school_cate2,
+                
+                esttype,
+                
+                home_page
+                
+        FROM    (SELECT h.school_cate2 school_type, rk
+        
+                FROM    (SELECT sum(search_cnt) totalCnt, school_cate2, 
+                
+                                ( 5 - rank() OVER (ORDER BY sum(search_cnt) DESC)) * 100 rk
+                                
+                        FROM search_log s 
+                        
+                        JOIN h_school h 
+                        
+                        ON s.school_code = h.school_code
+                        
+                        WHERE user_id = 'testid'
+                        
+                        AND search_date > add_months(search_date, -12)
+                        
+                        GROUP BY school_cate2
+                        
+                        ORDER BY totalCnt DESC) h
+                        
+                WHERE rownum <= 4) cate 
+                
+                join h_school h
+                
+                on cate.school_type = h.school_cate2
+                
+        ORDER BY total_score DESC)
+        
+WHERE rownum < 5;

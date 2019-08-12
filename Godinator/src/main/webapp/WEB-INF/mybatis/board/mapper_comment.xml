@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kitri.godinator.board.dao.CommentDao">
+	<insert id="writeMemo" parameterType="replyDto">
+		insert into
+		REPLY(comment_no, board_no, c_user_id,c_postdate, comment_content, state)
+		values(comment_seq.nextval, ${boardNo}, #{CUserId}, sysdate, #{commentContent}, 0)
+	</insert>
+
+	<select id="listMemo" parameterType="int" resultType="replyDto">
+		select
+		comment_no commentNo, board_no boardNo, c_user_id CUserId, 
+		decode(to_char(c_postdate ,'yymmdd'),
+                    to_char(sysdate,'yymmdd'), to_char(c_postdate,'hh24:mi'),
+                    to_char(c_postdate ,'yy.mm.dd')) CPostdate
+		, comment_content commentContent, state state
+		from reply
+		where state = 0 
+		and board_no = #{boardNo}
+		order by comment_no desc
+	</select>
+	<!-- 댓글 수 구하기 -->
+	<select id="countMemo" parameterType="int" resultType="int">
+		select count(*)
+			from reply
+			where board_no = #{boardNo}
+	</select>
+	
+	<delete id="deleteMemo" parameterType="int">
+		delete REPLY
+		where comment_no = #{commentNo}
+	</delete>
+	
+	<update id="updateMemo">
+		update REPLY
+		set comment_content = #{commentContent},
+			c_postdate = sysdate
+		where comment_no = #{commentNo}
+		and c_user_id = #{CUserId}
+	</update>
+
+</mapper>

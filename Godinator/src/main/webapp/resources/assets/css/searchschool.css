@@ -1,0 +1,113 @@
+div.search-condition {
+	margin: 3% auto;
+}
+
+input#searchInput {
+	background-image: url('images/search.PNG');
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+
+div.hr-sect {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: black;
+	font-size: 1em;
+	margin: 8px 0px;
+}
+
+div.hr-sect::before, div.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 16px;
+}
+
+div.adis-content {
+	padding: 2% 2%;
+	margin: 0 2em;
+}
+
+p.search-simpleInfo {
+	margin: 0 2px;
+	margin-left: 3em;
+	padding: 2px;
+}
+
+span.school-name {
+	font-size: 2em;
+}
+
+span.school-name:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+span.location {
+	color: black;
+}
+
+a.url:hover {
+	cursor: pointer !important;
+	color: gray !important;
+	text-decoration: underline !important;
+}
+a.url {
+	color: gray !important;
+	text-decoration: none !important;
+	border-bottom: none !important;
+}
+
+div.search-condition select:hover {
+	border-color: #f56a6a;
+	box-shadow: 0 0 0 1px #f56a6a;
+	border-bottom: none !important;
+}
+
+input:hover {
+	border-color: #f56a6a;
+	box-shadow: 0 0 0 1px #f56a6a;
+}
+div#hotschool span {
+	color: gray;
+}
+div#hotschool span:hover {
+	font-weight: bold;
+	color: black;
+	cursor: pointer; 
+}
+b.up {
+	font-size: 65%;
+}
+h3.searchschool-h3 {
+	margin-bottom: 2px;
+	margin-left: 1%;
+	display: inline-block;
+}
+div.recomSchool {
+	display: inline-block;
+}
+div.recomSchool * {
+	display: inline-block;
+}
+p.recomSchoolName:hover {
+	cursor: pointer;
+}
+p.recomSchoolName {
+	color: black;
+	cursor: pointer;
+}
+label.schoolCate {
+	font-size: 150% !important;
+	margin-bottom: 5px;
+}	
+p.searchSchoolType {
+	margin-left: 20% !important;
+}
+p.url {
+	margin-left: 20% !important;
+}

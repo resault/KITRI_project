@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.kitri.godinator.admin.dao.StatisticsDao">
+  	<update id="addCnt" parameterType="String">
+  	UPDATE visit
+  	SET visit_cnt = visit_cnt+1 
+  	WHERE visit_user_id = #{user}
+  	</update>
+  	
+  	<insert id="enrollVisit" parameterType="String" >
+  	INSERT INTO visit
+	VALUES (sysdate, '0', #{id})
+  	</insert>
+  	
+  	<update id="addUserCnt" parameterType="String">
+  	UPDATE visit
+  	SET visit_cnt = visit_cnt+1 
+  	WHERE visit_user_id = #{StaticId}
+  	</update>
+  	
+  	<select id="upperMemberList" resultType="visitDto">
+  	select rownum, visit_cnt visitCnt, visit_user_id visitUserId, user_name userName
+	from (select visit_cnt, visit_user_id FROM visit ORDER BY visit_cnt desc), member
+	where rownum &lt;= 5
+  	</select>
+  
+  </mapper>
