@@ -74,6 +74,6 @@ local.properties
 ## ignoring target file
 target/
 
-.mp4
+*.mp4
 
 # End of https://www.gitignore.io/api/eclipse,java-web
