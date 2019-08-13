@@ -53,9 +53,9 @@ public class MgmtService {
 	}
 	
 
-//-------------------------------------------------------------------------------------------------------------------------------------------------[h] °ü¸®¹øÈ£¼öÁ¤
+//-------------------------------------------------------------------------------------------------------------------------------------------------[h] ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •
 	
-	public boolean isNum(String str) { //¼ıÀÚ¸é true ¹İÈ¯
+	public boolean isNum(String str) { //ìˆ«ìë©´ true ë°˜í™˜
 		boolean flag = true;
 		int len = str.length();
 		for (int i = 0; i < len; i++) {
@@ -70,14 +70,14 @@ public class MgmtService {
 	
 	public void mgmtNum() {
 		while(true) {
-			String r = JOptionPane.showInputDialog(mmc.mm, "»õ·Î¿î ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä", "°ü¸®¹øÈ£¼öÁ¤", JOptionPane.OK_CANCEL_OPTION).trim();
+			String r = JOptionPane.showInputDialog(mmc.mm, "ìƒˆë¡œìš´ ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”", "ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •", JOptionPane.OK_CANCEL_OPTION).trim();
 			
 			if(r.isEmpty()) {
-				JOptionPane.showMessageDialog(mmc.mm, "¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "°ü¸®¹øÈ£¼öÁ¤¿¡·¯", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(mmc.mm, "ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 				continue;
 			}
 			if(r.length() != 5) {
-				JOptionPane.showMessageDialog(mmc.mm, "5ÀÚ¸® ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "°ü¸®¹øÈ£¼öÁ¤¿¡·¯", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(mmc.mm, "5ìë¦¬ ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 				continue;
 			}
 			
@@ -86,15 +86,15 @@ public class MgmtService {
 			if(rf) {
 				int result = FoodDao.getInstance().upMgmtNum(Integer.parseInt(r));
 				if(result != 0) {
-					JOptionPane.showMessageDialog(mmc.mm, "°ü¸®¹øÈ£°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.", "¼öÁ¤¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(mmc.mm, "ê´€ë¦¬ë²ˆí˜¸ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.", "ìˆ˜ì •ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 					break;
 				}
 				else {
-					JOptionPane.showMessageDialog(mmc.mm, "¾Ë ¼ö ¾ø´Â ¿¡·¯°¡ ¹ß»ıÇß½À´Ï´Ù.", "°ü¸®¹øÈ£¼öÁ¤¿¡·¯", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(mmc.mm, "ì•Œ ìˆ˜ ì—†ëŠ” ì—ëŸ¬ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.", "ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 					break;
 				}
 			} else {
-				JOptionPane.showMessageDialog(mmc.mm, "5ÀÚ¸® ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "°ü¸®¹øÈ£¼öÁ¤¿¡·¯", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(mmc.mm, "5ìë¦¬ ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 				continue;
 			}
 		}
@@ -105,24 +105,24 @@ public class MgmtService {
 //--------------------------------------------------------------------------------------------------------------------------------------FOOD
 	
 	
-	public void foodPage() {//---------------------------------------»óÇ°°ü¸® ÆäÀÌÁö·Î ÀÌµ¿, ¸Ş´º¹öÆ°&Å×ÀÌºí ÃÊ±âÈ­
-		mmc.mm.cards.show(mmc.mm.cardP, "»óÇ°°ü¸®P");
-		setMenuB("À½·á");
-		setStockT("À½·á");
+	public void foodPage() {//---------------------------------------ìƒí’ˆê´€ë¦¬ í˜ì´ì§€ë¡œ ì´ë™, ë©”ë‰´ë²„íŠ¼&í…Œì´ë¸” ì´ˆê¸°í™”
+		mmc.mm.cards.show(mmc.mm.cardP, "ìƒí’ˆê´€ë¦¬P");
+		setMenuB("ìŒë£Œ");
+		setStockT("ìŒë£Œ");
 	}
 	
 	
-//-----------------------------------------------------------------------------------------------------------menu ±â´É
+//-----------------------------------------------------------------------------------------------------------menu ê¸°ëŠ¥
 	
 	
-	// ¸Ş´º¹öÆ° ¼ÂÆÃ
+	// ë©”ë‰´ë²„íŠ¼ ì…‹íŒ…
 	public void setMenuB(String ctg) {
 		this.ctg = ctg;
-		list = FoodDao.getInstance().selCtgMenu(ctg);//Ä«Å×°í¸®º° ¸Ş´ºÀÌ¸§ select
+		list = FoodDao.getInstance().selCtgMenu(ctg);//ì¹´í…Œê³ ë¦¬ë³„ ë©”ë‰´ì´ë¦„ select
 		int size = list.size();
-		for(int i=0;i<size;i++) {//¸Ş´º °³¼ö¸¸Å­ for
+		for(int i=0;i<size;i++) {//ë©”ë‰´ ê°œìˆ˜ë§Œí¼ for
 			String btnL = list.get(i);
-			if(btnL.length() > 5) {//¸Ş´ºÀÌ¸§ÀÌ ±ä °æ¿ì °³Çà
+			if(btnL.length() > 5) {//ë©”ë‰´ì´ë¦„ì´ ê¸´ ê²½ìš° ê°œí–‰
 				StringBuffer str = new StringBuffer(list.get(i));
 				str.insert(3, "<br>");
 				str.insert(0, "<html>");
@@ -138,7 +138,7 @@ public class MgmtService {
 			fP.menuB[i].setVisible(true);
 		}
 		if(size < 25) {
-			fP.menuB[size].setText("+");//¸¶Áö¸· ¸Ş´º ´ÙÀ½ ¹öÆ°¿¡ '+' ¶ç¿ì°í ±ÛÀÚ Å©±â Á¶Á¤ & º¸ÀÌ°Ô
+			fP.menuB[size].setText("+");//ë§ˆì§€ë§‰ ë©”ë‰´ ë‹¤ìŒ ë²„íŠ¼ì— '+' ë„ìš°ê³  ê¸€ì í¬ê¸° ì¡°ì • & ë³´ì´ê²Œ
 			fP.abBD(fP.menuB[size], new Color(52, 152, 219), 35);
 			fP.menuB[size].setVisible(true);
 			for(int i = 24; i > size ; i--) {
@@ -148,24 +148,24 @@ public class MgmtService {
 	}
 	
 	
-	// menu¹öÆ° dialog
+	// menuë²„íŠ¼ dialog
 	public void setM(String btnL) {
 		
-		// ¹öÆ°ÀÇ ¶óº§¿¡ °³Çà ÀÖ´Â °æ¿ì ÃÊ±âÈ­
+		// ë²„íŠ¼ì˜ ë¼ë²¨ì— ê°œí–‰ ìˆëŠ” ê²½ìš° ì´ˆê¸°í™”
 		if(btnL.indexOf("<br>") != -1) {
 			btnL = btnL.replace("<br>", "");
 			btnL = btnL.replace("<html>", "");
 			btnL = btnL.replace("</html>", "");
 		}
 		
-		// dialog ¹öÆ° ÃÊ±âÈ­
+		// dialog ë²„íŠ¼ ì´ˆê¸°í™”
 		fcA.ctgC.setSelectedItem(ctg);
 		fcA.ctgC.setEnabled(true);
 		fcA.menuTF.setEnabled(true);
 		fcA.menuTF.setText(null);
 		fcA.priceTF.setText(null);
 
-		if(!btnL.equals("+")) {// ±âÁ¸ ¸Ş´º ¼öÁ¤&»èÁ¦ dialog
+		if(!btnL.equals("+")) {// ê¸°ì¡´ ë©”ë‰´ ìˆ˜ì •&ì‚­ì œ dialog
 			foodDto = FoodDao.getInstance().findMenu(btnL, ctg);
 			fcA.menuTF.setText(foodDto.getFoodName());
 			fcA.menuTF.setEnabled(false);
@@ -182,18 +182,18 @@ public class MgmtService {
 				fcA.st3C.setSelectedItem(foodDto.getStock3Name());
 				fcA.st3A.setText(""+foodDto.getStock3Num());
 			}
-			fcA.setTitle("¸Ş´º ¼öÁ¤");
+			fcA.setTitle("ë©”ë‰´ ìˆ˜ì •");
 			fcA.card.show(fcA.cardP, "mdf");
 			fcA.setVisible(true);
-		} else {// ¸Ş´º Ãß°¡ dialog
-			fcA.setTitle("¸Ş´º Ãß°¡");
+		} else {// ë©”ë‰´ ì¶”ê°€ dialog
+			fcA.setTitle("ë©”ë‰´ ì¶”ê°€");
 			fcA.card.show(fcA.cardP, "add");
 			fcA.setVisible(true);
 		}
 	}
 	
 	
-	// ctgº° Àç°í Ç°¸ñ combobox¿¡ Ãß°¡ÇÏ°í ¼±ÅÃ ÃÊ±âÈ­
+	// ctgë³„ ì¬ê³  í’ˆëª© comboboxì— ì¶”ê°€í•˜ê³  ì„ íƒ ì´ˆê¸°í™”
 	public void comboItem(String category) {
 		ctg = category;
 		List<String> list = FoodDao.getInstance().selStockName(ctg);
@@ -217,35 +217,35 @@ public class MgmtService {
 	}
 
 	
-	// ¸Ş´ºÃß°¡&¼öÁ¤
+	// ë©”ë‰´ì¶”ê°€&ìˆ˜ì •
 	public void amMenu(String btn) {
 		
-		// À¯È¿¼º °Ë»ç
+		// ìœ íš¨ì„± ê²€ì‚¬
 		String foodName = fcA.menuTF.getText().trim();
 		if(foodName.isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "¸Ş´º ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ë©”ë‰´ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
-		if(btn.equals("Ãß°¡")) {
+		if(btn.equals("ì¶”ê°€")) {
 			for(String l : list) {
 				if(foodName.equals(l)) {
-					JOptionPane.showMessageDialog(fcA, "ÀÌ¹Ì Á¸ÀçÇÏ´Â ¸Ş´ºÀÔ´Ï´Ù.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(fcA, "ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ë©”ë‰´ì…ë‹ˆë‹¤.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
 		}
 		
 		if(fcA.priceTF.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "°¡°İÀ» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ê°€ê²©ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(fcA.st1C.getSelectedItem()==null || fcA.st1A.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "Àç·á´Â 1°³ ÀÌ»ó ¼±ÅÃÇØ¾ßÇÕ´Ï´Ù.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ì¬ë£ŒëŠ” 1ê°œ ì´ìƒ ì„ íƒí•´ì•¼í•©ë‹ˆë‹¤.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
-		// Dto¿¡ ´ã¾Æ¼­ Dao¸¦ ÅëÇØ DB¿¡ insert|update
+		// Dtoì— ë‹´ì•„ì„œ Daoë¥¼ í†µí•´ DBì— insert|update
 		foodDto = new FoodDto(); 
 		foodDto.setFoodCtg((String)fcA.ctgC.getSelectedItem());
 		foodDto.setFoodName(fcA.menuTF.getText());
@@ -263,77 +263,77 @@ public class MgmtService {
 		} 
 		int i = FoodDao.getInstance().mergeMenu(foodDto);
 
-		// °á°ú¸Ş¼¼Áö Ãâ·Â
+		// ê²°ê³¼ë©”ì„¸ì§€ ì¶œë ¥
 		if(i != 0) {
-			if(btn.equals("¼öÁ¤")) {
-				JOptionPane.showMessageDialog(fcA, "¸Ş´º°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.", "¸Ş´º¼öÁ¤¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+			if(btn.equals("ìˆ˜ì •")) {
+				JOptionPane.showMessageDialog(fcA, "ë©”ë‰´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.", "ë©”ë‰´ìˆ˜ì •ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 			}
-			else if(btn.equals("Ãß°¡")) {
-				JOptionPane.showMessageDialog(fcA, "¸Ş´º°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.", "¸Ş´ºÃß°¡¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+			else if(btn.equals("ì¶”ê°€")) {
+				JOptionPane.showMessageDialog(fcA, "ë©”ë‰´ê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.", "ë©”ë‰´ì¶”ê°€ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 			}
 			fcA.setVisible(false);
 			setMenuB(ctg);
 		} else
-			JOptionPane.showMessageDialog(fcA, "¾Ë ¼ö ¾ø´Â ¿À·ù·Î ÀÎÇÏ¿© Ãß°¡/¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.", "¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ì•Œ ìˆ˜ ì—†ëŠ” ì˜¤ë¥˜ë¡œ ì¸í•˜ì—¬ ì¶”ê°€/ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.", "ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 	}
 
 	
-	// ¸Ş´º»èÁ¦
+	// ë©”ë‰´ì‚­ì œ
 	public void delMenu() {
 		
-		// À¯È¿¼º °Ë»ç
+		// ìœ íš¨ì„± ê²€ì‚¬
 		String foodName = fcA.menuTF.getText().trim();
 		String ctg = fcA.ctgC.getSelectedItem().toString();
 		if(foodName.isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "¸Ş´º ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ë©”ë‰´ ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
-		// »èÁ¦¿©ºÎ È®ÀÎÇÏ°í »èÁ¦|Ãë¼Ò
-		int result = JOptionPane.showConfirmDialog(fcA, "»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", "»èÁ¦È®ÀÎ", JOptionPane.YES_NO_OPTION);
+		// ì‚­ì œì—¬ë¶€ í™•ì¸í•˜ê³  ì‚­ì œ|ì·¨ì†Œ
+		int result = JOptionPane.showConfirmDialog(fcA, "ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì‚­ì œí™•ì¸", JOptionPane.YES_NO_OPTION);
 		if(result == 0) {
 			result = FoodDao.getInstance().delMenu(foodName, ctg);
 			if(result != 0) {
-				JOptionPane.showMessageDialog(fcA, foodName + ": »èÁ¦ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "¸Ş´º»èÁ¦¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(fcA, foodName + ": ì‚­ì œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "ë©”ë‰´ì‚­ì œì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 				fcA.setVisible(false);
 			} else if(result == 0) {
-				JOptionPane.showMessageDialog(fcA, foodName + ": µî·ÏµÇÁö ¾ÊÀº ¸Ş´ºÀÔ´Ï´Ù.", "»èÁ¦Ç×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(fcA, foodName + ": ë“±ë¡ë˜ì§€ ì•Šì€ ë©”ë‰´ì…ë‹ˆë‹¤.", "ì‚­ì œí•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 		}else if(result == 1) {
 			return;
 		}
 		
-		// ¸Ş´º¹öÆ° ÃÊ±âÈ­
+		// ë©”ë‰´ë²„íŠ¼ ì´ˆê¸°í™”
 		setMenuB(ctg);
 	}
 
-	public void cancleMenu() {//-------------------------------------¸Ş´º Ãß°¡/¼öÁ¤ Ãë¼Ò
-		JOptionPane.showMessageDialog(fcA, "ÀÛ¾÷À» Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?", "Ãë¼ÒÈ®ÀÎ", JOptionPane.INFORMATION_MESSAGE);
+	public void cancleMenu() {//-------------------------------------ë©”ë‰´ ì¶”ê°€/ìˆ˜ì • ì·¨ì†Œ
+		JOptionPane.showMessageDialog(fcA, "ì‘ì—…ì„ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì·¨ì†Œí™•ì¸", JOptionPane.INFORMATION_MESSAGE);
 		fcA.setVisible(false);
 		
 	}
 
 	
-//-----------------------------------------------------------------------------------------------------Àç°í ±â´É
+//-----------------------------------------------------------------------------------------------------ì¬ê³  ê¸°ëŠ¥
 	
 	
-	// table Á¤·Ä
+	// table ì •ë ¬
 	public void sTableD() {
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalAlignment(JLabel.CENTER);
 		fP.stockTM.stockT.getColumn("No").setCellRenderer(dtcr);
-		fP.stockTM.stockT.getColumn("Ä«Å×°í¸®").setCellRenderer(dtcr);
-		fP.stockTM.stockT.getColumn("Ç°¸ñ").setCellRenderer(dtcr);
-		fP.stockTM.stockT.getColumn("³²Àº ¼ö·®").setCellRenderer(dtcr);
-		fP.stockTM.stockT.getColumn("´Ü°¡").setCellRenderer(dtcr);
-		fP.stockTM.stockT.getColumn("ºñ°í").setCellRenderer(dtcr);
+		fP.stockTM.stockT.getColumn("ì¹´í…Œê³ ë¦¬").setCellRenderer(dtcr);
+		fP.stockTM.stockT.getColumn("í’ˆëª©").setCellRenderer(dtcr);
+		fP.stockTM.stockT.getColumn("ë‚¨ì€ ìˆ˜ëŸ‰").setCellRenderer(dtcr);
+		fP.stockTM.stockT.getColumn("ë‹¨ê°€").setCellRenderer(dtcr);
+		fP.stockTM.stockT.getColumn("ë¹„ê³ ").setCellRenderer(dtcr);
 		fP.stockTM.stockT.getColumn("No").setPreferredWidth(10);
-		fP.stockTM.stockT.getColumn("Ç°¸ñ").setPreferredWidth(100);
+		fP.stockTM.stockT.getColumn("í’ˆëª©").setPreferredWidth(100);
 		fP.stockTM.stockT.setRowHeight(30);
 	}
 	
-	//table ÃÊ±âÈ­
+	//table ì´ˆê¸°í™”
 	public void setStockT(String ctg) {
 		fP.stockTM.list = FoodDao.getInstance().selStock(ctg);
 		fP.stockTM.setDataVector(fP.stockTM.list, fP.stockTM.header);
@@ -341,11 +341,11 @@ public class MgmtService {
 	}
 	
 	
-	//Ç°¸ñ °Ë»ö
+	//í’ˆëª© ê²€ìƒ‰
 	public void selStock() {
 		String sName = fP.stockName.getText().trim();
 		if(sName.isEmpty()) {
-			JOptionPane.showMessageDialog(fP, "°Ë»öÇÒ Ç°¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä", "Ç°¸ñÀÔ·Â¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fP, "ê²€ìƒ‰í•  í’ˆëª©ì„ ì…ë ¥í•˜ì„¸ìš”", "í’ˆëª©ì…ë ¥ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		fP.stockTM.list = FoodDao.getInstance().findStockV(sName);
@@ -354,7 +354,7 @@ public class MgmtService {
 			sTableD();
 		}
 		else
-			JOptionPane.showMessageDialog(fcA, sName + ": µî·ÏµÇÁö ¾ÊÀº Ç°¸ñÀÔ´Ï´Ù.", "Ç°¸ñ°Ë»ö¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, sName + ": ë“±ë¡ë˜ì§€ ì•Šì€ í’ˆëª©ì…ë‹ˆë‹¤.", "í’ˆëª©ê²€ìƒ‰ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 	}
 
 	
@@ -388,23 +388,23 @@ public class MgmtService {
 	}
 
 	
-	//ÀÔ°í
+	//ì…ê³ 
 	public void addStock() {
 		if(fsA.ctgC.getSelectedItem()==null) {
-			JOptionPane.showMessageDialog(fcA, "Ä«Å×°í¸®¸¦ ¼±ÅÃÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ì¹´í…Œê³ ë¦¬ë¥¼ ì„ íƒí•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		ctg = fsA.ctgC.getSelectedItem().toString();
 		if(fsA.menuTF.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "Ç°¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "í’ˆëª©ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(fsA.amtTF.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "¼ö·®À» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ìˆ˜ëŸ‰ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(fsA.priceTF.getText().isEmpty()) {
-			JOptionPane.showMessageDialog(fcA, "´Ü°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ë‹¨ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		stockDto = new StockDto(); 
@@ -415,7 +415,7 @@ public class MgmtService {
 
 		int result = FoodDao.getInstance().mergeStock(stockDto);
 		if(result != 0) {
-			JOptionPane.showMessageDialog(fcA, "ÀÔ°í Ã³¸®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "ÀÔ°í¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(fcA, "ì…ê³  ì²˜ë¦¬ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "ì…ê³ ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 			fsA.setVisible(false);
 			setStockT(ctg);
 			setMenuB(ctg);
@@ -423,14 +423,14 @@ public class MgmtService {
 	}
 
 	
-	//ÀÔ°í Ãë¼Ò
+	//ì…ê³  ì·¨ì†Œ
 	public void cancleStock() {
-		JOptionPane.showMessageDialog(fcA, "ÀÛ¾÷À» Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?", "Ãë¼ÒÈ®ÀÎ", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(fcA, "ì‘ì—…ì„ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì·¨ì†Œí™•ì¸", JOptionPane.INFORMATION_MESSAGE);
 		fsA.setVisible(false);
 	}
 	
 	
-	//Àç°í »èÁ¦
+	//ì¬ê³  ì‚­ì œ
 	public void delStock() {
 		int x = fP.stockTM.stockT.getSelectedRow();
 		String sName = null;
@@ -440,13 +440,13 @@ public class MgmtService {
 			ctg = fP.stockTM.stockT.getValueAt(x, 1).toString();
 		}
 		else {
-			JOptionPane.showMessageDialog(fP, "»èÁ¦ÇÒ Ç°¸ñÀ» ¼±ÅÃÇÏ¼¼¿ä.", "Ç°¸ñ¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(fP, "ì‚­ì œí•  í’ˆëª©ì„ ì„ íƒí•˜ì„¸ìš”.", "í’ˆëª©ì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		int result = JOptionPane.showConfirmDialog(fP, "»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", "»èÁ¦È®ÀÎ", JOptionPane.YES_NO_OPTION);
+		int result = JOptionPane.showConfirmDialog(fP, "ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì‚­ì œí™•ì¸", JOptionPane.YES_NO_OPTION);
 		if(result == 0) {
 			FoodDao.getInstance().delStock(sName);
-			JOptionPane.showMessageDialog(fP, sName + ": »èÁ¦ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "¸Ş´º»èÁ¦¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(fP, sName + ": ì‚­ì œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "ë©”ë‰´ì‚­ì œì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 		}else if(result == 1) {
 			return;
 		}
@@ -463,31 +463,31 @@ public class MgmtService {
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalAlignment(JLabel.CENTER);
 		bP.bookTM.bookT.getColumn("No").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("µµ¼­Á¾·ù").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("Àå¸£").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("ÀÛ°¡¸í").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("ÃâÆÇ»ç").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("Á¤°¡").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("º¸À¯ÇöÈ²").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("µµ¼­¸í").setCellRenderer(dtcr);
-		bP.bookTM.bookT.getColumn("ºñ°í").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ë„ì„œì¢…ë¥˜").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ì¥ë¥´").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ì‘ê°€ëª…").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ì¶œíŒì‚¬").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ì •ê°€").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ë³´ìœ í˜„í™©").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ë„ì„œëª…").setCellRenderer(dtcr);
+		bP.bookTM.bookT.getColumn("ë¹„ê³ ").setCellRenderer(dtcr);
 		bP.bookTM.bookT.getColumn("No").setPreferredWidth(20);
-		bP.bookTM.bookT.getColumn("µµ¼­Á¾·ù").setPreferredWidth(20);
-		bP.bookTM.bookT.getColumn("Àå¸£").setPreferredWidth(20);
-		bP.bookTM.bookT.getColumn("µµ¼­¸í").setPreferredWidth(200);
+		bP.bookTM.bookT.getColumn("ë„ì„œì¢…ë¥˜").setPreferredWidth(20);
+		bP.bookTM.bookT.getColumn("ì¥ë¥´").setPreferredWidth(20);
+		bP.bookTM.bookT.getColumn("ë„ì„œëª…").setPreferredWidth(200);
 		bP.bookTM.bookT.setRowHeight(30);
 	}
 	
 	public void bookPage() {
 		bP.serchC.setSelectedItem(null);
-		mmc.mm.cards.show(mmc.mm.cardP, "µµ¼­°ü¸®P");
+		mmc.mm.cards.show(mmc.mm.cardP, "ë„ì„œê´€ë¦¬P");
 		setBT();
 	}
 
 
-	public void setBT() {//ÀüÃ¼ sel
-		//db¿¡¼­ ÀüÃ¼ sel (vector)
-		//Å×ÀÌºí ¸ğµ¨¿¡ ÁöÁ¤
+	public void setBT() {//ì „ì²´ sel
+		//dbì—ì„œ ì „ì²´ sel (vector)
+		//í…Œì´ë¸” ëª¨ë¸ì— ì§€ì •
 		bP.bookTM.list = BookDao.getInstance().serchB(null, null);
 		bP.bookTM.setDataVector(bP.bookTM.list, bP.bookTM.header);
 		bP.serchC.setSelectedItem(null);
@@ -495,15 +495,15 @@ public class MgmtService {
 		bTableD();
 	}
 
-	public void serchB() {//Ã¥ °Ë»ö
+	public void serchB() {//ì±… ê²€ìƒ‰
 		int x = bP.serchC.getSelectedIndex();
 		String str = bP.findTF.getText().trim();
 		if(x < 0) {
-			JOptionPane.showMessageDialog(bP, "°Ë»öÇ×¸ñÀ» ¼±ÅÃÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bP, "ê²€ìƒ‰í•­ëª©ì„ ì„ íƒí•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		if(str.isEmpty()) {
-			JOptionPane.showMessageDialog(bP, "°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bP, "ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		bP.serchC.setSelectedItem(null);
@@ -516,7 +516,7 @@ public class MgmtService {
 		default : return;
 		}
 		if(bP.bookTM.list.size() == 0) {
-			JOptionPane.showMessageDialog(bP, "ÇØ´çÇÏ´Â µµ¼­°¡ ¾ø½À´Ï´Ù.", "°Ë»ö¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bP, "í•´ë‹¹í•˜ëŠ” ë„ì„œê°€ ì—†ìŠµë‹ˆë‹¤.", "ê²€ìƒ‰ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 			
@@ -537,7 +537,7 @@ public class MgmtService {
 		bAdd.card.show(bAdd.cardP, "mdf");
 		int x = bP.bookTM.bookT.getSelectedRow();
 		if(x < 0) {
-			JOptionPane.showMessageDialog(bP, "¼öÁ¤ÇÒ µµ¼­¸¦ ¼±ÅÃÇÏ¼¼¿ä.", "µµ¼­¹Ì¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bP, "ìˆ˜ì •í•  ë„ì„œë¥¼ ì„ íƒí•˜ì„¸ìš”.", "ë„ì„œë¯¸ì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		String bName = bP.bookTM.bookT.getValueAt(x, 3).toString();
@@ -555,20 +555,20 @@ public class MgmtService {
 	public void replaceBook() {
 		int x = bP.bookTM.bookT.getSelectedRow();
 		if(x < 0) {
-			JOptionPane.showMessageDialog(bP, "±³Ã¼ÇÒ µµ¼­¸¦ ¼±ÅÃÇÏ¼¼¿ä.", "µµ¼­¹Ì¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bP, "êµì²´í•  ë„ì„œë¥¼ ì„ íƒí•˜ì„¸ìš”.", "ë„ì„œë¯¸ì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		String bName = bP.bookTM.bookT.getValueAt(x, 3).toString();
 		String replace = bP.bookTM.bookT.getValueAt(x, 8).toString();
-		if(!replace.equals("±³Ã¼¿ä¸Á")) {
-			JOptionPane.showMessageDialog(bP, "±³Ã¼ ´ë»ó µµ¼­°¡ ¾Æ´Õ´Ï´Ù.", "µµ¼­¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+		if(!replace.equals("êµì²´ìš”ë§")) {
+			JOptionPane.showMessageDialog(bP, "êµì²´ ëŒ€ìƒ ë„ì„œê°€ ì•„ë‹™ë‹ˆë‹¤.", "ë„ì„œì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		int rr = JOptionPane.showConfirmDialog(bP, bName +" : ±³Ã¼ÇÏ½Ã°Ú½À´Ï±î?", "±³Ã¼È®ÀÎ", JOptionPane.YES_NO_OPTION);
+		int rr = JOptionPane.showConfirmDialog(bP, bName +" : êµì²´í•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "êµì²´í™•ì¸", JOptionPane.YES_NO_OPTION);
 		if(rr == 0) {
 			int result = BookDao.getInstance().replace(bName);
 			if(result != 0) {
-				JOptionPane.showMessageDialog(bP, bName + " : ±³Ã¼ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "µµ¼­±³Ã¼¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(bP, bName + " : êµì²´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "ë„ì„œêµì²´ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 			}
 			setBT();
 		}else if(rr == 1) {
@@ -579,14 +579,14 @@ public class MgmtService {
 	public void delBook() {
 		int x = bP.bookTM.bookT.getSelectedRow();
 		if(x < 0) {
-			JOptionPane.showMessageDialog(bP, "»èÁ¦ÇÒ µµ¼­¸¦ ¼±ÅÃÇÏ¼¼¿ä.", "µµ¼­¹Ì¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bP, "ì‚­ì œí•  ë„ì„œë¥¼ ì„ íƒí•˜ì„¸ìš”.", "ë„ì„œë¯¸ì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		String bName = bP.bookTM.bookT.getValueAt(x, 3).toString();
-		int result = JOptionPane.showConfirmDialog(fcA, "»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", "»èÁ¦È®ÀÎ", JOptionPane.YES_NO_OPTION);
+		int result = JOptionPane.showConfirmDialog(fcA, "ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì‚­ì œí™•ì¸", JOptionPane.YES_NO_OPTION);
 		if(result == 0) {
 			BookDao.getInstance().delBook(bName);
-			JOptionPane.showMessageDialog(bP, bName + ": »èÁ¦ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "¸Ş´º»èÁ¦¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(bP, bName + ": ì‚­ì œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "ë©”ë‰´ì‚­ì œì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 			fcA.setVisible(false);
 		}else if(result == 1) {
 			bP.bookTM.bookT.clearSelection();
@@ -599,28 +599,28 @@ public class MgmtService {
 
 	public void amBook(String btn) {
 		if(bAdd.ctgC.getSelectedItem() == null) {
-			JOptionPane.showMessageDialog(bAdd, "µµ¼­Á¾·ù¸¦ ¼±ÅÃÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ë„ì„œì¢…ë¥˜ë¥¼ ì„ íƒí•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(bAdd.genreC.getSelectedItem() == null) {
-			JOptionPane.showMessageDialog(bAdd, "Àå¸£¸¦ ¼±ÅÃÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ì¥ë¥´ë¥¼ ì„ íƒí•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(bAdd.nameTF.getText().trim() == null) {
-			JOptionPane.showMessageDialog(bAdd, "µµ¼­¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ë„ì„œëª…ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
 		if(bAdd.authorTF.getText().trim() == null) {
-			JOptionPane.showMessageDialog(bAdd, "ÀÛ°¡¸íÀ» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ì‘ê°€ëª…ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(bAdd.publisherTF.getText().trim() == null) {
-			JOptionPane.showMessageDialog(bAdd, "ÃâÆÇ»ç¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ì¶œíŒì‚¬ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(bAdd.priceTF.getText().trim() == null) {
-			JOptionPane.showMessageDialog(bAdd, "Á¤°¡¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ì •ê°€ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		bookDto = new BookDto(); 
@@ -631,11 +631,11 @@ public class MgmtService {
 		bookDto.setPublisher(bAdd.publisherTF.getText().trim());
 		bookDto.setBookPrice(Integer.parseInt(bAdd.priceTF.getText().trim()));
 		BookDao.getInstance().mergeB(bookDto);		
-		if(btn.equals("¼öÁ¤")) {
-			JOptionPane.showMessageDialog(bAdd, "µµ¼­°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.", "µµ¼­¼öÁ¤¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+		if(btn.equals("ìˆ˜ì •")) {
+			JOptionPane.showMessageDialog(bAdd, "ë„ì„œê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.", "ë„ì„œìˆ˜ì •ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 		}
-		else if(btn.equals("Ãß°¡")) {
-			JOptionPane.showMessageDialog(bAdd, "µµ¼­°¡ Ãß°¡µÇ¾ú½À´Ï´Ù.", "µµ¼­Ãß°¡¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+		else if(btn.equals("ì¶”ê°€")) {
+			JOptionPane.showMessageDialog(bAdd, "ë„ì„œê°€ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.", "ë„ì„œì¶”ê°€ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 		}
 		bAdd.setVisible(false);
 		setBT();
@@ -661,7 +661,7 @@ public class MgmtService {
 
 
 	public void cancleBook() {
-		JOptionPane.showMessageDialog(bAdd, "ÀÛ¾÷À» Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?", "Ãë¼ÒÈ®ÀÎ", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(bAdd, "ì‘ì—…ì„ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì·¨ì†Œí™•ì¸", JOptionPane.INFORMATION_MESSAGE);
 		bP.bookTM.bookT.clearSelection();
 		bAdd.setVisible(false);
 	}
@@ -673,23 +673,23 @@ public class MgmtService {
 		dtcr.setHorizontalAlignment(JLabel.CENTER);
 		mP.memTM.memT.getColumn("No").setCellRenderer(dtcr);
 		mP.memTM.memT.getColumn("ID").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("ÀÌ¸§").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("ÀüÈ­¹øÈ£").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("ÁÖ¼Ò").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("»ı³â¿ùÀÏ").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("Ãµ¿øÇÒÀÎÄíÆù").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("¸¶Áö¸· ÀÌ¿ëÀÏ").setCellRenderer(dtcr);
-		mP.memTM.memT.getColumn("´ëÃâÇöÈ²").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ì´ë¦„").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ì „í™”ë²ˆí˜¸").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ì£¼ì†Œ").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ìƒë…„ì›”ì¼").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ì²œì›í• ì¸ì¿ í°").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ë§ˆì§€ë§‰ ì´ìš©ì¼").setCellRenderer(dtcr);
+		mP.memTM.memT.getColumn("ëŒ€ì¶œí˜„í™©").setCellRenderer(dtcr);
 		mP.memTM.memT.getColumn("No").setPreferredWidth(20);
 		mP.memTM.memT.getColumn("ID").setPreferredWidth(20);
-		mP.memTM.memT.getColumn("ÀÌ¸§").setPreferredWidth(30);
-		mP.memTM.memT.getColumn("ÀüÈ­¹øÈ£").setPreferredWidth(50);
-		mP.memTM.memT.getColumn("ÁÖ¼Ò").setPreferredWidth(200);
+		mP.memTM.memT.getColumn("ì´ë¦„").setPreferredWidth(30);
+		mP.memTM.memT.getColumn("ì „í™”ë²ˆí˜¸").setPreferredWidth(50);
+		mP.memTM.memT.getColumn("ì£¼ì†Œ").setPreferredWidth(200);
 		mP.memTM.memT.setRowHeight(30);
 	}
 	
 	public void memPage() {
-		mmc.mm.cards.show(mmc.mm.cardP, "È¸¿ø°ü¸®P");
+		mmc.mm.cards.show(mmc.mm.cardP, "íšŒì›ê´€ë¦¬P");
 		mP.findC.setSelectedItem(null);
 		selMem();
 		
@@ -706,11 +706,11 @@ public class MgmtService {
 		int colN = mP.findC.getSelectedIndex();
 		String str = mP.findTF.getText().trim();
 		if(colN < 0) {
-			JOptionPane.showMessageDialog(bAdd, "°Ë»öÁ¶°ÇÀ» ¼±ÅÃÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ê²€ìƒ‰ì¡°ê±´ì„ ì„ íƒí•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		if(str.isEmpty()) {
-			JOptionPane.showMessageDialog(bAdd, "°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(bAdd, "ê²€ìƒ‰ì–´ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		switch (colN) {
@@ -748,7 +748,7 @@ public class MgmtService {
 			id = mP.memTM.memT.getValueAt(x, 1).toString();
 		}
 		else {
-			JOptionPane.showMessageDialog(mP, "¼öÁ¤ÇÒ »ç¶÷À» ¼±ÅÃÇÏ¼¼¿ä.", "¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mP, "ìˆ˜ì •í•  ì‚¬ëŒì„ ì„ íƒí•˜ì„¸ìš”.", "ì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
@@ -781,13 +781,13 @@ public class MgmtService {
 			name = mP.memTM.memT.getValueAt(x, 2).toString();
 		}
 		else {
-			JOptionPane.showMessageDialog(mP, "»èÁ¦ÇÒ »ç¶÷À» ¼±ÅÃÇÏ¼¼¿ä.", "¼±ÅÃ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mP, "ì‚­ì œí•  ì‚¬ëŒì„ ì„ íƒí•˜ì„¸ìš”.", "ì„ íƒì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		int result = JOptionPane.showConfirmDialog(fcA, "»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?", "»èÁ¦È®ÀÎ", JOptionPane.YES_NO_OPTION);
+		int result = JOptionPane.showConfirmDialog(fcA, "ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì‚­ì œí™•ì¸", JOptionPane.YES_NO_OPTION);
 		if(result == 0) {
 			MemDao.getInstance().delM(id);
-			JOptionPane.showMessageDialog(mP, name + ": »èÁ¦ ¿Ï·áµÇ¾ú½À´Ï´Ù.", "¸Ş´º»èÁ¦¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(mP, name + ": ì‚­ì œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.", "ë©”ë‰´ì‚­ì œì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 		}else if(result == 1) {
 			mP.memTM.memT.clearSelection();
 			return;
@@ -798,24 +798,24 @@ public class MgmtService {
 	public void amMem(String btn) {
 		String name = mAdd.nameTF.getText().trim();
 		if(name.equals("")) {
-			JOptionPane.showMessageDialog(mAdd, "ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mAdd, "ì´ë¦„ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		
 		String ph2 = mAdd.ph2TF.getText().trim();
 		String ph3 = mAdd.ph3TF.getText().trim();
 		if(mAdd.ph1C.getSelectedItem() == null || ph2.equals("") || ph3.equals("")) {
-			JOptionPane.showMessageDialog(mAdd, "ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mAdd, "ì „í™”ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		if(ph2.length() > 4 || ph3.length() > 4) {
-			JOptionPane.showMessageDialog(mAdd, "ÀüÈ­¹øÈ£´Â 4ÀÚ¸® ÀÌÇÏ·Î ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mAdd, "ì „í™”ë²ˆí˜¸ëŠ” 4ìë¦¬ ì´í•˜ë¡œ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
 		String adr = mAdd.adrTF.getText().trim();
 		if(adr.equals("")) {
-			JOptionPane.showMessageDialog(mAdd, "ÁÖ¼Ò¸¦ ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mAdd, "ì£¼ì†Œë¥¼ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
@@ -823,15 +823,15 @@ public class MgmtService {
 		String birth2 = mAdd.birth2.getText().trim();
 		String birth3 = mAdd.birth3.getText().trim();
 		if(birth1.equals("") || birth2.equals("") || birth3.equals("")) {
-			JOptionPane.showMessageDialog(mAdd, "»ı³â¿ùÀÏÀ» ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mAdd, "ìƒë…„ì›”ì¼ì„ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		if(birth1.length() != 4 || birth2.length() != 2 || birth3.length() != 2) {
-			JOptionPane.showMessageDialog(mAdd, "»ı³â¿ùÀÏÀ» Çü½Ä¿¡ ¸Â°Ô ÀÔ·ÂÇÏ¼¼¿ä.", "ÇÊ¼öÀÔ·ÂÇ×¸ñ¿¡·¯", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(mAdd, "ìƒë…„ì›”ì¼ì„ í˜•ì‹ì— ë§ê²Œ ì…ë ¥í•˜ì„¸ìš”.", "í•„ìˆ˜ì…ë ¥í•­ëª©ì—ëŸ¬", JOptionPane.ERROR_MESSAGE);
 			return;
 		} 
 		memDto = new MemberDto();
-		if(btn.equals("¼öÁ¤")) {
+		if(btn.equals("ìˆ˜ì •")) {
 			memDto.setMemberId(mP.memTM.memT.getValueAt(mP.memTM.memT.getSelectedRow(), 1).toString());
 		}
 		else
@@ -844,23 +844,23 @@ public class MgmtService {
 		DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
 		try {
 			String birth = birth1 + "-" + birth2 + "-" + birth3;
-			memDto.setBirth(df.parse(birth));//StringÀ» util.data·Î º¯È¯ÇØ¼­ set
+			memDto.setBirth(df.parse(birth));//Stringì„ util.dataë¡œ ë³€í™˜í•´ì„œ set
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		MemDao.getInstance().amM(memDto);		
-		if(btn.equals("¼öÁ¤")) {
-			JOptionPane.showMessageDialog(bAdd, "È¸¿øÁ¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.", "È¸¿ø¼öÁ¤¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+		if(btn.equals("ìˆ˜ì •")) {
+			JOptionPane.showMessageDialog(bAdd, "íšŒì›ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.", "íšŒì›ìˆ˜ì •ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 		}
-		else if(btn.equals("Ãß°¡")) {
-			JOptionPane.showMessageDialog(bAdd, "È¸¿øÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.", "È¸¿øÃß°¡¿Ï·á", JOptionPane.INFORMATION_MESSAGE);
+		else if(btn.equals("ì¶”ê°€")) {
+			JOptionPane.showMessageDialog(bAdd, "íšŒì›ì´ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.", "íšŒì›ì¶”ê°€ì™„ë£Œ", JOptionPane.INFORMATION_MESSAGE);
 		}
 		mAdd.setVisible(false);
 		selMem();
 	}
 
 	public void cancleMem() {
-		JOptionPane.showMessageDialog(mAdd, "ÀÛ¾÷À» Ãë¼ÒÇÏ½Ã°Ú½À´Ï±î?", "Ãë¼ÒÈ®ÀÎ", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(mAdd, "ì‘ì—…ì„ ì·¨ì†Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?", "ì·¨ì†Œí™•ì¸", JOptionPane.INFORMATION_MESSAGE);
 		mP.memTM.memT.clearSelection();
 		mAdd.setVisible(false);
 	}

@@ -21,9 +21,9 @@ public class BookDialog extends JDialog {
 	public JPanel addP = new JPanel();
 	public JPanel mdfP = new JPanel();
 	
-	public JButton addB = new JButton("Ãß°¡");
-	public JButton mdfB = new JButton("¼öÁ¤");
-	public JButton cancelB = new JButton("Ãë¼Ò");
+	public JButton addB = new JButton("ì¶”ê°€");
+	public JButton mdfB = new JButton("ìˆ˜ì •");
+	public JButton cancelB = new JButton("ì·¨ì†Œ");
 
 	/**
 	 * Create the dialog.
@@ -34,43 +34,43 @@ public class BookDialog extends JDialog {
 		contentPanel.setBackground(SystemColor.control);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPanel.setLayout(null);
-		JLabel tl1 = new JLabel("µµ¼­Á¾·ù");
-		tl1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl1 = new JLabel("ë„ì„œì¢…ë¥˜");
+		tl1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl1.setBounds(24, 23, 137, 33);
 		ctgC.setBackground(SystemColor.window);
 		ctgC.setBounds(124, 26, 126, 30);
 		
-		JLabel tl2 = new JLabel("Àå¸£");
-		tl2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl2 = new JLabel("ì¥ë¥´");
+		tl2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl2.setBounds(24, 86, 97, 17);
 		genreC.setBackground(Color.WHITE);
 		genreC.setBounds(124, 81, 126, 30);
 		
-		JLabel tl3 = new JLabel("µµ¼­¸í");
-		tl3.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl3 = new JLabel("ë„ì„œëª…");
+		tl3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl3.setBounds(24, 137, 97, 17);
 		nameTF.setBounds(24, 164, 226, 30);
 		nameTF.setColumns(10);
 		
-		JLabel tl4 = new JLabel("ÀÛ°¡");
-		tl4.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl4 = new JLabel("ì‘ê°€");
+		tl4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl4.setBounds(24, 225, 57, 15);
 		authorTF.setBounds(24, 250, 226, 30);
 		authorTF.setColumns(10);
 		
-		JLabel tl5 = new JLabel("ÃâÆÇ»ç");
-		tl5.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl5 = new JLabel("ì¶œíŒì‚¬");
+		tl5.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl5.setBounds(25, 314, 57, 17);
 		publisherTF.setColumns(10);
 		publisherTF.setBounds(24, 340, 226, 30);
 		
-		JLabel tl6 = new JLabel("Á¤°¡");
-		tl6.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl6 = new JLabel("ì •ê°€");
+		tl6.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl6.setBounds(24, 410, 57, 17);
 		priceTF.setColumns(10);
 		priceTF.setBounds(71, 405, 145, 30);
-		JLabel tl7 = new JLabel("¿ø");
-		tl7.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl7 = new JLabel("ì›");
+		tl7.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl7.setBounds(228, 410, 25, 17);
 				
 		contentPanel.add(tl1);

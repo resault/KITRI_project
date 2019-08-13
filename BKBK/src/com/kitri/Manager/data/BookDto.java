@@ -2,20 +2,20 @@ package com.kitri.Manager.data;
 
 import java.util.Date;
 
-// µµ¼­ Dto
+// ë„ì„œ Dto
 
 public class BookDto {
 
-	private Date bookNum; // µµ¼­ÄÚµå
-	private int genreNum; // Àå¸£ÄÚµå
-	private String bookName; // µµ¼­¸í
-	private int bookCtg; // Á¾·ùÄÚµå
-	private String author; // ÀÛ°¡
-	private String publisher; // ÃâÆÇ»ç
-	private int bookPrice; // Á¤°¡
-	private char rentState; // ´ëÃâÇöÈ²
-	private char replace; // ±³Ã¼¿ä¸Á
-	private char state; // »óÅÂ
+	private Date bookNum; // ë„ì„œì½”ë“œ
+	private int genreNum; // ì¥ë¥´ì½”ë“œ
+	private String bookName; // ë„ì„œëª…
+	private int bookCtg; // ì¢…ë¥˜ì½”ë“œ
+	private String author; // ì‘ê°€
+	private String publisher; // ì¶œíŒì‚¬
+	private int bookPrice; // ì •ê°€
+	private char rentState; // ëŒ€ì¶œí˜„í™©
+	private char replace; // êµì²´ìš”ë§
+	private char state; // ìƒíƒœ
 	public CategoryDto ctgDto = new CategoryDto();
 	public GenreDto genDto = new GenreDto();
 

@@ -21,10 +21,10 @@ public class MemDao {
 	String user = "project1";
 	String pw = "project1";
 	
-	// ½Ì±ÛÅæ 
-	private static MemDao instance = new MemDao();//ÀÚ½ÅÀÇ °´Ã¼¸¦  »ı¼º
+	// ì‹±ê¸€í†¤ 
+	private static MemDao instance = new MemDao();//ìì‹ ì˜ ê°ì²´ë¥¼  ìƒì„±
 	private MemDao() {}
-	public static MemDao getInstance() {//¿ÜºÎ¿¡¼­ Å¬·¡½º¸í.getInstance()¸¦ È£ÃâÇÏ¸é ÀÌ Å¬·¡½ºÀÇ °´Ã¼°¡ ¹İÈ¯µÊ
+	public static MemDao getInstance() {//ì™¸ë¶€ì—ì„œ í´ë˜ìŠ¤ëª….getInstance()ë¥¼ í˜¸ì¶œí•˜ë©´ ì´ í´ë˜ìŠ¤ì˜ ê°ì²´ê°€ ë°˜í™˜ë¨
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		try {
 			Class.forName(driver);
@@ -36,7 +36,7 @@ public class MemDao {
 	
 	
 	
-	public Vector serchM(String colName, String str) {//ÀüÃ¼sel, serchMem
+	public Vector serchM(String colName, String str) {//ì „ì²´sel, serchMem
 		Vector list = new Vector();
 		conn = null;
 		pstmt = null;
@@ -79,7 +79,7 @@ public class MemDao {
 				
 				String s2 = rentHstr(id);
 				if(s2 != null) {
-					a.add("´ëÃâÁß");
+					a.add("ëŒ€ì¶œì¤‘");
 				} else {
 					a.add(null);
 				}
@@ -102,7 +102,7 @@ public class MemDao {
 		return list;
 	}
 	
-	private String useHstr(String id) { //¸¶Áö¸· ÀÌ¿ëÀÏ °¡Á®¿À±â
+	private String useHstr(String id) { //ë§ˆì§€ë§‰ ì´ìš©ì¼ ê°€ì ¸ì˜¤ê¸°
 		conn = null;
 		pstmt = null;
 		String a = null;
@@ -123,7 +123,7 @@ public class MemDao {
 		return a;
 	}
 
-	private String rentHstr(String id) {//´ëÃâÇöÈ² °¡Á®¿À±â
+	private String rentHstr(String id) {//ëŒ€ì¶œí˜„í™© ê°€ì ¸ì˜¤ê¸°
 		conn = null;
 		pstmt = null;
 		String s = null;
@@ -228,13 +228,13 @@ public class MemDao {
 			pstmt.setString(4, m.getPhoneNum2());
 			pstmt.setString(5, m.getPhoneNum3());
 			pstmt.setString(6, m.getName());
-			pstmt.setString(7, m.getName());//ÀÏÄ¡ÇÏ´Â ÀÌ¸§ ÀÖ´Â °æ¿ì update
+			pstmt.setString(7, m.getName());//ì¼ì¹˜í•˜ëŠ” ì´ë¦„ ìˆëŠ” ê²½ìš° update
 			pstmt.setString(8, m.getPhoneNum1());
 			pstmt.setString(9, m.getPhoneNum2());
 			pstmt.setString(10, m.getPhoneNum3());
 			pstmt.setString(11, m.getAddress());
 			Format f = new SimpleDateFormat("yyyy-MM-dd");
-			pstmt.setDate(12, java.sql.Date.valueOf(f.format(m.getBirth())));// util.dateÀÎ m.getBirth()¸¦ fÇü½ÄÀÇ StringÀ¸·Î ¹Ù²Ù°í, sql.DateÀÇ valueOf·Î sql.Date·Î º¯È¯
+			pstmt.setDate(12, java.sql.Date.valueOf(f.format(m.getBirth())));// util.dateì¸ m.getBirth()ë¥¼ fí˜•ì‹ì˜ Stringìœ¼ë¡œ ë°”ê¾¸ê³ , sql.Dateì˜ valueOfë¡œ sql.Dateë¡œ ë³€í™˜
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

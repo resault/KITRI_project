@@ -13,13 +13,13 @@ public class MemTM extends DefaultTableModel{
 	public MemTM() {
 		header.add("No");
 		header.add("ID");
-		header.add("ÀÌ¸§");
-		header.add("ÀüÈ­¹øÈ£");
-		header.add("ÁÖ¼Ò");
-		header.add("»ı³â¿ùÀÏ");
-		header.add("Ãµ¿øÇÒÀÎÄíÆù");
-		header.add("¸¶Áö¸· ÀÌ¿ëÀÏ");
-		header.add("´ëÃâÇöÈ²");
+		header.add("ì´ë¦„");
+		header.add("ì „í™”ë²ˆí˜¸");
+		header.add("ì£¼ì†Œ");
+		header.add("ìƒë…„ì›”ì¼");
+		header.add("ì²œì›í• ì¸ì¿ í°");
+		header.add("ë§ˆì§€ë§‰ ì´ìš©ì¼");
+		header.add("ëŒ€ì¶œí˜„í™©");
 		
 		setDataVector(list, header);
 		memT = new JTable(this);

@@ -12,14 +12,14 @@ public class BookTM extends DefaultTableModel {
 	
 	public BookTM() {
 		header.add("No");
-		header.add("µµ¼­Á¾·ù");
-		header.add("Àå¸£");
-		header.add("µµ¼­¸í");
-		header.add("ÀÛ°¡¸í");
-		header.add("ÃâÆÇ»ç");
-		header.add("Á¤°¡");
-		header.add("º¸À¯ÇöÈ²");
-		header.add("ºñ°í");
+		header.add("ë„ì„œì¢…ë¥˜");
+		header.add("ì¥ë¥´");
+		header.add("ë„ì„œëª…");
+		header.add("ì‘ê°€ëª…");
+		header.add("ì¶œíŒì‚¬");
+		header.add("ì •ê°€");
+		header.add("ë³´ìœ í˜„í™©");
+		header.add("ë¹„ê³ ");
 		
 		setDataVector(list, header);
 		bookT = new JTable(this);

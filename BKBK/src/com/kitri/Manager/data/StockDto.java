@@ -1,13 +1,13 @@
 package com.kitri.Manager.data;
 
-// Àç°í Dto
+// ì¬ê³  Dto
 
 public class StockDto {
 
-	private String foodCtg; // À½½ÄÁ¾·ù
-	private String stockName; // Àç°í¸í
-	private int restAmt; // ÀÜ¿©¼ö·®
-	private int unitCost; // ´Ü°¡
+	private String foodCtg; // ìŒì‹ì¢…ë¥˜
+	private String stockName; // ì¬ê³ ëª…
+	private int restAmt; // ì”ì—¬ìˆ˜ëŸ‰
+	private int unitCost; // ë‹¨ê°€
 
 	public String getFoodCtg() {
 		return foodCtg;

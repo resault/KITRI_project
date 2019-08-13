@@ -11,13 +11,13 @@ import com.kitri.Manager.main.MgmtMain;
 
 public class BookMgmtDesign extends JPanel {
 
-//----------------------------------------------------------------------------------------------------------------¼±¾ğºÎ
+//----------------------------------------------------------------------------------------------------------------ì„ ì–¸ë¶€
 	private JPanel panelC = new JPanel();
 
 	private JPanel panelR = new JPanel();
 	private JPanel panelR1 = new JPanel();
 	public JButton selAllMenu = new JButton("All");
-	String[] str = {"µµ¼­Á¾·ù", "Àå¸£", "µµ¼­¸í", "ÀÛ°¡¸í"};
+	String[] str = {"ë„ì„œì¢…ë¥˜", "ì¥ë¥´", "ë„ì„œëª…", "ì‘ê°€ëª…"};
 	public JComboBox serchC = new JComboBox(str);
 	public JTextField findTF = new JTextField();
 	public JButton findB;
@@ -25,13 +25,13 @@ public class BookMgmtDesign extends JPanel {
 	private JPanel panelR2 = new JPanel();
 	public BookTM bookTM = new BookTM();
 	private JPanel panelS = new JPanel();
-	public JButton homeB = new JButton("°ü¸®ÀÚ ·Î±×¾Æ¿ô");
-	public JButton statsB = new JButton("Åë°è");
-	public JButton addB = new JButton("Ãß°¡");
-	public JButton mdfyB = new JButton("¼öÁ¤");
-	public JButton delB = new JButton("»èÁ¦");
-	public JButton mgmtNumB = new JButton("°ü¸®¹øÈ£¼öÁ¤");
-	public JButton replace = new JButton("±³Ã¼¿Ï·á");
+	public JButton homeB = new JButton("ê´€ë¦¬ì ë¡œê·¸ì•„ì›ƒ");
+	public JButton statsB = new JButton("í†µê³„");
+	public JButton addB = new JButton("ì¶”ê°€");
+	public JButton mdfyB = new JButton("ìˆ˜ì •");
+	public JButton delB = new JButton("ì‚­ì œ");
+	public JButton mgmtNumB = new JButton("ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •");
+	public JButton replace = new JButton("êµì²´ì™„ë£Œ");
 
 	
 	/**
@@ -39,13 +39,13 @@ public class BookMgmtDesign extends JPanel {
 	 */
 	public BookMgmtDesign() {
 
-		//-----------------------------------------------------------¿À¸¥ÂÊ ÆĞ³Î »ó´Ü ±¸¼º
+		//-----------------------------------------------------------ì˜¤ë¥¸ìª½ íŒ¨ë„ ìƒë‹¨ êµ¬ì„±
 		panelR1.setBackground(SystemColor.window);
 		panelR1.setBounds(0, 0, 1374, 43);
 		panelR1.setLayout(null);
 		
 		selAllMenu.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		selAllMenu.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		selAllMenu.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 12));
 		selAllMenu.setBackground(SystemColor.controlHighlight);
 		selAllMenu.setBounds(0, 13, 82, 30);
 		
@@ -72,22 +72,22 @@ public class BookMgmtDesign extends JPanel {
 		panelR1.add(findB);
 		
 		
-		//-------------------------------------------------------------¿À¸¥ÂÊ ÆĞ³Î ÇÏ´Ü ±¸¼º
+		//-------------------------------------------------------------ì˜¤ë¥¸ìª½ íŒ¨ë„ í•˜ë‹¨ êµ¬ì„±
 		panelR2.setBounds(0, 47, 1374, 715);
 		panelR2.setLayout(new BorderLayout(0, 0));
 
-		//Å×ÀÌºí ºÎÂø
+		//í…Œì´ë¸” ë¶€ì°©
 		JScrollPane tableP = new JScrollPane(bookTM.bookT); 
 		panelR2.add(tableP);
 		
-		//---------------------------------------------------------------¿À¸¥ÂÊ ÆĞ³Î ±¸¼º
+		//---------------------------------------------------------------ì˜¤ë¥¸ìª½ íŒ¨ë„ êµ¬ì„±
 		panelR.setBounds(0, 0, 1374, 767);
 		panelR.setBackground(SystemColor.window);
 		panelR.setLayout(null);
 		panelR.add(panelR1);
 		panelR.add(panelR2);
 
-		//---------------------------------------------------------------ÇÏ´Ü ¹öÆ° ºÎÂø
+		//---------------------------------------------------------------í•˜ë‹¨ ë²„íŠ¼ ë¶€ì°©
 		panelS.setBackground(SystemColor.window);
 		panelS.setBounds(0, 767, 1470, 49);
 		panelS.setLayout(null);
@@ -112,7 +112,7 @@ public class BookMgmtDesign extends JPanel {
 		panelS.add(delB);
 		panelS.add(mgmtNumB);
 		
-		//----------------------------------------------------------------µµ¼­°ü¸® ¸ŞÀÎ ÆĞ³Î ±¸¼º
+		//----------------------------------------------------------------ë„ì„œê´€ë¦¬ ë©”ì¸ íŒ¨ë„ êµ¬ì„±
 		panelC.setBackground(SystemColor.controlHighlight);
 		panelC.setBounds(0, 0, 1374, 767);
 		panelC.setLayout(null);
@@ -129,9 +129,9 @@ public class BookMgmtDesign extends JPanel {
 	}
 	
 	
-	private void btnD(JButton b, Color c, int size) {	// ¹öÆ° µğÀÚÀÎ method
+	private void btnD(JButton b, Color c, int size) {	// ë²„íŠ¼ ë””ìì¸ method
 		b.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		b.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, size));
+		b.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, size));
 		if(c != null)
 			b.setBackground(c);
 	}
@@ -139,9 +139,9 @@ public class BookMgmtDesign extends JPanel {
 	private Font fontD(int m, int size) {
 		Font f = null;
 		if(m!=0)
-			f = new Font("¸¼Àº °íµñ", Font.BOLD, size);
+			f = new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, size);
 		else
-			f = new Font("¸¼Àº °íµñ", Font.PLAIN, size);
+			f = new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, size);
 		return f;
 	}
 }

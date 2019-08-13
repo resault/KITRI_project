@@ -26,10 +26,10 @@ public class FoodDao {
 	String pw = "project1";
 	
 	
-	// ½Ì±ÛÅæ 
-	private static FoodDao instance = new FoodDao();//ÀÚ½ÅÀÇ °´Ã¼¸¦  »ı¼º
+	// ì‹±ê¸€í†¤ 
+	private static FoodDao instance = new FoodDao();//ìì‹ ì˜ ê°ì²´ë¥¼  ìƒì„±
 	private FoodDao() {}
-	public static FoodDao getInstance() {//¿ÜºÎ¿¡¼­ Å¬·¡½º¸í.getInstance()¸¦ È£ÃâÇÏ¸é ÀÌ Å¬·¡½ºÀÇ °´Ã¼°¡ ¹İÈ¯µÊ
+	public static FoodDao getInstance() {//ì™¸ë¶€ì—ì„œ í´ë˜ìŠ¤ëª….getInstance()ë¥¼ í˜¸ì¶œí•˜ë©´ ì´ í´ë˜ìŠ¤ì˜ ê°ì²´ê°€ ë°˜í™˜ë¨
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		try {
 			Class.forName(driver);
@@ -39,7 +39,7 @@ public class FoodDao {
 		return instance;
 	}
 	
-//-------------------------------------------------------------------------------------------------------------------------------------------------[h] °ü¸®¹øÈ£¼öÁ¤
+//-------------------------------------------------------------------------------------------------------------------------------------------------[h] ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •
 	
 		public int upMgmtNum(int mgmtNum) {
 			conn = null;
@@ -72,10 +72,10 @@ public class FoodDao {
 		
 		
 	
-//--------------------------------------------------------------------------------------------------------------------------------------------¸Ş´º
+//--------------------------------------------------------------------------------------------------------------------------------------------ë©”ë‰´
 	
 	
-	//Ä«Å×°í¸®º° ¸Ş´º ÀüÃ¼ select
+	//ì¹´í…Œê³ ë¦¬ë³„ ë©”ë‰´ ì „ì²´ select
 	public List<String> selCtgMenu(String ctg) {
 		conn = null;
 		pstmt = null;
@@ -107,7 +107,7 @@ public class FoodDao {
 	}
 	
 	
-	public FoodDto findMenu(String name , String ctg) { //ÀÌ¸§À¸·Î ¸Ş´º Ã£±â
+	public FoodDto findMenu(String name , String ctg) { //ì´ë¦„ìœ¼ë¡œ ë©”ë‰´ ì°¾ê¸°
 		fDto = null;
 		conn = null;
 		pstmt = null;
@@ -150,7 +150,7 @@ public class FoodDao {
 	
 	
 	
-	public int mergeMenu(FoodDto foodDto) {//¸Ş´º Ãß°¡&¼öÁ¤
+	public int mergeMenu(FoodDto foodDto) {//ë©”ë‰´ ì¶”ê°€&ìˆ˜ì •
 		FoodDto f = foodDto;
 		int i = 0;
 		conn = null;
@@ -167,7 +167,7 @@ public class FoodDao {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, f.getFoodName());
-			pstmt.setString(2, f.getFoodCtg());//ÀÏÄ¡ÇÏ´Â ÀÌ¸§ ÀÖ´Â °æ¿ì update
+			pstmt.setString(2, f.getFoodCtg());//ì¼ì¹˜í•˜ëŠ” ì´ë¦„ ìˆëŠ” ê²½ìš° update
 			pstmt.setInt(3, f.getFoodPrice());
 			pstmt.setString(4, f.getStock1Name());
 			pstmt.setInt(5, f.getStock1Num());
@@ -224,7 +224,7 @@ public class FoodDao {
 		return i;
 	}
 	
-	public int delMenu(String foodName, String ctg) {//¸Ş´º»èÁ¦
+	public int delMenu(String foodName, String ctg) {//ë©”ë‰´ì‚­ì œ
 		conn = null;
 		pstmt = null;
 		sql = "update food set state = '0' where food_ctg = ? and food_name = ?";
@@ -254,9 +254,9 @@ public class FoodDao {
 	}
 	
 	
-//--------------------------------------------------------------------------------------------------------------------------------------------Àç°í
+//--------------------------------------------------------------------------------------------------------------------------------------------ì¬ê³ 
 	
-	//Ä«Å×°í¸®º° Àç°í ÀüÃ¼
+	//ì¹´í…Œê³ ë¦¬ë³„ ì¬ê³  ì „ì²´
 		public Vector<StockDto> selStock(String ctg) {
 			conn = null;
 			pstmt = null;
@@ -283,7 +283,7 @@ public class FoodDao {
 					a.add(rs.getInt("unit_cost"));
 					String a6;
 					if(rs.getInt("rest_amt")==0)
-						a.add("Àç°í ¾øÀ½");
+						a.add("ì¬ê³  ì—†ìŒ");
 					else
 						a.add("");
 
@@ -306,7 +306,7 @@ public class FoodDao {
 			return listV;
 		}
 		
-	public List<String> selStockName(String ctg) {//Àç°í ¸ñ·Ï(ÀÌ¸§) select
+	public List<String> selStockName(String ctg) {//ì¬ê³  ëª©ë¡(ì´ë¦„) select
 		List<String> list = new ArrayList<String>();
 		conn = null;
 		pstmt = null;
@@ -339,7 +339,7 @@ public class FoodDao {
 	
 	
 	
-	public Vector findStockV(String sName) {//Ç°¸ñ °Ë»ö
+	public Vector findStockV(String sName) {//í’ˆëª© ê²€ìƒ‰
 		Vector list = new Vector();
 		conn = null;
 		pstmt = null;
@@ -360,7 +360,7 @@ public class FoodDao {
 				a.add(rs.getInt("unit_cost"));
 				String a6;
 				if(rs.getInt("rest_amt")==0)
-					a.add("Àç°í ¾øÀ½");
+					a.add("ì¬ê³  ì—†ìŒ");
 				else
 					a.add("");
 
@@ -383,7 +383,7 @@ public class FoodDao {
 		return list;
 	}
 	
-	public StockDto findStockD(String sName) {//Ç°¸ñ °Ë»ö
+	public StockDto findStockD(String sName) {//í’ˆëª© ê²€ìƒ‰
 		StockDto stockDto = new StockDto();
 		conn = null;
 		pstmt = null;
@@ -415,7 +415,7 @@ public class FoodDao {
 		return stockDto;
 	}
 	
-	public int mergeStock(StockDto stockDto) {//Àç°í merge
+	public int mergeStock(StockDto stockDto) {//ì¬ê³  merge
 		StockDto s = stockDto;
 		conn = null;
 		pstmt = null;
@@ -431,10 +431,10 @@ public class FoodDao {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, s.getStockName());
-			pstmt.setString(2, s.getFoodCtg());//ÀÏÄ¡ÇÏ´Â ÀÌ¸§ ÀÖ´Â °æ¿ì update
+			pstmt.setString(2, s.getFoodCtg());//ì¼ì¹˜í•˜ëŠ” ì´ë¦„ ìˆëŠ” ê²½ìš° update
 			pstmt.setInt(3, s.getRestAmt());
 			pstmt.setInt(4, s.getUnitCost());
-			pstmt.setString(5, s.getFoodCtg());//¾ø´Â °æ¿ì insert
+			pstmt.setString(5, s.getFoodCtg());//ì—†ëŠ” ê²½ìš° insert
 			pstmt.setString(6, s.getStockName());
 			pstmt.setInt(7, s.getRestAmt());
 			pstmt.setInt(8, s.getUnitCost());

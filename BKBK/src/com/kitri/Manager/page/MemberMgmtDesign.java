@@ -16,7 +16,7 @@ public class MemberMgmtDesign extends JPanel {
 	private JPanel panelR = new JPanel();
 	private JPanel panelR1 = new JPanel();
 	public JButton selAllMem = new JButton("All");
-	String[] str = {"ÀÌ¸§", "ÀüÈ­¹øÈ£", "»ı³â¿ùÀÏ"};
+	String[] str = {"ì´ë¦„", "ì „í™”ë²ˆí˜¸", "ìƒë…„ì›”ì¼"};
 	public JComboBox findC = new JComboBox(str);
 	public JTextField findTF = new JTextField();
 	public JButton findB;
@@ -25,12 +25,12 @@ public class MemberMgmtDesign extends JPanel {
 	public MemTM memTM = new MemTM();
 	
 	private JPanel panelS = new JPanel();
-	public JButton homeB = new JButton("°ü¸®ÀÚ ·Î±×¾Æ¿ô");
-	public JButton statsB = new JButton("Åë°è");
-	public JButton addB = new JButton("Ãß°¡");
-	public JButton mdfyB = new JButton("¼öÁ¤");
-	public JButton delB = new JButton("»èÁ¦");
-	public JButton mgmtNumB = new JButton("°ü¸®¹øÈ£¼öÁ¤");
+	public JButton homeB = new JButton("ê´€ë¦¬ì ë¡œê·¸ì•„ì›ƒ");
+	public JButton statsB = new JButton("í†µê³„");
+	public JButton addB = new JButton("ì¶”ê°€");
+	public JButton mdfyB = new JButton("ìˆ˜ì •");
+	public JButton delB = new JButton("ì‚­ì œ");
+	public JButton mgmtNumB = new JButton("ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •");
 	
 	
 	/**
@@ -38,13 +38,13 @@ public class MemberMgmtDesign extends JPanel {
 	 */
 	public MemberMgmtDesign() {
 
-		//-----------------------------------------------------------»ó´Ü ±¸¼º
+		//-----------------------------------------------------------ìƒë‹¨ êµ¬ì„±
 		panelR1.setBackground(SystemColor.window);
 		panelR1.setBounds(0, 0, 1374, 43);
 		panelR1.setLayout(null);
 		
 		selAllMem.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		selAllMem.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		selAllMem.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, 12));
 		selAllMem.setBackground(SystemColor.controlHighlight);
 		
 		selAllMem.setBounds(0, 13, 82, 30);
@@ -70,32 +70,32 @@ public class MemberMgmtDesign extends JPanel {
 		panelR1.add(findTF);
 		panelR1.add(findB);
 		
-		//-------------------------------------------------------------ÇÏ´Ü ±¸¼º
+		//-------------------------------------------------------------í•˜ë‹¨ êµ¬ì„±
 		panelR2.setBounds(0, 47, 1374, 715);
 		panelR2.setLayout(new BorderLayout(0, 0));
 
-		//Å×ÀÌºí »ı¼º
-//		String[] header = {"  ", "No", "ÀÌ¸§", "ÀüÈ­¹øÈ£", "ÁÖ¼Ò", "»ı³â¿ùÀÏ", "Ãµ¿øÇÒÀÎÄíÆù", "¸¶Áö¸· ÀÌ¿ëÀÏ", "´ëÃâÇöÈ²", "ºñ°í"};
-//		String[][] contents = { {"  ", "No","ÀÌÂ¡Â¡", "010-1234-5678", "¼­¿ï½Ã ¼­¿ï±¸ ¼­¿ïµ¿ ¼­¿ï¾ÆÆÄÆ® 1234È£", "»ı³â¿ùÀÏ", "Ãµ¿øÇÒÀÎÄíÆù", "2019-04-07", "´ëÃâÁß", null},
-//								{"  ", "No","Á¶Áú¶ó", "010-1234-5678", "¼­¿ï½Ã ¼­¿ï±¸ ¼­¿ïµ¿ ¼­¿ï¾ÆÆÄÆ® 1234È£", "»ı³â¿ùÀÏ", "Ãµ¿øÇÒÀÎÄíÆù", "2019-04-07", "´ëÃâÁß", null},
-//								{"  ", "No","¹Ú½î°¡¸®", "010-1234-5678", "¼­¿ï½Ã ¼­¿ï±¸ ¼­¿ïµ¿ ¼­¿ï¾ÆÆÄÆ® 1234È£", "»ı³â¿ùÀÏ", "Ãµ¿øÇÒÀÎÄíÆù", "2019-04-07", "´ëÃâÁß", null},
-//								{"  ", "No","°íÁú¶ó", "010-1234-5678", "¼­¿ï½Ã ¼­¿ï±¸ ¼­¿ïµ¿ ¼­¿ï¾ÆÆÄÆ® 1234È£", "»ı³â¿ùÀÏ", "Ãµ¿øÇÒÀÎÄíÆù", "2019-04-07", "´ëÃâÁß", null}};
+		//í…Œì´ë¸” ìƒì„±
+//		String[] header = {"  ", "No", "ì´ë¦„", "ì „í™”ë²ˆí˜¸", "ì£¼ì†Œ", "ìƒë…„ì›”ì¼", "ì²œì›í• ì¸ì¿ í°", "ë§ˆì§€ë§‰ ì´ìš©ì¼", "ëŒ€ì¶œí˜„í™©", "ë¹„ê³ "};
+//		String[][] contents = { {"  ", "No","ì´ì§•ì§•", "010-1234-5678", "ì„œìš¸ì‹œ ì„œìš¸êµ¬ ì„œìš¸ë™ ì„œìš¸ì•„íŒŒíŠ¸ 1234í˜¸", "ìƒë…„ì›”ì¼", "ì²œì›í• ì¸ì¿ í°", "2019-04-07", "ëŒ€ì¶œì¤‘", null},
+//								{"  ", "No","ì¡°ì§ˆë¼", "010-1234-5678", "ì„œìš¸ì‹œ ì„œìš¸êµ¬ ì„œìš¸ë™ ì„œìš¸ì•„íŒŒíŠ¸ 1234í˜¸", "ìƒë…„ì›”ì¼", "ì²œì›í• ì¸ì¿ í°", "2019-04-07", "ëŒ€ì¶œì¤‘", null},
+//								{"  ", "No","ë°•ì˜ê°€ë¦¬", "010-1234-5678", "ì„œìš¸ì‹œ ì„œìš¸êµ¬ ì„œìš¸ë™ ì„œìš¸ì•„íŒŒíŠ¸ 1234í˜¸", "ìƒë…„ì›”ì¼", "ì²œì›í• ì¸ì¿ í°", "2019-04-07", "ëŒ€ì¶œì¤‘", null},
+//								{"  ", "No","ê³ ì§ˆë¼", "010-1234-5678", "ì„œìš¸ì‹œ ì„œìš¸êµ¬ ì„œìš¸ë™ ì„œìš¸ì•„íŒŒíŠ¸ 1234í˜¸", "ìƒë…„ì›”ì¼", "ì²œì›í• ì¸ì¿ í°", "2019-04-07", "ëŒ€ì¶œì¤‘", null}};
 //		DefaultTableModel tM = new DefaultTableModel(contents, header);
 //		JTable stockT = new JTable(memTM.memT);
 //		stockT.setFillsViewportHeight(true);
 		
-		//Å×ÀÌºí ºÎÂø
+		//í…Œì´ë¸” ë¶€ì°©
 		JScrollPane tableP = new JScrollPane(memTM.memT); 
 		panelR2.add(tableP);
 		
-		//ÆĞ³ÎºÎÂø
+		//íŒ¨ë„ë¶€ì°©
 		panelR.setBounds(0, 0, 1374, 767);
 		panelR.setBackground(SystemColor.window);
 		panelR.setLayout(null);
 		panelR.add(panelR1);
 		panelR.add(panelR2);
 		
-		//---------------------------------------------------------------ÇÏ´Ü ¹öÆ° ºÎÂø
+		//---------------------------------------------------------------í•˜ë‹¨ ë²„íŠ¼ ë¶€ì°©
 		panelS.setBackground(SystemColor.window);
 		panelS.setBounds(0, 767, 1470, 49);
 		panelS.setLayout(null);
@@ -119,7 +119,7 @@ public class MemberMgmtDesign extends JPanel {
 		panelS.add(delB);
 		panelS.add(mgmtNumB);
 		
-		//----------------------------------------------------------------È¸¿ø°ü¸® ¸ŞÀÎ ÆĞ³Î ±¸¼º
+		//----------------------------------------------------------------íšŒì›ê´€ë¦¬ ë©”ì¸ íŒ¨ë„ êµ¬ì„±
 		panelC.setBackground(SystemColor.controlHighlight);
 		panelC.setBounds(0, 0, 1374, 767);
 		panelC.setLayout(null);
@@ -133,14 +133,14 @@ public class MemberMgmtDesign extends JPanel {
 	}
 	
 	public void abBD(JButton b, Color c, int size) {
-		b.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, size));
+		b.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, size));
 		if(c != null)
 			b.setBackground(c);
 	}
 	
-	private void basicBD(JButton b, Color c, int size) {	//----------------------------------¹öÆ° µğÀÚÀÎ method
+	private void basicBD(JButton b, Color c, int size) {	//----------------------------------ë²„íŠ¼ ë””ìì¸ method
 		b.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		b.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, size));
+		b.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, size));
 		if(c != null)
 			b.setBackground(c);
 	}

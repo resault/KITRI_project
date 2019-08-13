@@ -1,11 +1,11 @@
 package com.kitri.Manager.data;
 
-//µµ¼­ Àå¸£ Dto
+//ë„ì„œ ì¥ë¥´ Dto
 
 public class GenreDto {
 
-	private int genreNum;		//Àå¸£ÄÚµå
-	private String genreName;	//Àå¸£¸íÄª
+	private int genreNum;		//ì¥ë¥´ì½”ë“œ
+	private String genreName;	//ì¥ë¥´ëª…ì¹­
 
 	public int getGenreNum() {
 		return genreNum;

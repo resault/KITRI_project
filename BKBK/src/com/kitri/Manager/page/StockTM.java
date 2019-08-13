@@ -19,11 +19,11 @@ public class StockTM extends DefaultTableModel{
 	public StockTM() {
 	
 		header.add("No");
-		header.add("Ä«Å×°í¸®");
-		header.add("Ç°¸ñ");
-		header.add("³²Àº ¼ö·®");
-		header.add("´Ü°¡");
-		header.add("ºñ°í");
+		header.add("ì¹´í…Œê³ ë¦¬");
+		header.add("í’ˆëª©");
+		header.add("ë‚¨ì€ ìˆ˜ëŸ‰");
+		header.add("ë‹¨ê°€");
+		header.add("ë¹„ê³ ");
 		
 		setDataVector(list, header);
 		stockT = new JTable(this);

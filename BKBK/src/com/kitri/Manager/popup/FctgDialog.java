@@ -16,7 +16,7 @@ public class FctgDialog extends JDialog {
 
 	public JTextField menuTF = new JTextField();
 	public JTextField priceTF = new JTextField();
-	String[] ctg = {"À½·á", "°úÀÚ", "¶ó¸é", "À½½Ä"};
+	String[] ctg = {"ìŒë£Œ", "ê³¼ì", "ë¼ë©´", "ìŒì‹"};
 	public JComboBox ctgC = new JComboBox(ctg);
 	
 	public JPanel cardP = new JPanel();
@@ -24,24 +24,24 @@ public class FctgDialog extends JDialog {
 	public JPanel mdfP = new JPanel();
 	public JPanel addP = new JPanel();
 	
-	private final JLabel label = new JLabel("Àç·á1");
+	private final JLabel label = new JLabel("ì¬ë£Œ1");
 	public JComboBox st1C = new JComboBox();
 	public JTextField st1A = new JTextField();
-	private final JLabel label_2 = new JLabel("Àç·á2");
+	private final JLabel label_2 = new JLabel("ì¬ë£Œ2");
 	public JComboBox st2C = new JComboBox();
-	private final JLabel label_3 = new JLabel("¼ö·® :");
+	private final JLabel label_3 = new JLabel("ìˆ˜ëŸ‰ :");
 	public JTextField st2A = new JTextField();
-	private final JLabel label_4 = new JLabel("Àç·á3");
+	private final JLabel label_4 = new JLabel("ì¬ë£Œ3");
 	
 	public JComboBox st3C = new JComboBox();
-	private final JLabel label_5 = new JLabel("¼ö·® :");
+	private final JLabel label_5 = new JLabel("ìˆ˜ëŸ‰ :");
 	public JTextField st3A = new JTextField();
 
 	JPanel buttonPane = new JPanel();
-	public JButton delB = new JButton("»èÁ¦");
-	public JButton mdfB = new JButton("¼öÁ¤");
-	public JButton addB = new JButton("Ãß°¡");
-	public JButton cancelB = new JButton("Ãë¼Ò");
+	public JButton delB = new JButton("ì‚­ì œ");
+	public JButton mdfB = new JButton("ìˆ˜ì •");
+	public JButton addB = new JButton("ì¶”ê°€");
+	public JButton cancelB = new JButton("ì·¨ì†Œ");
 
 	/**
 	 * Create the dialog.
@@ -49,29 +49,29 @@ public class FctgDialog extends JDialog {
 	public FctgDialog() {
 		contentPanel.setBounds(0, 0, 305, 366);
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		JLabel tl1 = new JLabel("Ä«Å×°í¸®");
-		tl1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl1 = new JLabel("ì¹´í…Œê³ ë¦¬");
+		tl1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl1.setBounds(16, 20, 137, 33);
-		ctgC.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 12));
+		ctgC.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 12));
 		ctgC.setBackground(SystemColor.window);
 		ctgC.setBounds(97, 23, 126, 30);
 
-		JLabel tl2 = new JLabel("¸Ş´º ÀÌ¸§");
-		tl2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl2 = new JLabel("ë©”ë‰´ ì´ë¦„");
+		tl2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl2.setBounds(16, 75, 97, 21);
 		menuTF.setHorizontalAlignment(SwingConstants.CENTER);
 		menuTF.setBounds(97, 73, 192, 30);
 		menuTF.setColumns(10);
 
-		JLabel tl3 = new JLabel("°¡°İ");
-		tl3.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl3 = new JLabel("ê°€ê²©");
+		tl3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl3.setBounds(16, 137, 57, 15);
 		priceTF.setHorizontalAlignment(SwingConstants.CENTER);
 		priceTF.setBounds(63, 131, 120, 30);
 		priceTF.setColumns(10);
 
-		JLabel tl4 = new JLabel("¿ø");
-		tl4.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel tl4 = new JLabel("ì›");
+		tl4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		tl4.setBounds(195, 134, 57, 21);
 
 		contentPanel.setBackground(SystemColor.control);
@@ -88,15 +88,15 @@ public class FctgDialog extends JDialog {
 		
 		addP.setBounds(0, 0, 165, 30);
 		addP.setLayout(null);
-		addB.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		addB.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		addB.setBounds(117, 2, 70, 25);
 		addP.add(addB);
 		
 		mdfP.setBounds(0, 0, 165, 30);
 		mdfP.setLayout(null);
-		mdfB.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		mdfB.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		mdfB.setBounds(35, 2, 70, 25);
-		delB.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		delB.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		delB.setBounds(117, 2, 70, 25);
 		mdfP.add(mdfB);
 		mdfP.add(delB);
@@ -109,7 +109,7 @@ public class FctgDialog extends JDialog {
 
 		buttonPane.setBounds(0, 367, 305, 33);
 		buttonPane.setLayout(null);
-		cancelB.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
+		cancelB.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 11));
 		cancelB.setBounds(200, 2, 70, 25);
 		buttonPane.add(cancelB);
 		buttonPane.add(cardP);
@@ -119,7 +119,7 @@ public class FctgDialog extends JDialog {
 		
 		st1C.setBounds(63, 189, 120, 30);
 		contentPanel.add(st1C);
-		label.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		label.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		label.setBounds(16, 195, 57, 15);
 		
 		contentPanel.add(label);
@@ -130,18 +130,18 @@ public class FctgDialog extends JDialog {
 		st1A.setBounds(245, 190, 44, 30);
 		contentPanel.add(st1A);
 		
-		JLabel label_1 = new JLabel("¼ö·® :");
-		label_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		JLabel label_1 = new JLabel("ìˆ˜ëŸ‰ :");
+		label_1.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		label_1.setBounds(195, 192, 44, 21);
 		contentPanel.add(label_1);
-		label_2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		label_2.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		label_2.setBounds(16, 254, 57, 15);
 		
 		contentPanel.add(label_2);
 		st2C.setBounds(63, 248, 120, 30);
 		
 		contentPanel.add(st2C);
-		label_3.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		label_3.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		label_3.setBounds(195, 251, 44, 21);
 		
 		contentPanel.add(label_3);
@@ -150,14 +150,14 @@ public class FctgDialog extends JDialog {
 		st2A.setBounds(245, 249, 44, 30);
 		
 		contentPanel.add(st2A);
-		label_4.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		label_4.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		label_4.setBounds(16, 311, 57, 15);
 		
 		contentPanel.add(label_4);
 		st3C.setBounds(63, 305, 120, 30);
 		
 		contentPanel.add(st3C);
-		label_5.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
+		label_5.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 15));
 		label_5.setBounds(195, 308, 44, 21);
 		
 		contentPanel.add(label_5);
@@ -168,7 +168,7 @@ public class FctgDialog extends JDialog {
 		contentPanel.add(st3A);
 		getContentPane().add(buttonPane);
 
-		setTitle("¸Ş´º Ãß°¡");
+		setTitle("ë©”ë‰´ ì¶”ê°€");
 		setModal(true);
 		setBounds(700, 300, 323, 439);
 		setResizable(false);

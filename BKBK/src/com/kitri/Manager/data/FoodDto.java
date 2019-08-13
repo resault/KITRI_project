@@ -1,18 +1,18 @@
 package com.kitri.Manager.data;
 
-// À½½Ä Dto
+// ìŒì‹ Dto
 
 public class FoodDto {
-	private String foodName; // À½½ÄÀÌ¸§
-	private String foodCtg; // À½½ÄÁ¾·ù
-	private int foodPrice; // À½½Ä°¡°İ
-	private String stock1Name; // Àç°í1
-	private int stock1Num; // Àç°í1¼ö·®
-	private String stock2Name; // Àç°í2
-	private int stock2Num; // Àç°í2¼ö·®
-	private String stock3Name; // Àç°í3
-	private int stock3Num; // Àç°í3¼ö·®
-	private char state; // »óÅÂ
+	private String foodName; // ìŒì‹ì´ë¦„
+	private String foodCtg; // ìŒì‹ì¢…ë¥˜
+	private int foodPrice; // ìŒì‹ê°€ê²©
+	private String stock1Name; // ì¬ê³ 1
+	private int stock1Num; // ì¬ê³ 1ìˆ˜ëŸ‰
+	private String stock2Name; // ì¬ê³ 2
+	private int stock2Num; // ì¬ê³ 2ìˆ˜ëŸ‰
+	private String stock3Name; // ì¬ê³ 3
+	private int stock3Num; // ì¬ê³ 3ìˆ˜ëŸ‰
+	private char state; // ìƒíƒœ
 
 	public String getFoodName() {
 		return foodName;

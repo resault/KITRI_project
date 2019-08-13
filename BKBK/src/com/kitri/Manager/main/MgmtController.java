@@ -43,7 +43,7 @@ public class MgmtController implements ActionListener, FocusListener  {
 			}
 		}
 		
-//-------------------------------------------------------------------------------------------------°¢ °ü¸® ÆäÀÌÁö		
+//-------------------------------------------------------------------------------------------------ê° ê´€ë¦¬ í˜ì´ì§€		
 		
 		if(ob == mm.foodMgmtB) {
 			mms.foodPage();
@@ -51,11 +51,11 @@ public class MgmtController implements ActionListener, FocusListener  {
 			mms.bookPage();
 		} else if(ob == mm.membrMgmtB) {
 			mms.memPage();
-		} else if(btnStr.equals("°ü¸®ÀÚ ·Î±×¾Æ¿ô")) {
+		} else if(btnStr.equals("ê´€ë¦¬ì ë¡œê·¸ì•„ì›ƒ")) {
 			mm.mainFrame.serCard.show(mm.mainFrame.panelCard, "Main");
-		} else if(btnStr.equals("°ü¸®¹øÈ£¼öÁ¤")) {
+		} else if(btnStr.equals("ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •")) {
 			mms.mgmtNum();
-		} else if(btnStr.equals("Åë°è")) {
+		} else if(btnStr.equals("í†µê³„")) {
 			statisticsPanel.c1.search();
 			JFreeChart chart = statisticsPanel.c1.createChart();
 						
@@ -65,7 +65,7 @@ public class MgmtController implements ActionListener, FocusListener  {
 			pchart.setSize(560, 522);
 			pchart.setVisible(true);
 			mm.mainFrame.serCard.show(mm.mainFrame.panelCard, "Statistics");
-//---------------------------------------------------------------------------------------------------------------------------------------Food ÀÌº¥Æ®			
+//---------------------------------------------------------------------------------------------------------------------------------------Food ì´ë²¤íŠ¸			
 
 			
 //-----------------------------------------------------------------------------------------------------menu
@@ -85,13 +85,13 @@ public class MgmtController implements ActionListener, FocusListener  {
 			mms.delMenu();
 		} else if(ob == mm.fcAdd.cancelB) {
 			mms.cancleMenu();
-		} else if(ob == mm.fm.selAllStock) {//Àç°í °Ë»ö
+		} else if(ob == mm.fm.selAllStock) {//ì¬ê³  ê²€ìƒ‰
 			mms.setStockT("all");
 		} else if(ob == mm.fm.findB || ob == mm.fm.stockName) {
 			mms.selStock();
-		} else if(ob == mm.fm.clrB)  {//Å×ÀÌºí ¼±ÅÃ Ãë¼Ò
+		} else if(ob == mm.fm.clrB)  {//í…Œì´ë¸” ì„ íƒ ì·¨ì†Œ
 			mm.fm.stockTM.stockT.clearSelection();
-		} else if(ob == mm.fm.addB)  {// Àç°í ÀÔ°í
+		} else if(ob == mm.fm.addB)  {// ì¬ê³  ì…ê³ 
 			mms.setS();
 		} else if(ob == mm.fsAdd.addB) {
 			mms.addStock();
@@ -100,7 +100,7 @@ public class MgmtController implements ActionListener, FocusListener  {
 		} else if(ob == mm.fm.delB) {
 			mms.delStock();
 			
-//---------------------------------------------------------------------------------------------------------------------------------------Book ÀÌº¥Æ®
+//---------------------------------------------------------------------------------------------------------------------------------------Book ì´ë²¤íŠ¸
 		} else if(ob == mm.bm.selAllMenu) {
 			mms.setBT();
 		} else if(ob == mm.bm.findB || ob == mm.bm.findTF) {
@@ -117,7 +117,7 @@ public class MgmtController implements ActionListener, FocusListener  {
 			mms.amBook(e.getActionCommand());
 		} else if(ob == mm.bAdd.cancelB) {
 			mms.cancleBook();
-		} else if(ob == mm.mm.selAllMem) {//------------------------------------------------------------------Member ÀÌº¥Æ®
+		} else if(ob == mm.mm.selAllMem) {//------------------------------------------------------------------Member ì´ë²¤íŠ¸
 			mms.selMem();
 		} else if(ob == mm.mm.findB || ob == mm.mm.findTF) {
 			mms.serchM();
@@ -141,7 +141,7 @@ public class MgmtController implements ActionListener, FocusListener  {
 		if(ob == mm.mAdd.ph2TF || ob == mm.mAdd.ph3TF)
 			mm.mAdd.infoPhoneNum.setText("ex) 010 - 1234 - 5678"); 
 		if(ob == mm.mAdd.birth1 || ob == mm.mAdd.birth2 || ob == mm.mAdd.birth3 )
-			mm.mAdd.infoBirth.setText("ex) 2000³â 01¿ù 01ÀÏ"); 
+			mm.mAdd.infoBirth.setText("ex) 2000ë…„ 01ì›” 01ì¼"); 
 	}
 
 	@Override

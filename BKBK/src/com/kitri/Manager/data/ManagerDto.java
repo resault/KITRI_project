@@ -1,6 +1,6 @@
 package com.kitri.Manager.data;
 
-// °ü¸®ÀÚ ¹øÈ£ Dto
+// ê´€ë¦¬ì Dto
 
 public class ManagerDto {
 

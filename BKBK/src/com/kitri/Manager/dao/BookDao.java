@@ -18,10 +18,10 @@ public class BookDao {
 	String user = "project1";
 	String pw = "project1";
 	
-	// ½Ì±ÛÅæ 
-	private static BookDao instance = new BookDao();//ÀÚ½ÅÀÇ °´Ã¼¸¦  »ı¼º
+	// ì‹±ê¸€í†¤ 
+	private static BookDao instance = new BookDao();//ìì‹ ì˜ ê°ì²´ë¥¼  ìƒì„±
 	private BookDao() {}
-	public static BookDao getInstance() {//¿ÜºÎ¿¡¼­ Å¬·¡½º¸í.getInstance()¸¦ È£ÃâÇÏ¸é ÀÌ Å¬·¡½ºÀÇ °´Ã¼°¡ ¹İÈ¯µÊ
+	public static BookDao getInstance() {//ì™¸ë¶€ì—ì„œ í´ë˜ìŠ¤ëª….getInstance()ë¥¼ í˜¸ì¶œí•˜ë©´ ì´ í´ë˜ìŠ¤ì˜ ê°ì²´ê°€ ë°˜í™˜ë¨
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		try {
 			Class.forName(driver);
@@ -31,7 +31,7 @@ public class BookDao {
 		return instance;
 	}
 	
-	public Vector serchB(String colName, String str) {//µµ¼­°Ë»ö
+	public Vector serchB(String colName, String str) {//ë„ì„œê²€ìƒ‰
 		Vector list = new Vector();
 		conn = null;
 		pstmt = null;
@@ -65,11 +65,11 @@ public class BookDao {
 				if(rs.getString("rent_state").toString().equals("0"))
 					a.add("");
 				else
-					a.add("´ëÃâÁß");
+					a.add("ëŒ€ì¶œì¤‘");
 				if(rs.getString("replace").toString().equals("0"))
 					a.add("");
 				else
-					a.add("±³Ã¼¿ä¸Á");
+					a.add("êµì²´ìš”ë§");
 
 				list.add(a);
 			}
@@ -223,7 +223,7 @@ public class BookDao {
 			conn = DriverManager.getConnection(url, user, pw);
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, b.getBookName());
-			pstmt.setInt(2, b.getGenreNum());//ÀÏÄ¡ÇÏ´Â ÀÌ¸§ ÀÖ´Â °æ¿ì update
+			pstmt.setInt(2, b.getGenreNum());//ì¼ì¹˜í•˜ëŠ” ì´ë¦„ ìˆëŠ” ê²½ìš° update
 			pstmt.setInt(3, b.getBookCtg());
 			pstmt.setString(4, b.getAuthor());
 			pstmt.setString(5, b.getPublisher());

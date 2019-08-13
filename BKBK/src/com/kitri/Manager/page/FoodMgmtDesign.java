@@ -12,18 +12,18 @@ public class FoodMgmtDesign extends JPanel {
 	private JPanel panelC = new JPanel();
 	private JPanel panelL = new JPanel();
 	private JPanel panelL1 = new JPanel();
-	public JButton ctgB1 = new JButton("À½·á");
-	public JButton ctgB2 = new JButton("°úÀÚ");
-	public JButton ctgB3 = new JButton("¶ó¸é");
-	public JButton ctgB4 = new JButton("À½½Ä");
+	public JButton ctgB1 = new JButton("ìŒë£Œ");
+	public JButton ctgB2 = new JButton("ê³¼ì");
+	public JButton ctgB3 = new JButton("ë¼ë©´");
+	public JButton ctgB4 = new JButton("ìŒì‹");
 	
 	private JPanel panelL21 = new JPanel();
 	
-	public JButton[] menuB = new JButton[25]; //À½·á¹öÆ°
+	public JButton[] menuB = new JButton[25]; //ìŒë£Œë²„íŠ¼
 	
 	private JPanel panelR = new JPanel();
 	public JButton selAllStock = new JButton("All");
-	public JButton clrB = new JButton("¼±ÅÃÃë¼Ò");
+	public JButton clrB = new JButton("ì„ íƒì·¨ì†Œ");
 	public JButton findB;
 	public JTextField stockName = new JTextField();
 	
@@ -33,11 +33,11 @@ public class FoodMgmtDesign extends JPanel {
 	private JPanel panelR2 = new JPanel();
 	
 	private JPanel panelS = new JPanel();
-	public JButton homeB = new JButton("°ü¸®ÀÚ ·Î±×¾Æ¿ô");
-	public JButton statsB = new JButton("Åë°è");
-	public JButton addB = new JButton("ÀÔ°í");
-	public JButton delB = new JButton("»èÁ¦");
-	public JButton mgmtNumB = new JButton("°ü¸®¹øÈ£¼öÁ¤");
+	public JButton homeB = new JButton("ê´€ë¦¬ì ë¡œê·¸ì•„ì›ƒ");
+	public JButton statsB = new JButton("í†µê³„");
+	public JButton addB = new JButton("ì…ê³ ");
+	public JButton delB = new JButton("ì‚­ì œ");
+	public JButton mgmtNumB = new JButton("ê´€ë¦¬ë²ˆí˜¸ìˆ˜ì •");
 	
 	
 	/**
@@ -45,7 +45,7 @@ public class FoodMgmtDesign extends JPanel {
 	 */
 	public FoodMgmtDesign() {
 		
-		//----------------------------------------------------------¿ŞÂÊ ÆĞ³Î »ó´Ü(¸Ş´ºÄ«Å×°í¸® ¹öÆ°) ±¸¼º
+		//----------------------------------------------------------ì™¼ìª½ íŒ¨ë„ ìƒë‹¨(ë©”ë‰´ì¹´í…Œê³ ë¦¬ ë²„íŠ¼) êµ¬ì„±
 		panelL1.setBackground(SystemColor.window);
 		panelL1.setBounds(0, 0, 675, 43);
 		panelL1.setLayout(null);
@@ -87,14 +87,14 @@ public class FoodMgmtDesign extends JPanel {
 		panelL21.setLayout(new GridLayout(5, 5, 2, 2));
 		panelL.add(panelL21);
 		
-		//-----------------------------------------------------------¿À¸¥ÂÊ ÆĞ³Î »ó´Ü ±¸¼º
+		//-----------------------------------------------------------ì˜¤ë¥¸ìª½ íŒ¨ë„ ìƒë‹¨ êµ¬ì„±
 		panelR1.setBackground(SystemColor.window);
 		panelR1.setBounds(12, 0, 675, 43);
 		panelR1.setLayout(null);
 		
 		basicBD(selAllStock, SystemColor.controlHighlight, 12);
 		selAllStock.setBounds(0, 13, 82, 30);
-		JLabel lblNewLabel = new JLabel("Ç°¸ñÀ¸·Î °Ë»ö");
+		JLabel lblNewLabel = new JLabel("í’ˆëª©ìœ¼ë¡œ ê²€ìƒ‰");
 		lblNewLabel.setBounds(390, 4, 82, 30);
 		stockName.setBounds(485, 4, 150, 30);
 		stockName.setColumns(10);
@@ -116,12 +116,12 @@ public class FoodMgmtDesign extends JPanel {
 		panelR1.add(stockName); 
 		panelR1.add(findB);
 		
-		//-------------------------------------------------------------¿À¸¥ÂÊ ÆĞ³Î ÇÏ´Ü ±¸¼º
+		//-------------------------------------------------------------ì˜¤ë¥¸ìª½ íŒ¨ë„ í•˜ë‹¨ êµ¬ì„±
 		panelR2.setBounds(12, 47, 675, 715);
 		panelR2.setLayout(new BorderLayout(0, 0));
 		
 		
-		//Å×ÀÌºí ºÎÂø
+		//í…Œì´ë¸” ë¶€ì°©
 		JScrollPane tableP = new JScrollPane(stockTM.stockT); 
 		panelR2.add(tableP);
 
@@ -135,7 +135,7 @@ public class FoodMgmtDesign extends JPanel {
 		
 		panelR.add(panelR2);
 		
-		//---------------------------------------------------------------ÇÏ´Ü ¹öÆ° ºÎÂø
+		//---------------------------------------------------------------í•˜ë‹¨ ë²„íŠ¼ ë¶€ì°©
 		panelS.setBackground(SystemColor.window);
 		panelS.setBounds(0, 767, 1470, 49);
 		panelS.setLayout(null);
@@ -156,7 +156,7 @@ public class FoodMgmtDesign extends JPanel {
 		panelS.add(delB);
 		panelS.add(mgmtNumB);
 
-		//----------------------------------------------------------------»óÇ°°ü¸® ¸ŞÀÎ ÆĞ³Î ±¸¼º
+		//----------------------------------------------------------------ìƒí’ˆê´€ë¦¬ ë©”ì¸ íŒ¨ë„ êµ¬ì„±
 		
 
 		//----------------------------------------------------------------
@@ -169,16 +169,15 @@ public class FoodMgmtDesign extends JPanel {
 	
 	
 	public void abBD(JButton b, Color c, int size) {
-		b.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, size));
+		b.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, size));
 		if(c != null)
 			b.setBackground(c);
 	}
 	
-	private void basicBD(JButton b, Color c, int size) {	//----------------------------------¹öÆ° µğÀÚÀÎ method
+	private void basicBD(JButton b, Color c, int size) {	//----------------------------------ë²„íŠ¼ ë””ìì¸ method
 		b.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
-		b.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, size));
+		b.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.BOLD, size));
 		if(c != null)
 			b.setBackground(c);
 	}
 }
-

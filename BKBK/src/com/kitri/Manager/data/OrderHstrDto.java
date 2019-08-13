@@ -2,14 +2,14 @@ package com.kitri.Manager.data;
 
 import java.util.Date;
 
-// À½½ÄÁÖ¹® Dto
+// ìŒì‹ì£¼ë¬¸ Dto
 
 public class OrderHstrDto {
-	private String foodNum; // À½½ÄÄÚµå
-	private String memberId; // È¸¿øID
-	private String payNum; // °áÁ¦¹øÈ£
-	private int orderAmt; // À½½Ä¼ö·®
-	private Date payDate; // °áÁ¦ÀÏÀÚ
+	private String foodNum; // ìŒì‹ì½”ë“œ
+	private String memberId; // íšŒì›ID
+	private String payNum; // ê²°ì œë²ˆí˜¸
+	private int orderAmt; // ìŒì‹ìˆ˜ëŸ‰
+	private Date payDate; // ê²°ì œì¼ì
 
 	public String getFoodNum() {
 		return foodNum;

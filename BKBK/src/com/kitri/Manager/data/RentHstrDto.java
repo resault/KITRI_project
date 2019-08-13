@@ -2,18 +2,18 @@ package com.kitri.Manager.data;
 
 import java.util.Date;
 
-// µµ¼­´ëÃâ Dto
+// ë„ì„œëŒ€ì¶œ Dto
 
 public class RentHstrDto {
 
-	private int bookNum; // µµ¼­ÄÚµå
-	private String memberId; // È¸¿øID
-	private String payNum; // °áÁ¦¹øÈ£
-	private Date rentDate; // ´ëÃâÀÏÀÚ
-	private Date returnDate; // ¹İ³³¿¹Á¤ÀÏ
-	private char rentState; // ¹İ³³¿©ºÎ
-	private int rentFee; // ´ë¿©·á
-	private Date payDate; // °áÁ¦ÀÏÀÚ
+	private int bookNum; // ë„ì„œì½”ë“œ
+	private String memberId; // íšŒì›ID
+	private String payNum; // ê²°ì œë²ˆí˜¸
+	private Date rentDate; // ëŒ€ì¶œì¼ì
+	private Date returnDate; // ë°˜ë‚©ì˜ˆì •ì¼
+	private char rentState; // ë°˜ë‚©ì—¬ë¶€
+	private int rentFee; // ëŒ€ì—¬ë£Œ
+	private Date payDate; // ê²°ì œì¼ì
 
 	public int getBookNum() {
 		return bookNum;

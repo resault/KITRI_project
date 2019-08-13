@@ -1,11 +1,11 @@
 package com.kitri.Manager.data;
 
-// µµ¼­Á¾·ù Dto
+// ë„ì„œì¢…ë¥˜ Dto
 
 public class CategoryDto {
 
-	private int bookCtg;		// µµ¼­Á¾·ùÄÚµå
-	private String bookCtgName;	// µµ¼­Á¾·ù¸íÄª
+	private int bookCtg;		// ë„ì„œì¢…ë¥˜ì½”ë“œ
+	private String bookCtgName;	// ë„ì„œì¢…ë¥˜ëª…ì¹­
 
 	public int getBookCtg() {
 		return bookCtg;

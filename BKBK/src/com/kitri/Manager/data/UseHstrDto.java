@@ -2,15 +2,15 @@ package com.kitri.Manager.data;
 
 import java.util.Date;
 
-// ÀÌ¿ë³»¿ª Dto
+// ì´ìš©ë‚´ì—­ Dto
 
 public class UseHstrDto {
 
-	private String memberId; // È¸¿øID
-	private String payNum; // °áÁ¦¹øÈ£
-	private Date stTime; // ½ÃÀÛ½Ã°£
-	private Date eTime; // Á¾·á½Ã°£
-	private Date payDate; // °áÁ¦ÀÏÀÚ
+	private String memberId; // íšŒì›ID
+	private String payNum; // ê²°ì œë²ˆí˜¸
+	private Date stTime; // ì‹œì‘ì‹œê°„
+	private Date eTime; // ì¢…ë£Œì‹œê°„
+	private Date payDate; // ê²°ì œì¼ì
 
 	public String getMemberId() {
 		return memberId;

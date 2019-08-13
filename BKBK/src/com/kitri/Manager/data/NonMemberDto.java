@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class NonMemberDto {
 	
-	private String memberId;	//È¸¿øID
-	private String name;		//ÀÌ¸§
-	private String phoneNum1;	//ÀüÈ­¹øÈ£1
-	private String PhoneNum2;	//ÀüÈ­¹øÈ£2
-	private String PhoneNum3;	//ÀüÈ­¹øÈ£3
-	private String address;		//ÁÖ¼Ò
-	private Date birth;			//»ı³â¿ùÀÏ
-	private int paySum;			//°áÁ¦±İ¾×_´©Àû
-	private int couBirth;		//»ıÀÏÄíÆù
-	private int couSale;		//Ãµ¿øÇÒÀÎÄíÆù
+	private String memberId;	//íšŒì›ID
+	private String name;		//ì´ë¦„
+	private String phoneNum1;	//ì „í™”ë²ˆí˜¸1
+	private String PhoneNum2;	//ì „í™”ë²ˆí˜¸2
+	private String PhoneNum3;	//ì „í™”ë²ˆí˜¸3
+	private String address;		//ì£¼ì†Œ
+	private Date birth;			//ìƒë…„ì›”ì¼
+	private int paySum;			//ê²°ì œê¸ˆì•¡_ëˆ„ì 
+	private int couBirth;		//ìƒì¼ì¿ í°
+	private int couSale;		//ì²œì›í• ì¸ì¿ í°
 
 	public String getMemberId() {
 		return memberId;
